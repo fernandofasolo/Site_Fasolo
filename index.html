@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fasolo — Tech, Negócios & Games</title>
+  <meta name="description" content="Fernando Fasolo e Fernando Fasolo Filho — conteúdo sobre tech, negócios e games (Roblox, Minecraft e muito mais)." />
+  <link rel="canonical" href="https://fasolo.ia.br" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Fasolo — Tech, Negócios & Games" />
+  <meta property="og:description" content="Conhecimento do cotidiano, área tech, negócios e jogatinas com Fernando Fasolo e Fernando Fasolo Filho." />
+  <meta property="og:url" content="https://fasolo.ia.br" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #050508; color: #e2e8f0; }
+    .font-game { font-family: 'Orbitron', sans-serif; }
+
+    .glow-violet { text-shadow: 0 0 20px rgba(139, 92, 246, 0.8); }
+    .glow-green  { text-shadow: 0 0 20px rgba(34, 197, 94, 0.8); }
+    .glow-orange { text-shadow: 0 0 20px rgba(249, 115, 22, 0.8); }
+
+    .card-glass {
+      background: rgba(15, 15, 25, 0.7);
+      border: 1px solid rgba(255,255,255,0.07);
+      backdrop-filter: blur(12px);
+      transition: border-color .3s, transform .3s;
+    }
+    .card-glass:hover { border-color: rgba(139, 92, 246, 0.5); transform: translateY(-4px); }
+
+    .card-game:hover { border-color: rgba(34, 197, 94, 0.5); }
+
+    .hero-bg {
+      background: radial-gradient(ellipse at 20% 50%, rgba(139,92,246,.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 20%, rgba(34,197,94,.10) 0%, transparent 50%),
+                  #050508;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 9999px;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .scanline {
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.15) 2px, rgba(0,0,0,.15) 4px);
+      pointer-events: none;
+    }
+
+    @keyframes pulse-border {
+      0%, 100% { border-color: rgba(139,92,246,.3); }
+      50%       { border-color: rgba(139,92,246,.8); }
+    }
+    .pulse-border { animation: pulse-border 3s ease-in-out infinite; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+    .float { animation: float 4s ease-in-out infinite; }
+
+    .grid-bg {
+      background-image: linear-gradient(rgba(139,92,246,.05) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(139,92,246,.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+  </style>
+</head>
+<body class="grid-bg">
+
+  <!-- NAV -->
+  <nav class="fixed top-0 w-full z-50 border-b border-slate-800/60 backdrop-blur-md bg-black/60">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="font-game text-xl font-black tracking-widest text-white">
+        <span class="text-violet-400">FA</span>SOLO
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm text-slate-400">
+        <a href="#sobre"   class="hover:text-violet-400 transition-colors">Sobre</a>
+        <a href="#pai"     class="hover:text-violet-400 transition-colors">Fernando</a>
+        <a href="#filho"   class="hover:text-green-400 transition-colors">Fasolo Jr.</a>
+        <a href="#games"   class="hover:text-green-400 transition-colors">Games</a>
+        <a href="#contato" class="hover:text-violet-400 transition-colors">Contato</a>
+      </div>
+      <!-- mobile menu toggle -->
+      <button id="mobile-menu-btn" class="md:hidden text-slate-400 hover:text-white">
+        <i class="fa fa-bars text-xl"></i>
+      </button>
+    </div>
+    <!-- mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 flex flex-col gap-4 text-sm text-slate-400">
+      <a href="#sobre"   class="hover:text-violet-400">Sobre</a>
+      <a href="#pai"     class="hover:text-violet-400">Fernando</a>
+      <a href="#filho"   class="hover:text-green-400">Fasolo Jr.</a>
+      <a href="#games"   class="hover:text-green-400">Games</a>
+      <a href="#contato" class="hover:text-violet-400">Contato</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero-bg min-h-screen flex items-center pt-20">
+    <div class="max-w-6xl mx-auto px-6 py-24 text-center">
+      <div class="inline-block mb-6">
+        <span class="tag bg-violet-900/60 text-violet-300 border border-violet-700/50">Tech · Negócios · Games</span>
+      </div>
+      <h1 class="font-game text-5xl md:text-7xl font-black mb-6 leading-tight">
+        <span class="text-white glow-violet">FA</span><span class="text-violet-400">SOLO</span>
+      </h1>
+      <p class="text-slate-300 text-lg md:text-2xl mb-4 max-w-2xl mx-auto">
+        Conhecimento do cotidiano, área tech, negócios e as melhores jogatinas
+      </p>
+      <p class="text-slate-500 text-base mb-10">
+        por <span class="text-violet-400 font-semibold">Fernando Fasolo</span> &amp;
+        <span class="text-green-400 font-semibold">Fernando Fasolo Filho</span>
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#pai" class="px-8 py-3 rounded-lg bg-violet-600 hover:bg-violet-500 text-white font-semibold transition-colors">
+          <i class="fa fa-briefcase mr-2"></i>Tech & Negócios
+        </a>
+        <a href="#filho" class="px-8 py-3 rounded-lg bg-green-700 hover:bg-green-600 text-white font-semibold transition-colors">
+          <i class="fa fa-gamepad mr-2"></i>Games & Roblox
+        </a>
+      </div>
+
+      <!-- floating badges -->
+      <div class="mt-20 flex flex-wrap justify-center gap-4 text-xs text-slate-500">
+        <span class="float card-glass px-4 py-2 rounded-full" style="animation-delay:0s">🟩 Minecraft</span>
+        <span class="float card-glass px-4 py-2 rounded-full" style="animation-delay:.5s">🔴 Roblox</span>
+        <span class="float card-glass px-4 py-2 rounded-full" style="animation-delay:1s">💻 Tech</span>
+        <span class="float card-glass px-4 py-2 rounded-full" style="animation-delay:1.5s">📈 Negócios</span>
+        <span class="float card-glass px-4 py-2 rounded-full" style="animation-delay:2s">🧠 Brainrot</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre" class="py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <h2 class="font-game text-3xl md:text-4xl font-bold text-white mb-3">Quem Somos</h2>
+        <p class="text-slate-400 max-w-xl mx-auto">Pai e filho compartilhando o que amam — cada um do seu jeito.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+
+        <!-- PAI card -->
+        <div id="pai" class="card-glass rounded-2xl p-8 pulse-border">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-16 h-16 rounded-full bg-violet-900/60 border-2 border-violet-500 flex items-center justify-center text-2xl">
+              <i class="fa fa-user-tie text-violet-400"></i>
+            </div>
+            <div>
+              <h3 class="font-game text-xl font-bold text-white">Fernando Fasolo</h3>
+              <span class="text-violet-400 text-sm">Tech · Negócios · Cotidiano</span>
+            </div>
+          </div>
+          <p class="text-slate-400 leading-relaxed mb-6">
+            Empreendedor da área de telecomunicações e tecnologia. Aqui compartilho experiências do mundo dos negócios, novidades em tech e reflexões do dia a dia.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag bg-violet-900/40 text-violet-300">Telecom</span>
+            <span class="tag bg-violet-900/40 text-violet-300">SaaS</span>
+            <span class="tag bg-violet-900/40 text-violet-300">Empreendedorismo</span>
+            <span class="tag bg-violet-900/40 text-violet-300">IA</span>
+          </div>
+        </div>
+
+        <!-- FILHO card -->
+        <div id="filho" class="card-glass card-game rounded-2xl p-8">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-16 h-16 rounded-full bg-green-900/60 border-2 border-green-500 flex items-center justify-center text-2xl">
+              <i class="fa fa-gamepad text-green-400"></i>
+            </div>
+            <div>
+              <h3 class="font-game text-xl font-bold text-white">Fernando Fasolo <span class="text-green-400">Jr.</span></h3>
+              <span class="text-green-400 text-sm">Gamer · Roblox · Minecraft</span>
+            </div>
+          </div>
+          <p class="text-slate-400 leading-relaxed mb-6">
+            Gamer nato, especialista em Roblox e Minecraft. Adora descobrir novos jogos na plataforma — de Steal a Brainrot a tudo que vira hit. Aqui compartilha dicas, gameplays e muito entretenimento.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag bg-green-900/40 text-green-300">Roblox</span>
+            <span class="tag bg-green-900/40 text-green-300">Minecraft</span>
+            <span class="tag bg-green-900/40 text-green-300">Gameplay</span>
+            <span class="tag bg-orange-900/40 text-orange-300">Brainrot</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GAMES -->
+  <section id="games" class="py-20 bg-slate-950/50">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span class="tag bg-green-900/60 text-green-300 border border-green-700/50 mb-4 inline-block">Zona Gamer</span>
+        <h2 class="font-game text-3xl md:text-4xl font-bold text-white mb-3 glow-green">Games em Destaque</h2>
+        <p class="text-slate-400">O que o Fasolo Jr. tá jogando agora</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- Minecraft -->
+        <div class="card-glass card-game rounded-2xl p-6 text-center">
+          <div class="text-5xl mb-4">🟩</div>
+          <h4 class="font-game text-lg font-bold text-white mb-2">Minecraft</h4>
+          <p class="text-slate-400 text-sm mb-4">Construção, survival e criatividade sem limites. Um clássico que nunca sai de moda.</p>
+          <span class="tag bg-green-900/40 text-green-300">Ativo</span>
+        </div>
+
+        <!-- Roblox -->
+        <div class="card-glass card-game rounded-2xl p-6 text-center">
+          <div class="text-5xl mb-4">🔴</div>
+          <h4 class="font-game text-lg font-bold text-white mb-2">Roblox</h4>
+          <p class="text-slate-400 text-sm mb-4">Plataforma com centenas de jogos. Cada semana tem um novo hit pra descobrir e dominar.</p>
+          <span class="tag bg-red-900/40 text-red-300">Plataforma Principal</span>
+        </div>
+
+        <!-- Steal a Brainrot -->
+        <div class="card-glass card-game rounded-2xl p-6 text-center">
+          <div class="text-5xl mb-4">🧠</div>
+          <h4 class="font-game text-lg font-bold text-white mb-2">Steal a Brainrot</h4>
+          <p class="text-slate-400 text-sm mb-4">O fenômeno do momento no Roblox. Caótico, divertido e viciante do jeito certo.</p>
+          <span class="tag bg-orange-900/40 text-orange-300">Em Alta</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TÓPICOS / CONTEÚDO -->
+  <section class="py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <h2 class="font-game text-3xl md:text-4xl font-bold text-white mb-3">O Que Você Vai Encontrar</h2>
+        <p class="text-slate-400">Conteúdo dos dois mundos</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="card-glass rounded-xl p-6">
+          <div class="w-10 h-10 rounded-lg bg-violet-900/60 flex items-center justify-center mb-4">
+            <i class="fa fa-microchip text-violet-400"></i>
+          </div>
+          <h4 class="font-semibold text-white mb-2">Tecnologia</h4>
+          <p class="text-slate-400 text-sm">Novidades em IA, telecom, SaaS e tendências do mercado tech.</p>
+        </div>
+
+        <div class="card-glass rounded-xl p-6">
+          <div class="w-10 h-10 rounded-lg bg-violet-900/60 flex items-center justify-center mb-4">
+            <i class="fa fa-chart-line text-violet-400"></i>
+          </div>
+          <h4 class="font-semibold text-white mb-2">Negócios</h4>
+          <p class="text-slate-400 text-sm">Empreendedorismo, estratégia, experiências reais do dia a dia empresarial.</p>
+        </div>
+
+        <div class="card-glass rounded-xl p-6">
+          <div class="w-10 h-10 rounded-lg bg-green-900/60 flex items-center justify-center mb-4">
+            <i class="fa fa-gamepad text-green-400"></i>
+          </div>
+          <h4 class="font-semibold text-white mb-2">Gameplay</h4>
+          <p class="text-slate-400 text-sm">Dicas, descobertas e momentos épicos no Roblox e Minecraft.</p>
+        </div>
+
+        <div class="card-glass rounded-xl p-6">
+          <div class="w-10 h-10 rounded-lg bg-orange-900/60 flex items-center justify-center mb-4">
+            <i class="fa fa-sun text-orange-400"></i>
+          </div>
+          <h4 class="font-semibold text-white mb-2">Cotidiano</h4>
+          <p class="text-slate-400 text-sm">A vida real de pai e filho curiosos, sempre aprendendo algo novo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="py-20 bg-slate-950/50">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+      <h2 class="font-game text-3xl md:text-4xl font-bold text-white mb-4">Fale com a Gente</h2>
+      <p class="text-slate-400 mb-10">Dúvidas, parcerias ou só um oi — estamos aqui.</p>
+
+      <div class="card-glass rounded-2xl p-8">
+        <div class="flex flex-col gap-4">
+          <a href="mailto:fernandofasolo@gmail.com"
+             class="flex items-center gap-3 px-6 py-4 rounded-xl bg-violet-900/30 hover:bg-violet-900/50 border border-violet-800/50 hover:border-violet-500 transition-all text-left">
+            <i class="fa fa-envelope text-violet-400 text-xl w-6"></i>
+            <div>
+              <div class="text-xs text-slate-500 uppercase tracking-widest">E-mail</div>
+              <div class="text-white font-medium">fernandofasolo@gmail.com</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-slate-800">
+          <p class="text-slate-500 text-sm mb-4">Redes Sociais</p>
+          <div class="flex justify-center gap-4">
+            <a href="#" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-violet-700 flex items-center justify-center text-slate-400 hover:text-white transition-colors">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-violet-700 flex items-center justify-center text-slate-400 hover:text-white transition-colors">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-violet-700 flex items-center justify-center text-slate-400 hover:text-white transition-colors">
+              <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-violet-700 flex items-center justify-center text-slate-400 hover:text-white transition-colors">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800/60 py-8 text-center text-slate-600 text-sm">
+    <p class="font-game tracking-widest mb-1"><span class="text-violet-500">FA</span>SOLO</p>
+    <p>© 2026 Fernando Fasolo & Fernando Fasolo Filho — fasolo.ia.br</p>
+  </footer>
+
+  <script>
+    // mobile menu
+    const btn  = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+  </script>
+</body>
+</html>
