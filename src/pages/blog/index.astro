@@ -1,0 +1,84 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const categoryColor: Record<string, string> = {
+  Tech:      'bg-violet-900/40 text-violet-300',
+  Negócios:  'bg-violet-900/40 text-violet-300',
+  Games:     'bg-green-900/40 text-green-300',
+  Esportes:  'bg-green-900/40 text-green-300',
+  Cotidiano: 'bg-orange-900/40 text-orange-300',
+};
+
+const authorColor: Record<string, string> = {
+  'Fernando Fasolo':     'text-violet-400',
+  'Fernando Fasolo Jr.': 'text-green-400',
+};
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <BaseHead title={`Blog — ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+    <style>
+      .card-glass {
+        background: rgba(15,15,25,.7);
+        border: 1px solid rgba(255,255,255,.07);
+        backdrop-filter: blur(12px);
+        transition: border-color .3s, transform .3s;
+      }
+      .card-glass:hover { border-color: rgba(139,92,246,.5); transform: translateY(-4px); }
+      .tag {
+        display:inline-block; padding:2px 10px; border-radius:9999px;
+        font-size:.7rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+
+    <main class="pt-28 pb-20">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-14">
+          <h1 class="text-4xl md:text-5xl font-black text-white mb-4" style="font-family:'Orbitron',monospace;">Blog</h1>
+          <p class="text-slate-400 max-w-xl mx-auto">Artigos, dicas e histórias de Fernando Fasolo e Fernando Fasolo Jr.</p>
+        </div>
+
+        {posts.length === 0 ? (
+          <p class="text-center text-slate-500">Nenhum post ainda. Em breve!</p>
+        ) : (
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {posts.map(post => (
+              <a href={`/blog/${post.id}/`} class="card-glass rounded-2xl p-6 block group">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class={`tag ${categoryColor[post.data.category] ?? 'bg-slate-800 text-slate-300'}`}>
+                    {post.data.category}
+                  </span>
+                  <span class="text-xs text-slate-600">
+                    {post.data.pubDate.toLocaleDateString('pt-BR', { day:'2-digit', month:'short', year:'numeric' })}
+                  </span>
+                </div>
+                <h2 class="text-white font-bold text-lg mb-2 group-hover:text-violet-400 transition-colors leading-snug">
+                  {post.data.title}
+                </h2>
+                <p class="text-slate-400 text-sm leading-relaxed line-clamp-3">{post.data.description}</p>
+                <p class={`text-xs mt-4 font-medium ${authorColor[post.data.author] ?? 'text-slate-500'}`}>
+                  por {post.data.author}
+                </p>
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    </main>
+
+    <Footer />
+  </body>
+</html>

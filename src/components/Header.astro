@@ -1,0 +1,35 @@
+---
+---
+<header class="fixed top-0 w-full z-50 border-b border-slate-800/60 backdrop-blur-md bg-black/60">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="/" class="font-bold tracking-widest text-white text-xl" style="font-family:'Orbitron',monospace;">
+      <span class="text-white">[</span><span class="text-violet-400">FA</span>SOLO<span class="text-violet-400">]</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm text-slate-400">
+      <a href="/#sobre"   class="hover:text-violet-400 transition-colors">Sobre</a>
+      <a href="/#pai"     class="hover:text-violet-400 transition-colors">Fernando</a>
+      <a href="/#filho"   class="hover:text-green-400 transition-colors">Fasolo Jr.</a>
+      <a href="/blog"     class="hover:text-violet-400 transition-colors">Blog</a>
+      <a href="/#contato" class="hover:text-violet-400 transition-colors">Contato</a>
+    </nav>
+    <button id="mobile-menu-btn" class="md:hidden text-slate-400 hover:text-white">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 flex flex-col gap-4 text-sm text-slate-400">
+    <a href="/#sobre"   class="hover:text-violet-400">Sobre</a>
+    <a href="/#pai"     class="hover:text-violet-400">Fernando</a>
+    <a href="/#filho"   class="hover:text-green-400">Fasolo Jr.</a>
+    <a href="/blog"     class="hover:text-violet-400">Blog</a>
+    <a href="/#contato" class="hover:text-violet-400">Contato</a>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+  menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+</script>

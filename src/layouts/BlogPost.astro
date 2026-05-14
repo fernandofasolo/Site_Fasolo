@@ -1,0 +1,78 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, pubDate, updatedDate, author, category } = Astro.props;
+
+const categoryColor: Record<string, string> = {
+  Tech:      'bg-violet-900/40 text-violet-300',
+  Negócios:  'bg-violet-900/40 text-violet-300',
+  Games:     'bg-green-900/40 text-green-300',
+  Esportes:  'bg-green-900/40 text-green-300',
+  Cotidiano: 'bg-orange-900/40 text-orange-300',
+};
+
+const authorColor: Record<string, string> = {
+  'Fernando Fasolo':     'text-violet-400',
+  'Fernando Fasolo Jr.': 'text-green-400',
+};
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <BaseHead title={title} description={description} />
+    <style>
+      .tag {
+        display:inline-block; padding:2px 10px; border-radius:9999px;
+        font-size:.7rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+
+    <main class="pt-28 pb-20">
+      <article class="max-w-3xl mx-auto px-6">
+
+        <!-- cabeçalho do post -->
+        <header class="mb-10 text-center">
+          <div class="flex items-center justify-center gap-3 mb-4">
+            <span class={`tag ${categoryColor[category] ?? 'bg-slate-800 text-slate-300'}`}>{category}</span>
+            <span class="text-slate-600 text-sm">
+              {pubDate.toLocaleDateString('pt-BR', { day:'2-digit', month:'long', year:'numeric' })}
+            </span>
+          </div>
+          <h1 class="text-3xl md:text-4xl font-black text-white leading-tight mb-4" style="font-family:'Orbitron',monospace;">
+            {title}
+          </h1>
+          <p class="text-slate-400 text-lg mb-4">{description}</p>
+          <p class={`text-sm font-semibold ${authorColor[author] ?? 'text-slate-400'}`}>por {author}</p>
+          {updatedDate && (
+            <p class="text-xs text-slate-600 mt-2 italic">
+              Atualizado em {updatedDate.toLocaleDateString('pt-BR', { day:'2-digit', month:'long', year:'numeric' })}
+            </p>
+          )}
+          <hr class="mt-8 border-slate-800" />
+        </header>
+
+        <!-- conteúdo do post -->
+        <div class="prose max-w-none">
+          <slot />
+        </div>
+
+        <!-- rodapé do post -->
+        <div class="mt-12 pt-8 border-t border-slate-800">
+          <a href="/blog" class="text-violet-400 hover:text-violet-300 transition-colors text-sm">← Voltar ao Blog</a>
+        </div>
+
+      </article>
+    </main>
+
+    <Footer />
+  </body>
+</html>

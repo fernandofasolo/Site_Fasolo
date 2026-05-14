@@ -1,0 +1,272 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const categoryColor: Record<string, string> = {
+  Tech:      'bg-violet-900/40 text-violet-300',
+  Negócios:  'bg-violet-900/40 text-violet-300',
+  Games:     'bg-green-900/40 text-green-300',
+  Esportes:  'bg-green-900/40 text-green-300',
+  Cotidiano: 'bg-orange-900/40 text-orange-300',
+};
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+      .float { animation: float 4s ease-in-out infinite; }
+      @keyframes pulse-border {
+        0%,100%{border-color:rgba(139,92,246,.3)}
+        50%{border-color:rgba(139,92,246,.8)}
+      }
+      .pulse-border { animation: pulse-border 3s ease-in-out infinite; }
+      .card-glass {
+        background: rgba(15,15,25,.7);
+        border: 1px solid rgba(255,255,255,.07);
+        backdrop-filter: blur(12px);
+        transition: border-color .3s, transform .3s;
+      }
+      .card-glass:hover { border-color: rgba(139,92,246,.5); transform: translateY(-4px); }
+      .card-game:hover  { border-color: rgba(34,197,94,.5) !important; }
+      .hero-bg {
+        background: radial-gradient(ellipse at 20% 50%, rgba(139,92,246,.15) 0%,transparent 60%),
+                    radial-gradient(ellipse at 80% 20%, rgba(34,197,94,.10) 0%,transparent 50%),
+                    #050508;
+      }
+      .tag {
+        display:inline-block; padding:2px 10px; border-radius:9999px;
+        font-size:.7rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+      }
+      .glow-violet { text-shadow: 0 0 20px rgba(139,92,246,.8); }
+      .glow-green  { text-shadow: 0 0 20px rgba(34,197,94,.8); }
+    </style>
+  </head>
+  <body>
+    <Header />
+
+    <!-- HERO -->
+    <section class="hero-bg min-h-screen flex items-center pt-20">
+      <div class="max-w-6xl mx-auto px-6 py-24 text-center">
+        <div class="inline-block mb-6">
+          <span class="tag bg-violet-900/60 text-violet-300 border border-violet-700/50">Tech · Negócios · Games</span>
+        </div>
+        <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight" style="font-family:'Orbitron',monospace;">
+          <span class="text-violet-400 glow-violet">[</span><span class="text-white glow-violet">FA</span><span class="text-violet-400">SOLO</span><span class="text-white">]</span>
+        </h1>
+        <p class="text-slate-300 text-lg md:text-2xl mb-4 max-w-2xl mx-auto">
+          Conhecimento do cotidiano, área tech, negócios e as melhores jogatinas
+        </p>
+        <p class="text-slate-500 text-base mb-10">
+          por <span class="text-violet-400 font-semibold">Fernando Fasolo</span> &amp;
+          <span class="text-green-400 font-semibold">Fernando Fasolo Filho</span>
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#pai" class="px-8 py-3 rounded-lg bg-violet-600 hover:bg-violet-500 text-white font-semibold transition-colors">
+            Tech & Negócios
+          </a>
+          <a href="#filho" class="px-8 py-3 rounded-lg bg-green-700 hover:bg-green-600 text-white font-semibold transition-colors">
+            Games & Esportes
+          </a>
+        </div>
+        <div class="mt-20 flex flex-wrap justify-center gap-4 text-xs text-slate-500">
+          <span class="float card-glass px-4 py-2 rounded-full" style="animation-delay:0s">🟩 Minecraft</span>
+          <span class="float card-glass px-4 py-2 rounded-full" style="animation-delay:.5s">🔴 Roblox</span>
+          <span class="float card-glass px-4 py-2 rounded-full" style="animation-delay:1s">💻 Tech</span>
+          <span class="float card-glass px-4 py-2 rounded-full" style="animation-delay:1.5s">📈 Negócios</span>
+          <span class="float card-glass px-4 py-2 rounded-full" style="animation-delay:2s">🧠 Brainrot</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="py-20">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-14">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-3" style="font-family:'Orbitron',monospace;">Quem Somos</h2>
+          <p class="text-slate-400 max-w-xl mx-auto">Pai e filho compartilhando o que amam — cada um do seu jeito.</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div id="pai" class="card-glass rounded-2xl p-8 pulse-border">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-16 h-16 rounded-full bg-violet-900/60 border-2 border-violet-500 flex items-center justify-center text-2xl">
+                <span class="text-violet-400">💼</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white" style="font-family:'Orbitron',monospace;">Fernando Fasolo</h3>
+                <span class="text-violet-400 text-sm">Tech · Negócios · Cotidiano</span>
+              </div>
+            </div>
+            <p class="text-slate-400 leading-relaxed mb-6">
+              Empreendedor da área de telecomunicações e tecnologia. Aqui compartilho experiências do mundo dos negócios, novidades em tech e reflexões do dia a dia.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="tag bg-violet-900/40 text-violet-300">Telecom</span>
+              <span class="tag bg-violet-900/40 text-violet-300">SaaS</span>
+              <span class="tag bg-violet-900/40 text-violet-300">Empreendedorismo</span>
+              <span class="tag bg-violet-900/40 text-violet-300">IA</span>
+            </div>
+          </div>
+          <div id="filho" class="card-glass card-game rounded-2xl p-8">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-16 h-16 rounded-full bg-green-900/60 border-2 border-green-500 flex items-center justify-center text-2xl">
+                <span class="text-green-400">🎮</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white" style="font-family:'Orbitron',monospace;">Fernando Fasolo <span class="text-green-400">Jr.</span></h3>
+                <span class="text-green-400 text-sm">Gamer · Roblox · Minecraft</span>
+              </div>
+            </div>
+            <p class="text-slate-400 leading-relaxed mb-6">
+              Gamer nato, especialista em Roblox e Minecraft. Adora descobrir novos jogos na plataforma — de Steal a Brainrot a tudo que vira hit. Fora das telas, é apaixonado por futebol.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="tag bg-green-900/40 text-green-300">Roblox</span>
+              <span class="tag bg-green-900/40 text-green-300">Minecraft</span>
+              <span class="tag bg-green-900/40 text-green-300">Gameplay</span>
+              <span class="tag bg-orange-900/40 text-orange-300">Brainrot</span>
+              <span class="tag bg-slate-800 text-slate-300">⚽ Futebol</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÚLTIMOS POSTS -->
+    {posts.length > 0 && (
+      <section class="py-20 bg-slate-950/50">
+        <div class="max-w-6xl mx-auto px-6">
+          <div class="text-center mb-14">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-3" style="font-family:'Orbitron',monospace;">Últimas Publicações</h2>
+            <p class="text-slate-400">O que saiu recentemente no blog</p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-6">
+            {posts.map(post => (
+              <a href={`/blog/${post.id}/`} class="card-glass rounded-2xl p-6 block group">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class={`tag ${categoryColor[post.data.category] ?? 'bg-slate-800 text-slate-300'}`}>
+                    {post.data.category}
+                  </span>
+                  <span class="text-xs text-slate-600">
+                    {post.data.pubDate.toLocaleDateString('pt-BR', { day:'2-digit', month:'short', year:'numeric' })}
+                  </span>
+                </div>
+                <h3 class="text-white font-bold text-lg mb-2 group-hover:text-violet-400 transition-colors leading-snug">
+                  {post.data.title}
+                </h3>
+                <p class="text-slate-400 text-sm leading-relaxed line-clamp-3">{post.data.description}</p>
+                <p class="text-xs text-slate-600 mt-4">por {post.data.author}</p>
+              </a>
+            ))}
+          </div>
+          <div class="text-center mt-10">
+            <a href="/blog" class="px-8 py-3 rounded-lg border border-violet-700/50 text-violet-400 hover:bg-violet-900/30 transition-colors font-semibold">
+              Ver todos os posts →
+            </a>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- GAMES -->
+    <section id="games" class="py-20">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-14">
+          <span class="tag bg-green-900/60 text-green-300 border border-green-700/50 mb-4 inline-block">Zona Gamer</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-3 glow-green" style="font-family:'Orbitron',monospace;">Games em Destaque</h2>
+          <p class="text-slate-400">O que o Fasolo Jr. tá jogando agora</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="card-glass card-game rounded-2xl p-6 text-center">
+            <div class="text-5xl mb-4">🟩</div>
+            <h4 class="text-lg font-bold text-white mb-2" style="font-family:'Orbitron',monospace;">Minecraft</h4>
+            <p class="text-slate-400 text-sm mb-4">Construção, survival e criatividade sem limites. Um clássico que nunca sai de moda.</p>
+            <span class="tag bg-green-900/40 text-green-300">Ativo</span>
+          </div>
+          <div class="card-glass card-game rounded-2xl p-6 text-center">
+            <div class="text-5xl mb-4">🔴</div>
+            <h4 class="text-lg font-bold text-white mb-2" style="font-family:'Orbitron',monospace;">Roblox</h4>
+            <p class="text-slate-400 text-sm mb-4">Plataforma com centenas de jogos. Cada semana tem um novo hit pra descobrir e dominar.</p>
+            <span class="tag bg-red-900/40 text-red-300">Plataforma Principal</span>
+          </div>
+          <div class="card-glass card-game rounded-2xl p-6 text-center">
+            <div class="text-5xl mb-4">🧠</div>
+            <h4 class="text-lg font-bold text-white mb-2" style="font-family:'Orbitron',monospace;">Steal a Brainrot</h4>
+            <p class="text-slate-400 text-sm mb-4">O fenômeno do momento no Roblox. Caótico, divertido e viciante do jeito certo.</p>
+            <span class="tag bg-orange-900/40 text-orange-300">Em Alta</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TÓPICOS -->
+    <section class="py-20 bg-slate-950/50">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-14">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-3" style="font-family:'Orbitron',monospace;">O Que Você Vai Encontrar</h2>
+          <p class="text-slate-400">Conteúdo dos dois mundos</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            { icon:'💻', title:'Tecnologia', desc:'Novidades em IA, telecom, SaaS e tendências do mercado tech.', color:'violet', tags:['🤖 IA · Claude','🖥️ Proxmox'] },
+            { icon:'📈', title:'Negócios',   desc:'Empreendedorismo, estratégia, experiências reais do dia a dia empresarial.', color:'violet', tags:[] },
+            { icon:'🎮', title:'Gameplay',   desc:'Dicas, descobertas e momentos épicos no Roblox e Minecraft.', color:'green', tags:[] },
+            { icon:'☀️', title:'Cotidiano',  desc:'A vida real de pai e filho curiosos, sempre aprendendo algo novo.', color:'orange', tags:[] },
+          ].map(item => (
+            <div class="card-glass rounded-xl p-6">
+              <div class={`w-10 h-10 rounded-lg bg-${item.color}-900/60 flex items-center justify-center mb-4 text-xl`}>
+                {item.icon}
+              </div>
+              <h4 class="font-semibold text-white mb-2">{item.title}</h4>
+              <p class="text-slate-400 text-sm">{item.desc}</p>
+              {item.tags.length > 0 && (
+                <div class="flex flex-wrap gap-1 mt-3">
+                  {item.tags.map(t => <span class="tag bg-violet-900/40 text-violet-300">{t}</span>)}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="py-20">
+      <div class="max-w-2xl mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" style="font-family:'Orbitron',monospace;">Fale com a Gente</h2>
+        <p class="text-slate-400 mb-10">Dúvidas, parcerias ou só um oi — estamos aqui.</p>
+        <div class="card-glass rounded-2xl p-8">
+          <div class="flex flex-col gap-4">
+            <a href="mailto:fernandofasolo@gmail.com"
+               class="flex items-center gap-3 px-6 py-4 rounded-xl bg-violet-900/30 hover:bg-violet-900/50 border border-violet-800/50 hover:border-violet-500 transition-all text-left">
+              <span class="text-violet-400 text-xl">✉</span>
+              <div>
+                <div class="text-xs text-slate-500 uppercase tracking-widest">Fernando Fasolo</div>
+                <div class="text-white font-medium">fernandofasolo@gmail.com</div>
+              </div>
+            </a>
+            <a href="mailto:fernandofasolofilho@gmail.com"
+               class="flex items-center gap-3 px-6 py-4 rounded-xl bg-green-900/30 hover:bg-green-900/50 border border-green-800/50 hover:border-green-500 transition-all text-left">
+              <span class="text-green-400 text-xl">✉</span>
+              <div>
+                <div class="text-xs text-slate-500 uppercase tracking-widest">Fernando Fasolo Jr.</div>
+                <div class="text-white font-medium">fernandofasolofilho@gmail.com</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </body>
+</html>
