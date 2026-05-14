@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 64">
-  <rect width="220" height="64" rx="8" fill="#050508"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+  <rect width="80" height="80" rx="10" fill="#050508"/>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&amp;display=swap');
-    .logo { font-family: 'Orbitron', 'Courier New', monospace; font-weight: 900; font-size: 30px; letter-spacing: 2px; }
+    .logo { font-family: 'Orbitron', 'Courier New', monospace; font-weight: 900; font-size: 36px; letter-spacing: 1px; }
   </style>
-  <text class="logo" x="50%" y="44" text-anchor="middle">
-    <tspan fill="#ffffff">[</tspan><tspan fill="#a78bfa">FA</tspan><tspan fill="#ffffff">SOLO</tspan><tspan fill="#a78bfa">]</tspan>
+  <text class="logo" x="50%" y="56" text-anchor="middle">
+    <tspan fill="#ffffff">[</tspan><tspan fill="#a78bfa">F</tspan><tspan fill="#4ade80">F</tspan><tspan fill="#ffffff">]</tspan>
   </text>
 </svg>
