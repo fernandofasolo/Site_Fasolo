@@ -22,6 +22,35 @@ const categoryColor: Record<string, string> = {
 <html lang="pt-BR">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "name": "Fasolo",
+          "url": "https://fasolo.ia.br",
+          "description": "Fernando Fasolo e Fernando Fasolo Filho — conteúdo sobre tech, negócios e games.",
+          "inLanguage": "pt-BR"
+        },
+        {
+          "@type": "Person",
+          "name": "Fernando Fasolo",
+          "url": "https://fasolo.ia.br",
+          "sameAs": [
+            "https://www.linkedin.com/in/fernando-fasolo-96b30114/",
+            "https://www.instagram.com/fernandofasollo/"
+          ],
+          "jobTitle": "Empreendedor",
+          "knowsAbout": ["Telecomunicações", "Tecnologia", "Negócios", "Inteligência Artificial", "SaaS"]
+        },
+        {
+          "@type": "Person",
+          "name": "Fernando Fasolo Jr.",
+          "url": "https://fasolo.ia.br/#filho",
+          "knowsAbout": ["Roblox", "Minecraft", "Games", "Steal a Brainrot"]
+        }
+      ]
+    })} />
     <style>
       @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
       .float { animation: float 4s ease-in-out infinite; }
