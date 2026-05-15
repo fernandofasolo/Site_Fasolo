@@ -10,8 +10,8 @@ const posts = (await getCollection('blog'))
   .slice(0, 3);
 
 const categoryColor: Record<string, string> = {
-  Tech:      'bg-violet-900/40 text-violet-300',
-  Negócios:  'bg-violet-900/40 text-violet-300',
+  Tech:      'bg-amber-900/40 text-amber-300',
+  Negócios:  'bg-amber-900/40 text-amber-300',
   Games:     'bg-green-900/40 text-green-300',
   Esportes:  'bg-green-900/40 text-green-300',
   Cotidiano: 'bg-orange-900/40 text-orange-300',
@@ -55,8 +55,8 @@ const categoryColor: Record<string, string> = {
       @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
       .float { animation: float 4s ease-in-out infinite; }
       @keyframes pulse-border {
-        0%,100%{border-color:rgba(139,92,246,.3)}
-        50%{border-color:rgba(139,92,246,.8)}
+        0%,100%{border-color:rgba(217,119,6,.3)}
+        50%{border-color:rgba(217,119,6,.8)}
       }
       .pulse-border { animation: pulse-border 3s ease-in-out infinite; }
       .card-glass {
@@ -65,10 +65,10 @@ const categoryColor: Record<string, string> = {
         backdrop-filter: blur(12px);
         transition: border-color .3s, transform .3s;
       }
-      .card-glass:hover { border-color: rgba(139,92,246,.5); transform: translateY(-4px); }
+      .card-glass:hover { border-color: rgba(217,119,6,.5); transform: translateY(-4px); }
       .card-game:hover  { border-color: rgba(34,197,94,.5) !important; }
       .hero-bg {
-        background: radial-gradient(ellipse at 20% 50%, rgba(139,92,246,.15) 0%,transparent 60%),
+        background: radial-gradient(ellipse at 20% 50%, rgba(217,119,6,.15) 0%,transparent 60%),
                     radial-gradient(ellipse at 80% 20%, rgba(34,197,94,.10) 0%,transparent 50%),
                     #050508;
       }
@@ -76,7 +76,7 @@ const categoryColor: Record<string, string> = {
         display:inline-block; padding:2px 10px; border-radius:9999px;
         font-size:.7rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
       }
-      .glow-violet { text-shadow: 0 0 20px rgba(139,92,246,.8); }
+      .glow-amber  { text-shadow: 0 0 20px rgba(217,119,6,.8); }
       .glow-green  { text-shadow: 0 0 20px rgba(34,197,94,.8); }
     </style>
   </head>
@@ -87,20 +87,20 @@ const categoryColor: Record<string, string> = {
     <section class="hero-bg min-h-screen flex items-center pt-20">
       <div class="max-w-6xl mx-auto px-6 py-24 text-center">
         <div class="inline-block mb-6">
-          <span class="tag bg-violet-900/60 text-violet-300 border border-violet-700/50">Tech · Negócios · Games</span>
+          <span class="tag bg-amber-900/60 text-amber-300 border border-amber-700/50">Tech · Negócios · Games</span>
         </div>
         <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight" style="font-family:'Orbitron',monospace;">
-          <span class="text-violet-400 glow-violet">[</span><span class="text-white glow-violet">FA</span><span class="text-violet-400">SOLO</span><span class="text-white">]</span>
+          <span class="text-amber-400 glow-amber">[</span><span class="text-white glow-amber">FA</span><span class="text-amber-400">SOLO</span><span class="text-white">]</span>
         </h1>
         <p class="text-slate-300 text-lg md:text-2xl mb-4 max-w-2xl mx-auto">
           Conhecimento do cotidiano, área tech, negócios e as melhores jogatinas
         </p>
         <p class="text-slate-500 text-base mb-10">
-          por <span class="text-violet-400 font-semibold">Fernando Fasolo</span> &amp;
+          por <span class="text-amber-400 font-semibold">Fernando Fasolo</span> &amp;
           <span class="text-green-400 font-semibold">Fernando Fasolo Filho</span>
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#pai" class="px-8 py-3 rounded-lg bg-violet-600 hover:bg-violet-500 text-white font-semibold transition-colors">
+          <a href="#pai" class="px-8 py-3 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-semibold transition-colors">
             Tech & Negócios
           </a>
           <a href="#filho" class="px-8 py-3 rounded-lg bg-green-700 hover:bg-green-600 text-white font-semibold transition-colors">
@@ -127,22 +127,22 @@ const categoryColor: Record<string, string> = {
         <div class="grid md:grid-cols-2 gap-8">
           <div id="pai" class="card-glass rounded-2xl p-8 pulse-border">
             <div class="flex items-center gap-4 mb-6">
-              <div class="w-16 h-16 rounded-full bg-violet-900/60 border-2 border-violet-500 flex items-center justify-center text-2xl">
-                <span class="text-violet-400">💼</span>
+              <div class="w-16 h-16 rounded-full bg-amber-900/60 border-2 border-amber-500 flex items-center justify-center text-2xl">
+                <span class="text-amber-400">💼</span>
               </div>
               <div>
                 <h3 class="text-xl font-bold text-white" style="font-family:'Orbitron',monospace;">Fernando Fasolo</h3>
-                <span class="text-violet-400 text-sm">Tech · Negócios · Cotidiano</span>
+                <span class="text-amber-400 text-sm">Tech · Negócios · Cotidiano</span>
               </div>
             </div>
             <p class="text-slate-400 leading-relaxed mb-6">
               Empreendedor da área de telecomunicações e tecnologia. Aqui compartilho experiências do mundo dos negócios, novidades em tech e reflexões do dia a dia.
             </p>
             <div class="flex flex-wrap gap-2">
-              <span class="tag bg-violet-900/40 text-violet-300">Telecom</span>
-              <span class="tag bg-violet-900/40 text-violet-300">SaaS</span>
-              <span class="tag bg-violet-900/40 text-violet-300">Empreendedorismo</span>
-              <span class="tag bg-violet-900/40 text-violet-300">IA</span>
+              <span class="tag bg-amber-900/40 text-amber-300">Telecom</span>
+              <span class="tag bg-amber-900/40 text-amber-300">SaaS</span>
+              <span class="tag bg-amber-900/40 text-amber-300">Empreendedorismo</span>
+              <span class="tag bg-amber-900/40 text-amber-300">IA</span>
             </div>
           </div>
           <div id="filho" class="card-glass card-game rounded-2xl p-8">
@@ -189,7 +189,7 @@ const categoryColor: Record<string, string> = {
                     {post.data.pubDate.toLocaleDateString('pt-BR', { day:'2-digit', month:'short', year:'numeric' })}
                   </span>
                 </div>
-                <h3 class="text-white font-bold text-lg mb-2 group-hover:text-violet-400 transition-colors leading-snug">
+                <h3 class="text-white font-bold text-lg mb-2 group-hover:text-amber-400 transition-colors leading-snug">
                   {post.data.title}
                 </h3>
                 <p class="text-slate-400 text-sm leading-relaxed line-clamp-3">{post.data.description}</p>
@@ -198,7 +198,7 @@ const categoryColor: Record<string, string> = {
             ))}
           </div>
           <div class="text-center mt-10">
-            <a href="/blog" class="px-8 py-3 rounded-lg border border-violet-700/50 text-violet-400 hover:bg-violet-900/30 transition-colors font-semibold">
+            <a href="/blog" class="px-8 py-3 rounded-lg border border-amber-700/50 text-amber-400 hover:bg-amber-900/30 transition-colors font-semibold">
               Ver todos os posts →
             </a>
           </div>
@@ -246,8 +246,8 @@ const categoryColor: Record<string, string> = {
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { icon:'💻', title:'Tecnologia', desc:'Novidades em IA, telecom, SaaS e tendências do mercado tech.', color:'violet', tags:['🤖 IA · Claude','🖥️ Proxmox'] },
-            { icon:'📈', title:'Negócios',   desc:'Empreendedorismo, estratégia, experiências reais do dia a dia empresarial.', color:'violet', tags:[] },
+            { icon:'💻', title:'Tecnologia', desc:'Novidades em IA, telecom, SaaS e tendências do mercado tech.', color:'amber', tags:['🤖 IA · Claude','🖥️ Proxmox'] },
+            { icon:'📈', title:'Negócios',   desc:'Empreendedorismo, estratégia, experiências reais do dia a dia empresarial.', color:'amber', tags:[] },
             { icon:'🎮', title:'Gameplay',   desc:'Dicas, descobertas e momentos épicos no Roblox e Minecraft.', color:'green', tags:[] },
             { icon:'☀️', title:'Cotidiano',  desc:'A vida real de pai e filho curiosos, sempre aprendendo algo novo.', color:'orange', tags:[] },
           ].map(item => (
@@ -259,7 +259,7 @@ const categoryColor: Record<string, string> = {
               <p class="text-slate-400 text-sm">{item.desc}</p>
               {item.tags.length > 0 && (
                 <div class="flex flex-wrap gap-1 mt-3">
-                  {item.tags.map(t => <span class="tag bg-violet-900/40 text-violet-300">{t}</span>)}
+                  {item.tags.map(t => <span class="tag bg-amber-900/40 text-amber-300">{t}</span>)}
                 </div>
               )}
             </div>
@@ -276,8 +276,8 @@ const categoryColor: Record<string, string> = {
         <div class="card-glass rounded-2xl p-8">
           <div class="flex flex-col gap-4">
             <a href="mailto:fernandofasolo@gmail.com"
-               class="flex items-center gap-3 px-6 py-4 rounded-xl bg-violet-900/30 hover:bg-violet-900/50 border border-violet-800/50 hover:border-violet-500 transition-all text-left">
-              <span class="text-violet-400 text-xl">✉</span>
+               class="flex items-center gap-3 px-6 py-4 rounded-xl bg-amber-900/30 hover:bg-amber-900/50 border border-amber-800/50 hover:border-amber-500 transition-all text-left">
+              <span class="text-amber-400 text-xl">✉</span>
               <div>
                 <div class="text-xs text-slate-500 uppercase tracking-widest">Fernando Fasolo</div>
                 <div class="text-white font-medium">fernandofasolo@gmail.com</div>

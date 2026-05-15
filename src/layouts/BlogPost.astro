@@ -9,15 +9,15 @@ type Props = CollectionEntry<'blog'>['data'];
 const { title, description, pubDate, updatedDate, author, category } = Astro.props;
 
 const categoryColor: Record<string, string> = {
-  Tech:      'bg-violet-900/40 text-violet-300',
-  Negócios:  'bg-violet-900/40 text-violet-300',
+  Tech:      'bg-amber-900/40 text-amber-300',
+  Negócios:  'bg-amber-900/40 text-amber-300',
   Games:     'bg-green-900/40 text-green-300',
   Esportes:  'bg-green-900/40 text-green-300',
   Cotidiano: 'bg-orange-900/40 text-orange-300',
 };
 
 const authorColor: Record<string, string> = {
-  'Fernando Fasolo':     'text-violet-400',
+  'Fernando Fasolo':     'text-amber-400',
   'Fernando Fasolo Jr.': 'text-green-400',
 };
 ---
@@ -67,7 +67,7 @@ const authorColor: Record<string, string> = {
 
         <!-- rodapé do post -->
         <div class="mt-12 pt-8 border-t border-slate-800">
-          <a href="/blog" class="text-violet-400 hover:text-violet-300 transition-colors text-sm">← Voltar ao Blog</a>
+          <a href="/blog" class="text-amber-400 hover:text-amber-300 transition-colors text-sm">← Voltar ao Blog</a>
         </div>
 
       </article>
