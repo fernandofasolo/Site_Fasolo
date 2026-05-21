@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:full": "cd copa2026 && npm ci && npm run build && cd .. && mkdir -p public/copa2026 && cp -r copa2026/dist/. public/copa2026/ && npm run build",
     "preview": "astro preview",
     "astro": "astro"
   },

@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-copa-dark text-white font-body;
+  }
+
+  * {
+    @apply border-copa-border;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-copa-green text-white font-bold py-2 px-6 rounded-lg hover:bg-green-700 transition-colors;
+  }
+
+  .card {
+    @apply bg-copa-card border border-copa-border rounded-xl p-4;
+  }
+
+  .badge-agendado {
+    @apply bg-gray-700 text-gray-300 text-xs font-medium px-2 py-1 rounded-full;
+  }
+
+  .badge-em_andamento {
+    @apply bg-green-900 text-green-400 text-xs font-medium px-2 py-1 rounded-full animate-pulse;
+  }
+
+  .badge-encerrado {
+    @apply bg-gray-800 text-gray-400 text-xs font-medium px-2 py-1 rounded-full;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-copa-gold to-copa-yellow bg-clip-text text-transparent;
+  }
+}

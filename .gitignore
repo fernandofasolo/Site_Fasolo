@@ -4,3 +4,7 @@ dist/
 .env
 .env.*
 !.env.example
+
+# Copa 2026 build artifacts
+copa2026/dist/
+public/copa2026/

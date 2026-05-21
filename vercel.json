@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/copa2026/:path*",
+      "destination": "/copa2026/index.html"
+    }
+  ]
+}
