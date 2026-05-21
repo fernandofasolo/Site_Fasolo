@@ -75,7 +75,7 @@ function DetalheSelecao({ selecao, todas, onVoltar, onNavegar }) {
       {/* elenco */}
       <div>
         <h3 className="font-display text-2xl tracking-widest text-white mb-4">ELENCO</h3>
-        <TabelaElenco jogadores={jogadores} loading={loadingJ} />
+        <TabelaElenco key={selecao?.id} jogadores={jogadores} loading={loadingJ} />
       </div>
     </div>
   )
