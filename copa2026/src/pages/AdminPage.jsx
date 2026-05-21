@@ -20,7 +20,31 @@ const STATUS_OPTS = [
 
 // ── Tela de login ─────────────────────────────────────────────────────
 function TelaLogin({ onLogin }) {
-  const [key, setKey] = useState('')
+  const [key, setKey]         = useState('')
+  const [erro, setErro]       = useState('')
+  const [loading, setLoading] = useState(false)
+
+  const handleSubmit = async () => {
+    if (!key) return
+    setLoading(true)
+    setErro('')
+    try {
+      const res = await apiFetch('/api/admin/validate', {
+        headers: { 'X-Admin-Key': key },
+      })
+      if (res.status === 401) {
+        setErro('Chave incorreta.')
+      } else if (res.ok) {
+        onLogin(key)
+      } else {
+        setErro('Erro ao validar. Tente novamente.')
+      }
+    } catch {
+      setErro('Não foi possível conectar ao servidor.')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <div className="min-h-[60vh] flex items-center justify-center">
@@ -33,19 +57,21 @@ function TelaLogin({ onLogin }) {
         <input
           type="password"
           value={key}
-          onChange={e => setKey(e.target.value)}
-          onKeyDown={e => e.key === 'Enter' && key && onLogin(key)}
+          onChange={e => { setKey(e.target.value); setErro('') }}
+          onKeyDown={e => e.key === 'Enter' && handleSubmit()}
           placeholder="Chave de admin..."
           autoFocus
           className="w-full bg-black/30 border border-copa-border rounded-xl px-4 py-3
                      text-gray-200 placeholder-gray-700 focus:outline-none focus:border-copa-green
                      text-center tracking-widest"
         />
+        {erro && <p className="text-red-400 text-sm">{erro}</p>}
         <button
-          onClick={() => key && onLogin(key)}
-          className="btn-primary w-full"
+          onClick={handleSubmit}
+          disabled={!key || loading}
+          className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Entrar
+          {loading ? 'Verificando…' : 'Entrar'}
         </button>
       </div>
     </div>

@@ -20,6 +20,13 @@ class PlacarPayload(BaseModel):
     status: Optional[str] = None
 
 
+@router.get("/admin/validate")
+def validar_admin(x_admin_key: Optional[str] = Header(None)):
+    if not verificar_admin(x_admin_key):
+        return JSONResponse(status_code=401, content={"error": "Não autorizado"})
+    return {"ok": True}
+
+
 @router.patch("/admin/jogos/{jogo_id}")
 def atualizar_placar(
     jogo_id: int,
