@@ -4,7 +4,7 @@ import Bandeira from '../ui/Bandeira'
 // Cada confronto: clique numa seleção para indicar o vencedor
 
 function TimeSide({ team, lado, vencedor, onClick }) {
-  const isVencedor = vencedor?.selecao_id === team?.selecao_id
+  const isVencedor = vencedor?.id === team?.id
   const isEliminado = vencedor && !isVencedor
 
   if (!team) {
@@ -23,7 +23,7 @@ function TimeSide({ team, lado, vencedor, onClick }) {
 
   return (
     <button
-      onClick={() => onClick(team.selecao_id)}
+      onClick={() => onClick(team.id)}
       className={`
         flex items-center gap-2 flex-1 py-2.5 px-3 rounded-lg border transition-all duration-150
         ${lado === 'b' ? 'flex-row-reverse' : ''}
@@ -48,7 +48,7 @@ function Confronto({ jogo, onVencedor }) {
   const { teamA, teamB, vencedor, id } = jogo
 
   const handleClick = (selecaoId) => {
-    if (vencedor?.selecao_id === selecaoId) {
+    if (vencedor?.id === selecaoId) {
       // segundo clique no mesmo time desfaz
       onVencedor(id, null)
     } else {

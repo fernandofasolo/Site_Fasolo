@@ -57,7 +57,7 @@ function resolveSlot(slot, classificados) {
 }
 
 // Build full bracket from classificados + knockoutDecisoes
-// knockoutDecisoes: { matchId: selecao_id_vencedor }
+// knockoutDecisoes: { matchId: id_vencedor }
 export function buildBracket(classificados, knockoutDecisoes = {}) {
   const winners = {}   // matchId → selecao object
   const losers  = {}
@@ -72,8 +72,8 @@ export function buildBracket(classificados, knockoutDecisoes = {}) {
     const teamA = resolveSlot(jogo.slotA, classificados)
     const teamB = resolveSlot(jogo.slotB, classificados)
     const vencedorId = knockoutDecisoes[jogo.id]
-    const vencedor = vencedorId === teamA?.selecao_id ? teamA
-                   : vencedorId === teamB?.selecao_id ? teamB : null
+    const vencedor = vencedorId === teamA?.id ? teamA
+                   : vencedorId === teamB?.id ? teamB : null
     winners[jogo.id] = vencedor
     losers[jogo.id]  = !vencedor ? null : (vencedor === teamA ? teamB : teamA)
     return { ...jogo, teamA, teamB, vencedor }
@@ -85,8 +85,8 @@ export function buildBracket(classificados, knockoutDecisoes = {}) {
       const teamA = winners[jogo.parentA] ?? null
       const teamB = winners[jogo.parentB] ?? null
       const vencedorId = knockoutDecisoes[jogo.id]
-      const vencedor = vencedorId === teamA?.selecao_id ? teamA
-                     : vencedorId === teamB?.selecao_id ? teamB : null
+      const vencedor = vencedorId === teamA?.id ? teamA
+                     : vencedorId === teamB?.id ? teamB : null
       winners[jogo.id] = vencedor
       losers[jogo.id]  = !vencedor ? null : (vencedor === teamA ? teamB : teamA)
       return { ...jogo, teamA, teamB, vencedor }
@@ -104,7 +104,7 @@ export function buildBracket(classificados, knockoutDecisoes = {}) {
     vencedor: (() => {
       const idV = knockoutDecisoes['T3P']
       const a = losers['SF1'], b = losers['SF2']
-      return idV === a?.selecao_id ? a : idV === b?.selecao_id ? b : null
+      return idV === a?.id ? a : idV === b?.id ? b : null
     })(),
   }
 
@@ -115,7 +115,7 @@ export function buildBracket(classificados, knockoutDecisoes = {}) {
     vencedor: (() => {
       const idV = knockoutDecisoes['FIN']
       const a = winners['SF1'], b = winners['SF2']
-      return idV === a?.selecao_id ? a : idV === b?.selecao_id ? b : null
+      return idV === a?.id ? a : idV === b?.id ? b : null
     })(),
   }
 
