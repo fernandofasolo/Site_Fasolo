@@ -5,7 +5,7 @@ import ListaConvocados from '../components/escalacao/ListaConvocados'
 import { FORMACOES, NOMES_FORMACAO, migrarTitulares } from '../utils/formacoes'
 import useAppStore from '../store/useAppStore'
 
-const SELECAO_BRASIL_ID = 25
+const SELECAO_BRASIL_ID = 9
 
 // ── Banco de reservas ────────────────────────────────────────────────
 function BancoReservas({ jogadores, titulares }) {
