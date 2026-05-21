@@ -1,4 +1,6 @@
--- 72 jogos da fase de grupos (12 grupos × 6 jogos = 72)
+-- 72 jogos da fase de grupos — horários oficiais FIFA (Wikipedia)
+-- UTC calculado a partir do horário local + fuso da sede:
+--   EDT = UTC-4  |  CDT (EUA/MX) = UTC-5  |  CDT (MX) = UTC-6  |  PDT = UTC-7
 -- IDs das seleções (sorteio oficial 05/12/2025):
 -- A:  1=México       2=Coreia Sul   3=África do Sul 4=Rep.Tcheca
 -- B:  5=Canadá       6=Suíça        7=Catar         8=Bósnia
@@ -14,157 +16,157 @@
 -- L: 45=Inglaterra  46=Croácia     47=Panamá       48=Gana
 
 -- =========================================================
--- GRUPO A — Sedes mexicanas (Azteca, Akron, BBVA)
+-- GRUPO A — México(1) Coreia(2) África do Sul(3) Rep.Tcheca(4)
 -- =========================================================
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','A',1,1,4,'2026-06-11T20:00:00','Estádio Azteca','Cidade do México','México','agendado'),
-('grupo','A',1,2,3,'2026-06-12T16:00:00','Estadio Akron','Guadalajara','México','agendado');
+('grupo','A',1, 1, 3,'2026-06-11T19:00:00','Estádio Azteca',       'Cidade do México','México','agendado'),
+('grupo','A',1, 2, 4,'2026-06-12T02:00:00','Estadio Akron',        'Guadalajara',     'México','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','A',2,1,3,'2026-06-16T20:00:00','Estádio Azteca','Cidade do México','México','agendado'),
-('grupo','A',2,2,4,'2026-06-16T23:00:00','Estadio BBVA','Monterrey','México','agendado');
+('grupo','A',2, 4, 3,'2026-06-18T16:00:00','Mercedes-Benz Stadium','Atlanta',         'EUA',   'agendado'),
+('grupo','A',2, 1, 2,'2026-06-19T01:00:00','Estadio Akron',        'Guadalajara',     'México','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','A',3,1,2,'2026-06-25T20:00:00','Estádio Azteca','Cidade do México','México','agendado'),
-('grupo','A',3,3,4,'2026-06-25T20:00:00','Estadio Akron','Guadalajara','México','agendado');
+('grupo','A',3, 4, 1,'2026-06-25T01:00:00','Estádio Azteca',       'Cidade do México','México','agendado'),
+('grupo','A',3, 3, 2,'2026-06-25T01:00:00','Estadio BBVA',         'Monterrey',       'México','agendado');
 
 -- =========================================================
--- GRUPO B — Sedes canadenses (BMO Field, BC Place) + Gillette
+-- GRUPO B — Canadá(5) Suíça(6) Catar(7) Bósnia(8)
 -- =========================================================
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','B',1,5,8,'2026-06-12T20:00:00','BMO Field','Toronto','Canadá','agendado'),
-('grupo','B',1,6,7,'2026-06-12T23:00:00','BC Place','Vancouver','Canadá','agendado');
+('grupo','B',1, 5, 8,'2026-06-12T19:00:00','BMO Field',    'Toronto',     'Canadá','agendado'),
+('grupo','B',1, 7, 6,'2026-06-13T19:00:00','Levi''s Stadium','Santa Clara','EUA',  'agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','B',2,5,7,'2026-06-17T16:00:00','BMO Field','Toronto','Canadá','agendado'),
-('grupo','B',2,6,8,'2026-06-17T20:00:00','Gillette Stadium','Boston','EUA','agendado');
+('grupo','B',2, 6, 8,'2026-06-18T19:00:00','SoFi Stadium', 'Los Angeles', 'EUA',  'agendado'),
+('grupo','B',2, 5, 7,'2026-06-18T22:00:00','BC Place',     'Vancouver',   'Canadá','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','B',3,5,6,'2026-06-26T20:00:00','BC Place','Vancouver','Canadá','agendado'),
-('grupo','B',3,7,8,'2026-06-26T20:00:00','BMO Field','Toronto','Canadá','agendado');
+('grupo','B',3, 6, 5,'2026-06-24T19:00:00','BC Place',     'Vancouver',   'Canadá','agendado'),
+('grupo','B',3, 8, 7,'2026-06-24T19:00:00','Lumen Field',  'Seattle',     'EUA',  'agendado');
 
 -- =========================================================
--- GRUPO C — MetLife, AT&T, SoFi
+-- GRUPO C — Brasil(9) Marrocos(10) Escócia(11) Haiti(12)
 -- =========================================================
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','C',1,9,12,'2026-06-13T00:00:00','MetLife Stadium','Nova York','EUA','agendado'),
-('grupo','C',1,10,11,'2026-06-13T20:00:00','AT&T Stadium','Dallas','EUA','agendado');
+('grupo','C',1, 9,10,'2026-06-13T22:00:00','MetLife Stadium',       'Nova York',   'EUA','agendado'),
+('grupo','C',1,12,11,'2026-06-14T01:00:00','Gillette Stadium',       'Boston',      'EUA','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','C',2,9,11,'2026-06-17T23:00:00','MetLife Stadium','Nova York','EUA','agendado'),
-('grupo','C',2,10,12,'2026-06-18T16:00:00','SoFi Stadium','Los Angeles','EUA','agendado');
+('grupo','C',2,11,10,'2026-06-19T22:00:00','Gillette Stadium',       'Boston',      'EUA','agendado'),
+('grupo','C',2, 9,12,'2026-06-20T00:30:00','Lincoln Financial Field','Filadélfia',  'EUA','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','C',3,9,10,'2026-06-26T23:00:00','MetLife Stadium','Nova York','EUA','agendado'),
-('grupo','C',3,11,12,'2026-06-26T23:00:00','AT&T Stadium','Dallas','EUA','agendado');
+('grupo','C',3,11, 9,'2026-06-24T22:00:00','Hard Rock Stadium',      'Miami',       'EUA','agendado'),
+('grupo','C',3,10,12,'2026-06-24T22:00:00','Mercedes-Benz Stadium',  'Atlanta',     'EUA','agendado');
 
 -- =========================================================
--- GRUPO D — AT&T, Levi's, Arrowhead
+-- GRUPO D — EUA(13) Austrália(14) Paraguai(15) Turquia(16)
 -- =========================================================
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','D',1,13,16,'2026-06-14T00:00:00','AT&T Stadium','Dallas','EUA','agendado'),
-('grupo','D',1,14,15,'2026-06-13T16:00:00','Levi''s Stadium','San Francisco','EUA','agendado');
+('grupo','D',1,13,15,'2026-06-13T01:00:00','SoFi Stadium', 'Los Angeles','EUA','agendado'),
+('grupo','D',1,14,16,'2026-06-14T04:00:00','BC Place',     'Vancouver',  'Canadá','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','D',2,13,15,'2026-06-18T20:00:00','AT&T Stadium','Dallas','EUA','agendado'),
-('grupo','D',2,14,16,'2026-06-18T23:00:00','Arrowhead Stadium','Kansas City','EUA','agendado');
+('grupo','D',2,13,14,'2026-06-19T19:00:00','Lumen Field',  'Seattle',    'EUA','agendado'),
+('grupo','D',2,16,15,'2026-06-20T03:00:00','Levi''s Stadium','Santa Clara','EUA','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','D',3,13,14,'2026-06-27T20:00:00','AT&T Stadium','Dallas','EUA','agendado'),
-('grupo','D',3,15,16,'2026-06-27T20:00:00','Levi''s Stadium','San Francisco','EUA','agendado');
+('grupo','D',3,16,13,'2026-06-26T02:00:00','SoFi Stadium', 'Los Angeles','EUA','agendado'),
+('grupo','D',3,15,14,'2026-06-26T02:00:00','Levi''s Stadium','Santa Clara','EUA','agendado');
 
 -- =========================================================
--- GRUPO E — Mercedes-Benz, NRG, Lincoln Financial
+-- GRUPO E — Alemanha(17) Equador(18) Costa do Marfim(19) Curaçao(20)
 -- =========================================================
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','E',1,17,20,'2026-06-14T16:00:00','Mercedes-Benz Stadium','Atlanta','EUA','agendado'),
-('grupo','E',1,18,19,'2026-06-14T20:00:00','NRG Stadium','Houston','EUA','agendado');
+('grupo','E',1,17,20,'2026-06-14T17:00:00','NRG Stadium',           'Houston',    'EUA','agendado'),
+('grupo','E',1,19,18,'2026-06-14T23:00:00','Lincoln Financial Field','Filadélfia', 'EUA','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','E',2,17,19,'2026-06-19T16:00:00','Mercedes-Benz Stadium','Atlanta','EUA','agendado'),
-('grupo','E',2,18,20,'2026-06-19T20:00:00','Lincoln Financial Field','Filadélfia','EUA','agendado');
+('grupo','E',2,17,19,'2026-06-20T20:00:00','BMO Field',             'Toronto',    'Canadá','agendado'),
+('grupo','E',2,18,20,'2026-06-21T00:00:00','Arrowhead Stadium',     'Kansas City','EUA','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','E',3,17,18,'2026-06-27T23:00:00','Mercedes-Benz Stadium','Atlanta','EUA','agendado'),
-('grupo','E',3,19,20,'2026-06-27T23:00:00','NRG Stadium','Houston','EUA','agendado');
+('grupo','E',3,20,19,'2026-06-25T20:00:00','Lincoln Financial Field','Filadélfia', 'EUA','agendado'),
+('grupo','E',3,18,17,'2026-06-25T20:00:00','MetLife Stadium',       'Nova York',  'EUA','agendado');
 
 -- =========================================================
--- GRUPO F — SoFi, Lumen Field, Hard Rock
+-- GRUPO F — Holanda(21) Japão(22) Tunísia(23) Suécia(24)
 -- =========================================================
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','F',1,21,24,'2026-06-15T16:00:00','SoFi Stadium','Los Angeles','EUA','agendado'),
-('grupo','F',1,22,23,'2026-06-15T20:00:00','Lumen Field','Seattle','EUA','agendado');
+('grupo','F',1,21,22,'2026-06-14T20:00:00','AT&T Stadium', 'Dallas',      'EUA',   'agendado'),
+('grupo','F',1,24,23,'2026-06-15T02:00:00','Estadio BBVA', 'Monterrey',   'México','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','F',2,21,23,'2026-06-20T16:00:00','SoFi Stadium','Los Angeles','EUA','agendado'),
-('grupo','F',2,22,24,'2026-06-20T20:00:00','Hard Rock Stadium','Miami','EUA','agendado');
+('grupo','F',2,21,24,'2026-06-20T17:00:00','NRG Stadium',  'Houston',     'EUA',   'agendado'),
+('grupo','F',2,23,22,'2026-06-21T04:00:00','Estadio BBVA', 'Monterrey',   'México','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','F',3,21,22,'2026-06-28T20:00:00','SoFi Stadium','Los Angeles','EUA','agendado'),
-('grupo','F',3,23,24,'2026-06-28T20:00:00','Lumen Field','Seattle','EUA','agendado');
+('grupo','F',3,22,24,'2026-06-25T23:00:00','AT&T Stadium', 'Dallas',      'EUA',   'agendado'),
+('grupo','F',3,23,21,'2026-06-25T23:00:00','Arrowhead Stadium','Kansas City','EUA', 'agendado');
 
 -- =========================================================
--- GRUPO G — MetLife, Gillette, Lincoln Financial
+-- GRUPO G — Bélgica(25) Irã(26) Egito(27) Nova Zelândia(28)
 -- =========================================================
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','G',1,25,28,'2026-06-15T23:00:00','MetLife Stadium','Nova York','EUA','agendado'),
-('grupo','G',1,26,27,'2026-06-16T16:00:00','Gillette Stadium','Boston','EUA','agendado');
+('grupo','G',1,25,27,'2026-06-15T19:00:00','Lumen Field','Seattle',     'EUA','agendado'),
+('grupo','G',1,26,28,'2026-06-16T01:00:00','SoFi Stadium','Los Angeles','EUA','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','G',2,25,27,'2026-06-20T23:00:00','MetLife Stadium','Nova York','EUA','agendado'),
-('grupo','G',2,26,28,'2026-06-21T16:00:00','Lincoln Financial Field','Filadélfia','EUA','agendado');
+('grupo','G',2,25,26,'2026-06-21T19:00:00','SoFi Stadium','Los Angeles','EUA','agendado'),
+('grupo','G',2,28,27,'2026-06-22T01:00:00','BC Place',    'Vancouver',  'Canadá','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','G',3,25,26,'2026-06-29T20:00:00','MetLife Stadium','Nova York','EUA','agendado'),
-('grupo','G',3,27,28,'2026-06-29T20:00:00','Gillette Stadium','Boston','EUA','agendado');
+('grupo','G',3,27,26,'2026-06-27T03:00:00','Lumen Field','Seattle',    'EUA','agendado'),
+('grupo','G',3,28,25,'2026-06-27T03:00:00','BC Place',   'Vancouver',  'Canadá','agendado');
 
 -- =========================================================
--- GRUPO H — Rose Bowl, Arrowhead, Hard Rock
+-- GRUPO H — Espanha(29) Uruguai(30) Arábia Saudita(31) Cabo Verde(32)
 -- =========================================================
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','H',1,29,32,'2026-06-16T20:00:00','Rose Bowl','Los Angeles','EUA','agendado'),
-('grupo','H',1,30,31,'2026-06-17T00:00:00','Arrowhead Stadium','Kansas City','EUA','agendado');
+('grupo','H',1,29,32,'2026-06-15T16:00:00','Mercedes-Benz Stadium','Atlanta','EUA','agendado'),
+('grupo','H',1,31,30,'2026-06-15T22:00:00','Hard Rock Stadium',    'Miami',  'EUA','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','H',2,29,31,'2026-06-21T20:00:00','Rose Bowl','Los Angeles','EUA','agendado'),
-('grupo','H',2,30,32,'2026-06-21T23:00:00','Hard Rock Stadium','Miami','EUA','agendado');
+('grupo','H',2,29,31,'2026-06-21T16:00:00','Mercedes-Benz Stadium','Atlanta','EUA','agendado'),
+('grupo','H',2,30,32,'2026-06-21T22:00:00','Hard Rock Stadium',    'Miami',  'EUA','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','H',3,29,30,'2026-06-29T23:00:00','Rose Bowl','Los Angeles','EUA','agendado'),
-('grupo','H',3,31,32,'2026-06-29T23:00:00','Arrowhead Stadium','Kansas City','EUA','agendado');
+('grupo','H',3,32,31,'2026-06-27T00:00:00','NRG Stadium',  'Houston',    'EUA','agendado'),
+('grupo','H',3,30,29,'2026-06-27T00:00:00','Estadio Akron','Guadalajara','México','agendado');
 
 -- =========================================================
--- GRUPO I — NRG, BMO Field, Mercedes-Benz
+-- GRUPO I — França(33) Senegal(34) Noruega(35) Iraque(36)
 -- =========================================================
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','I',1,33,36,'2026-06-17T16:00:00','NRG Stadium','Houston','EUA','agendado'),
-('grupo','I',1,34,35,'2026-06-17T20:00:00','BMO Field','Toronto','Canadá','agendado');
+('grupo','I',1,33,34,'2026-06-16T19:00:00','MetLife Stadium', 'Nova York','EUA','agendado'),
+('grupo','I',1,36,35,'2026-06-16T22:00:00','Gillette Stadium','Boston',   'EUA','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','I',2,33,35,'2026-06-22T16:00:00','NRG Stadium','Houston','EUA','agendado'),
-('grupo','I',2,34,36,'2026-06-22T20:00:00','Mercedes-Benz Stadium','Atlanta','EUA','agendado');
+('grupo','I',2,33,36,'2026-06-22T21:00:00','Lincoln Financial Field','Filadélfia','EUA','agendado'),
+('grupo','I',2,35,34,'2026-06-23T00:00:00','MetLife Stadium',        'Nova York', 'EUA','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','I',3,33,34,'2026-06-30T20:00:00','NRG Stadium','Houston','EUA','agendado'),
-('grupo','I',3,35,36,'2026-06-30T20:00:00','BMO Field','Toronto','Canadá','agendado');
+('grupo','I',3,35,33,'2026-06-26T19:00:00','Gillette Stadium','Boston', 'EUA','agendado'),
+('grupo','I',3,34,36,'2026-06-26T19:00:00','BMO Field',       'Toronto','Canadá','agendado');
 
 -- =========================================================
--- GRUPO J — AT&T, Hard Rock, SoFi
+-- GRUPO J — Argentina(37) Áustria(38) Argélia(39) Jordânia(40)
 -- =========================================================
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','J',1,37,40,'2026-06-18T00:00:00','AT&T Stadium','Dallas','EUA','agendado'),
-('grupo','J',1,38,39,'2026-06-18T16:00:00','Hard Rock Stadium','Miami','EUA','agendado');
+('grupo','J',1,37,39,'2026-06-17T01:00:00','Arrowhead Stadium','Kansas City','EUA','agendado'),
+('grupo','J',1,38,40,'2026-06-17T04:00:00','Levi''s Stadium',  'Santa Clara','EUA','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','J',2,37,39,'2026-06-22T23:00:00','AT&T Stadium','Dallas','EUA','agendado'),
-('grupo','J',2,38,40,'2026-06-23T16:00:00','SoFi Stadium','Los Angeles','EUA','agendado');
+('grupo','J',2,37,38,'2026-06-22T17:00:00','AT&T Stadium', 'Dallas',     'EUA','agendado'),
+('grupo','J',2,40,39,'2026-06-23T03:00:00','Levi''s Stadium','Santa Clara','EUA','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','J',3,37,38,'2026-06-30T23:00:00','AT&T Stadium','Dallas','EUA','agendado'),
-('grupo','J',3,39,40,'2026-06-30T23:00:00','Hard Rock Stadium','Miami','EUA','agendado');
+('grupo','J',3,39,38,'2026-06-28T02:00:00','Arrowhead Stadium','Kansas City','EUA','agendado'),
+('grupo','J',3,40,37,'2026-06-28T02:00:00','AT&T Stadium',     'Dallas',    'EUA','agendado');
 
 -- =========================================================
--- GRUPO K — Lincoln Financial, Levi's, Estadio Azteca
+-- GRUPO K — Portugal(41) Colômbia(42) Uzbequistão(43) Congo RD(44)
 -- =========================================================
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','K',1,41,44,'2026-06-19T00:00:00','Lincoln Financial Field','Filadélfia','EUA','agendado'),
-('grupo','K',1,42,43,'2026-06-19T16:00:00','Levi''s Stadium','San Francisco','EUA','agendado');
+('grupo','K',1,41,44,'2026-06-17T17:00:00','NRG Stadium',   'Houston',          'EUA',   'agendado'),
+('grupo','K',1,43,42,'2026-06-18T02:00:00','Estádio Azteca','Cidade do México',  'México','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','K',2,41,43,'2026-06-23T20:00:00','Lincoln Financial Field','Filadélfia','EUA','agendado'),
-('grupo','K',2,42,44,'2026-06-24T00:00:00','Estadio Azteca','Cidade do México','México','agendado');
+('grupo','K',2,41,43,'2026-06-23T17:00:00','NRG Stadium',   'Houston',          'EUA',   'agendado'),
+('grupo','K',2,42,44,'2026-06-24T02:00:00','Estadio Akron', 'Guadalajara',       'México','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','K',3,41,42,'2026-07-01T20:00:00','Lincoln Financial Field','Filadélfia','EUA','agendado'),
-('grupo','K',3,43,44,'2026-07-01T20:00:00','Levi''s Stadium','San Francisco','EUA','agendado');
+('grupo','K',3,42,41,'2026-06-27T23:30:00','Hard Rock Stadium',    'Miami',  'EUA','agendado'),
+('grupo','K',3,44,43,'2026-06-27T23:30:00','Mercedes-Benz Stadium','Atlanta','EUA','agendado');
 
 -- =========================================================
--- GRUPO L — Lumen Field, BC Place, Rose Bowl
+-- GRUPO L — Inglaterra(45) Croácia(46) Panamá(47) Gana(48)
 -- =========================================================
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','L',1,45,48,'2026-06-19T20:00:00','Lumen Field','Seattle','EUA','agendado'),
-('grupo','L',1,46,47,'2026-06-20T00:00:00','BC Place','Vancouver','Canadá','agendado');
+('grupo','L',1,45,46,'2026-06-17T20:00:00','AT&T Stadium','Dallas', 'EUA','agendado'),
+('grupo','L',1,48,47,'2026-06-17T23:00:00','BMO Field',   'Toronto','Canadá','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','L',2,45,47,'2026-06-24T16:00:00','Lumen Field','Seattle','EUA','agendado'),
-('grupo','L',2,46,48,'2026-06-24T20:00:00','Rose Bowl','Los Angeles','EUA','agendado');
+('grupo','L',2,45,48,'2026-06-23T20:00:00','Gillette Stadium','Boston', 'EUA','agendado'),
+('grupo','L',2,47,46,'2026-06-23T23:00:00','BMO Field',       'Toronto','Canadá','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','L',3,45,46,'2026-07-01T23:00:00','Lumen Field','Seattle','EUA','agendado'),
-('grupo','L',3,47,48,'2026-07-01T23:00:00','BC Place','Vancouver','Canadá','agendado');
+('grupo','L',3,47,45,'2026-06-27T21:00:00','MetLife Stadium',        'Nova York',  'EUA','agendado'),
+('grupo','L',3,46,48,'2026-06-27T21:00:00','Lincoln Financial Field','Filadélfia', 'EUA','agendado');
