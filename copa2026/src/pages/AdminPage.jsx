@@ -231,10 +231,30 @@ function JogoRow({ jogo, adminKey, onAtualizar }) {
 
 // ── Painel principal ──────────────────────────────────────────────────
 function PainelAdmin({ adminKey, onLogout }) {
-  const [jogos,      setJogos]      = useState([])
-  const [loading,    setLoading]    = useState(true)
-  const [filtroFase, setFiltroFase] = useState('grupo')
+  const toast = useAppStore(s => s.toast)
+  const [jogos,        setJogos]        = useState([])
+  const [loading,      setLoading]      = useState(true)
+  const [filtroFase,   setFiltroFase]   = useState('grupo')
   const [filtroStatus, setFiltroStatus] = useState('')
+  const [reseeding,    setReseeding]    = useState(false)
+
+  const handleReseed = async () => {
+    if (!window.confirm('Isso apaga todos os dados e reinsere os seeds. Continuar?')) return
+    setReseeding(true)
+    try {
+      const res = await apiFetch('/api/admin/reseed', {
+        method: 'POST',
+        headers: { 'X-Admin-Key': adminKey },
+      })
+      if (!res.ok) throw new Error()
+      const data = await res.json()
+      toast(`Reseed OK — ${data.selecoes} seleções, ${data.jogos} jogos, ${data.jogadores} jogadores`, 'success')
+    } catch {
+      toast('Erro ao executar reseed.', 'error')
+    } finally {
+      setReseeding(false)
+    }
+  }
 
   useEffect(() => {
     setLoading(true)
@@ -263,12 +283,23 @@ function PainelAdmin({ adminKey, onLogout }) {
             Atualização de placares e status dos jogos
           </p>
         </div>
-        <button
-          onClick={onLogout}
-          className="text-xs text-gray-600 hover:text-white transition-colors"
-        >
-          Sair
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleReseed}
+            disabled={reseeding}
+            className="text-xs text-copa-yellow hover:text-white border border-copa-yellow/30
+                       hover:border-white/30 rounded-lg px-3 py-1.5 transition-colors
+                       disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            {reseeding ? 'Resetando…' : '↺ Reseed DB'}
+          </button>
+          <button
+            onClick={onLogout}
+            className="text-xs text-gray-600 hover:text-white transition-colors"
+          >
+            Sair
+          </button>
+        </div>
       </div>
 
       {/* filtros */}
