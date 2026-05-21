@@ -14,7 +14,7 @@ INSERT INTO jogadores (selecao_id, numero, nome, nome_curto, posicao, clube, ida
 (9, 6,  'Éder Militão',       'Militão',    'DEF', 'Real Madrid',     27, 0),
 (9, 13, 'Alex Telles',        'Alex Telles','DEF', 'Sevilla',         32, 0),
 (9, 22, 'Vanderson',          'Vanderson',  'DEF', 'Monaco',          23, 0),
-(9, 2,  'Bremer',             'Bremer',     'DEF', 'Juventus',        27, 0),
+(9, 21, 'Bremer',             'Bremer',     'DEF', 'Juventus',        27, 0),
 -- Meias
 (9, 8,  'Bruno Guimarães',    'Bruno G.',   'MID', 'Newcastle United',26, 0),
 (9, 15, 'Casemiro',           'Casemiro',   'MID', 'Manchester United',32, 0),
