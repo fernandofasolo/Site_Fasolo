@@ -1,0 +1,156 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <BaseHead
+      title={`Fasolinho — ${SITE_TITLE}`}
+      description="Fernando Fasolo Jr. — gamer, torcedor do Figueirense e apaixonado pela Copa do Mundo 2026. Nascido e criado em Florianópolis, SC."
+    />
+    <style>
+      .card-glass {
+        background: rgba(15,15,25,.7);
+        border: 1px solid rgba(255,255,255,.07);
+        backdrop-filter: blur(12px);
+        transition: border-color .3s, transform .3s;
+      }
+      .card-glass:hover { border-color: rgba(34,197,94,.4); }
+      .tag {
+        display:inline-block; padding:2px 10px; border-radius:9999px;
+        font-size:.7rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+      }
+      .glow-green { text-shadow: 0 0 20px rgba(34,197,94,.8); }
+      .hero-bg {
+        background: radial-gradient(ellipse at 30% 40%, rgba(34,197,94,.12) 0%, transparent 60%),
+                    radial-gradient(ellipse at 80% 10%, rgba(34,197,94,.07) 0%, transparent 50%),
+                    #050508;
+      }
+      .divider {
+        border: none;
+        border-top: 1px solid rgba(255,255,255,.06);
+        margin: 2.5rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+
+    <main class="hero-bg pt-28 pb-20 min-h-screen">
+      <div class="max-w-3xl mx-auto px-6">
+
+        <!-- cabeçalho -->
+        <div class="flex items-center gap-5 mb-10">
+          <div class="w-20 h-20 rounded-full bg-green-900/60 border-2 border-green-500 flex items-center justify-center text-4xl shrink-0">
+            <span class="text-green-400">🎮</span>
+          </div>
+          <div>
+            <p class="text-green-400 text-xs font-bold uppercase tracking-widest mb-1">Perfil</p>
+            <h1 class="text-4xl md:text-5xl font-black text-white glow-green" style="font-family:'Orbitron',monospace;">
+              Fasolinho
+            </h1>
+            <p class="text-slate-400 text-sm mt-1">Fernando Fasolo Jr. · Florianópolis, SC</p>
+          </div>
+        </div>
+
+        <!-- sobre -->
+        <div class="card-glass rounded-2xl p-8 mb-6">
+          <h2 class="text-lg font-bold text-green-400 mb-4 uppercase tracking-wider">Quem é</h2>
+          <p class="text-slate-300 leading-relaxed mb-4">
+            Nasceu e cresceu em Florianópolis — a Ilha da Magia, capital de Santa Catarina.
+            Desde pequeno dividiu o tempo entre dois mundos: a tela do computador e o campo de futebol.
+          </p>
+          <p class="text-slate-300 leading-relaxed">
+            Gamer nato, domina o Roblox e o Minecraft com a mesma naturalidade com que discute tabela de
+            classificação. Quando não está construindo no survival ou descobrindo novos jogos na plataforma,
+            está acompanhando futebol — ou melhor, torçendo pelo Figueirense.
+          </p>
+          <div class="flex flex-wrap gap-2 mt-6">
+            <span class="tag bg-green-900/40 text-green-300">Roblox</span>
+            <span class="tag bg-green-900/40 text-green-300">Minecraft</span>
+            <span class="tag bg-green-900/40 text-green-300">Gameplay</span>
+            <span class="tag bg-slate-800 text-slate-300">Futebol</span>
+            <span class="tag bg-slate-800 text-slate-300">Florianópolis</span>
+          </div>
+        </div>
+
+        <!-- figueirense -->
+        <div class="card-glass rounded-2xl p-8 mb-6">
+          <div class="flex items-center gap-4 mb-6">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/d/da/Figueirense_Futebol_Clube_logo.svg"
+              alt="Figueirense FC"
+              class="w-16 h-16 object-contain"
+            />
+            <div>
+              <h2 class="text-lg font-bold text-white">Figueirense Futebol Clube</h2>
+              <p class="text-slate-400 text-sm">O Furacão do Estreito · Florianópolis, SC</p>
+            </div>
+          </div>
+
+          <p class="text-slate-300 leading-relaxed mb-4">
+            O amor pelo Figueirense é herança de família. Fundado em 1921, o clube é um dos mais
+            tradicionais de Santa Catarina e o maior da capital. Suas cores — o preto e branco —
+            estampam a história do futebol catarinense.
+          </p>
+          <p class="text-slate-300 leading-relaxed mb-4">
+            O apelido <span class="text-white font-semibold">Furacão do Estreito</span> vem do bairro
+            Estreito, em Florianópolis, onde fica o estádio Orlando Scarpelli, a casa do clube.
+            Torcer pelo Figueirense é, antes de tudo, torcer pela cidade onde o Fasolinho nasceu e cresceu.
+          </p>
+          <p class="text-slate-300 leading-relaxed">
+            Cada jogo é um evento familiar — e a paixão pelo clube passa de pai pra filho como uma
+            tradição que a gente não abre mão.
+          </p>
+
+          <hr class="divider" />
+
+          <div class="grid grid-cols-3 gap-4 text-center">
+            <div>
+              <p class="text-2xl font-black text-white">1921</p>
+              <p class="text-xs text-slate-500 mt-1">Fundação</p>
+            </div>
+            <div>
+              <p class="text-2xl font-black text-white">⚫⚪</p>
+              <p class="text-xs text-slate-500 mt-1">Cores</p>
+            </div>
+            <div>
+              <p class="text-2xl font-black text-white">SC</p>
+              <p class="text-xs text-slate-500 mt-1">Santa Catarina</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- copa 2026 -->
+        <a href="/copa2026" class="card-glass rounded-2xl p-8 mb-6 block group">
+          <div class="flex items-center justify-between">
+            <div>
+              <h2 class="text-lg font-bold text-white mb-2 group-hover:text-green-400 transition-colors">
+                ⚽ Copa do Mundo 2026
+              </h2>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Tabela, grupos, escalação do Brasil, bolão e muito mais.
+                O Fasolinho acompanha tudo da Copa FIFA 2026 — e você pode acompanhar junto.
+              </p>
+            </div>
+            <span class="text-green-400 text-2xl ml-6 group-hover:translate-x-1 transition-transform">→</span>
+          </div>
+        </a>
+
+        <!-- voltar -->
+        <div class="text-center mt-10">
+          <a href="/" class="text-sm text-slate-500 hover:text-green-400 transition-colors">
+            ← Voltar para a home
+          </a>
+        </div>
+
+      </div>
+    </main>
+
+    <Footer />
+  </body>
+</html>
