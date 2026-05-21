@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { apiFetch } from '../../utils/api'
+import Bandeira from '../ui/Bandeira'
 
 function SelecaoChip({ sel }) {
   return (
@@ -9,7 +10,7 @@ function SelecaoChip({ sel }) {
         : 'hover:bg-white/5 text-gray-300'
       }`}
     >
-      <span className="text-base">{sel.bandeira_emoji}</span>
+      <Bandeira iso={sel.codigo_iso} className="h-5 w-auto" />
       <span className="truncate">{sel.nome_pt}</span>
       {sel.eh_cabeca_chave ? (
         <span className="ml-auto text-[9px] font-bold tracking-wide">CHAVE</span>
@@ -95,9 +96,7 @@ export default function PotesSection() {
                 <p className="font-display text-2xl text-copa-yellow">{sels.length}</p>
                 <div className="mt-2 flex flex-wrap gap-0.5">
                   {sels.map(s => (
-                    <span key={s.id} className="text-sm" title={s.nome_pt}>
-                      {s.bandeira_emoji}
-                    </span>
+                    <Bandeira key={s.id} iso={s.codigo_iso} className="h-4 w-auto" title={s.nome_pt} />
                   ))}
                 </div>
               </div>

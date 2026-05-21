@@ -3,6 +3,7 @@ import { apiFetch } from '../utils/api'
 import CartaoSelecao from '../components/selecoes/CartaoSelecao'
 import PerfilSelecao from '../components/selecoes/PerfilSelecao'
 import TabelaElenco from '../components/selecoes/TabelaElenco'
+import Bandeira from '../components/ui/Bandeira'
 
 const GRUPOS = 'ABCDEFGHIJKL'.split('')
 const CONFS  = ['UEFA', 'CONMEBOL', 'CONCACAF', 'AFC', 'CAF', 'OFC']
@@ -50,7 +51,7 @@ function DetalheSelecao({ selecao, todas, onVoltar, onNavegar }) {
                        text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed
                        transition-colors flex items-center gap-1"
           >
-            ← {anterior?.bandeira_emoji} {anterior?.nome_pt?.split(' ')[0]}
+            ← {anterior && <Bandeira iso={anterior.codigo_iso} className="h-4 w-auto inline align-middle" />} {anterior?.nome_pt?.split(' ')[0]}
           </button>
           <button
             disabled={!proxima}
@@ -59,7 +60,7 @@ function DetalheSelecao({ selecao, todas, onVoltar, onNavegar }) {
                        text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed
                        transition-colors flex items-center gap-1"
           >
-            {proxima?.bandeira_emoji} {proxima?.nome_pt?.split(' ')[0]} →
+            {proxima && <Bandeira iso={proxima.codigo_iso} className="h-4 w-auto inline align-middle" />} {proxima?.nome_pt?.split(' ')[0]} →
           </button>
         </div>
       </div>

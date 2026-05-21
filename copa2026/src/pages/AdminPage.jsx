@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { apiFetch } from '../utils/api'
 import useAppStore from '../store/useAppStore'
 import { toHorarioBrasilia } from '../utils/formatDate'
+import Bandeira from '../components/ui/Bandeira'
 
 const FASES = [
   { value: 'grupo',    label: 'Grupos'       },
@@ -134,7 +135,7 @@ function JogoRow({ jogo, adminKey, onAtualizar }) {
         </td>
         <td className="py-2.5 text-sm">
           <div className="flex items-center gap-1.5">
-            <span>{jogo.selecao_a?.bandeira_emoji}</span>
+            <Bandeira iso={jogo.selecao_a?.codigo_iso} className="h-5 w-auto" />
             <span className="text-gray-300 hidden sm:inline">{jogo.selecao_a?.nome_pt}</span>
           </div>
         </td>
@@ -144,7 +145,7 @@ function JogoRow({ jogo, adminKey, onAtualizar }) {
         <td className="py-2.5 text-sm">
           <div className="flex items-center gap-1.5 justify-end">
             <span className="text-gray-300 hidden sm:inline">{jogo.selecao_b?.nome_pt}</span>
-            <span>{jogo.selecao_b?.bandeira_emoji}</span>
+            <Bandeira iso={jogo.selecao_b?.codigo_iso} className="h-5 w-auto" />
           </div>
         </td>
         <td className="py-2.5 text-center w-28">
@@ -168,7 +169,7 @@ function JogoRow({ jogo, adminKey, onAtualizar }) {
             <div className="flex flex-wrap items-end gap-4">
               <div>
                 <label className="text-[10px] text-gray-600 uppercase tracking-wider block mb-1">
-                  Gols {jogo.selecao_a?.bandeira_emoji}
+                  Gols {jogo.selecao_a && <Bandeira iso={jogo.selecao_a.codigo_iso} className="h-4 w-auto inline align-middle" />}
                 </label>
                 <input
                   type="number" min={0} max={20}
@@ -180,7 +181,7 @@ function JogoRow({ jogo, adminKey, onAtualizar }) {
               </div>
               <div>
                 <label className="text-[10px] text-gray-600 uppercase tracking-wider block mb-1">
-                  Gols {jogo.selecao_b?.bandeira_emoji}
+                  Gols {jogo.selecao_b && <Bandeira iso={jogo.selecao_b.codigo_iso} className="h-4 w-auto inline align-middle" />}
                 </label>
                 <input
                   type="number" min={0} max={20}

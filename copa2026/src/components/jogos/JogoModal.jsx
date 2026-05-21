@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { toHorarioBrasilia } from '../../utils/formatDate'
 import { apiFetch } from '../../utils/api'
+import Bandeira from '../ui/Bandeira'
 
 const STATUS_LABEL = {
   agendado:     'Agendado',
@@ -46,7 +47,7 @@ function MiniTabela({ letra }) {
             >
               <td className="py-1 text-gray-600">{i + 1}</td>
               <td className="py-1">
-                <span className="mr-1">{s.bandeira_emoji}</span>{s.nome_pt}
+                <Bandeira iso={s.codigo_iso} className="h-4 w-auto mr-1 align-middle" />{s.nome_pt}
               </td>
               <td className="py-1 text-center">{s.jogos}</td>
               <td className="py-1 text-center">{s.vitorias}</td>
@@ -97,7 +98,7 @@ export default function JogoModal({ jogo, onClose }) {
           <div className="flex items-center justify-center gap-6">
             {/* seleção A */}
             <div className="flex flex-col items-center gap-2 flex-1">
-              <span className="text-5xl">{selecao_a?.bandeira_emoji}</span>
+              <Bandeira iso={selecao_a?.codigo_iso} className="h-14 w-auto" />
               <span className="text-sm font-medium text-gray-200">{selecao_a?.nome_pt}</span>
             </div>
 
@@ -117,7 +118,7 @@ export default function JogoModal({ jogo, onClose }) {
 
             {/* seleção B */}
             <div className="flex flex-col items-center gap-2 flex-1">
-              <span className="text-5xl">{selecao_b?.bandeira_emoji}</span>
+              <Bandeira iso={selecao_b?.codigo_iso} className="h-14 w-auto" />
               <span className="text-sm font-medium text-gray-200">{selecao_b?.nome_pt}</span>
             </div>
           </div>

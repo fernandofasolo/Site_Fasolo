@@ -1,4 +1,5 @@
 import { toHora } from '../../utils/formatDate'
+import Bandeira from '../ui/Bandeira'
 
 const STATUS_LABEL = {
   agendado:     'Agendado',
@@ -24,7 +25,7 @@ export default function JogoRow({ jogo, onClick }) {
           <span className="text-sm text-gray-200 font-medium group-hover:text-white transition-colors text-right">
             {selecao_a?.nome_pt}
           </span>
-          <span className="text-3xl">{selecao_a?.bandeira_emoji}</span>
+          <Bandeira iso={selecao_a?.codigo_iso} className="h-9 w-auto" />
         </div>
 
         {/* centro: hora/placar + info */}
@@ -44,7 +45,7 @@ export default function JogoRow({ jogo, onClick }) {
 
         {/* seleção B */}
         <div className="flex items-center gap-3">
-          <span className="text-3xl">{selecao_b?.bandeira_emoji}</span>
+          <Bandeira iso={selecao_b?.codigo_iso} className="h-9 w-auto" />
           <span className="text-sm text-gray-200 font-medium group-hover:text-white transition-colors">
             {selecao_b?.nome_pt}
           </span>
@@ -54,14 +55,14 @@ export default function JogoRow({ jogo, onClick }) {
       {/* layout mobile: empilhado */}
       <div className="sm:hidden flex items-center gap-3">
         <div className="flex flex-col items-center w-8">
-          <span className="text-2xl">{selecao_a?.bandeira_emoji}</span>
+          <Bandeira iso={selecao_a?.codigo_iso} className="h-7 w-auto" />
         </div>
         <div className="flex-1 min-w-0">
           <p className="text-sm font-medium text-gray-200 truncate">{selecao_a?.nome_pt}</p>
           <p className="text-sm font-medium text-gray-200 truncate">{selecao_b?.nome_pt}</p>
         </div>
         <div className="flex flex-col items-center w-8">
-          <span className="text-2xl">{selecao_b?.bandeira_emoji}</span>
+          <Bandeira iso={selecao_b?.codigo_iso} className="h-7 w-auto" />
         </div>
         <div className="flex flex-col items-end gap-1 ml-2">
           {temPlacar ? (

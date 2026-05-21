@@ -1,3 +1,5 @@
+import Bandeira from '../ui/Bandeira'
+
 // Renderiza uma lista de confrontos de fase eliminatória
 // Cada confronto: clique numa seleção para indicar o vencedor
 
@@ -33,7 +35,7 @@ function TimeSide({ team, lado, vencedor, onClick }) {
         }
       `}
     >
-      <span className="text-xl shrink-0">{team.bandeira_emoji}</span>
+      <Bandeira iso={team.codigo_iso} className="h-6 w-auto shrink-0" />
       <span className={`text-xs font-medium truncate ${isVencedor ? 'text-white' : 'text-gray-300'}`}>
         {team.nome_pt}
       </span>

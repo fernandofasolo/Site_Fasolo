@@ -1,4 +1,5 @@
 import { toHorarioBrasilia } from '../../utils/formatDate'
+import Bandeira from '../ui/Bandeira'
 
 function InfoCard({ label, value }) {
   if (!value && value !== 0) return null
@@ -41,7 +42,7 @@ export default function PerfilSelecao({ selecao, jogos, loadingJogos }) {
       >
         <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-copa-green via-copa-yellow to-copa-green" />
 
-        <div className="text-7xl mb-3 select-none">{selecao.bandeira_emoji}</div>
+        <div className="mb-3"><Bandeira iso={selecao.codigo_iso} className="h-20 w-auto mx-auto" /></div>
         <h2 className="font-display text-4xl sm:text-5xl tracking-widest text-white">
           {selecao.nome_pt.toUpperCase()}
         </h2>
@@ -112,7 +113,7 @@ export default function PerfilSelecao({ selecao, jogos, loadingJogos }) {
 
               // dados da seleção adversária vêm do jogo
               const advNome  = eA ? jogo.selecao_b?.nome_pt  : jogo.selecao_a?.nome_pt
-              const advFlag  = eA ? jogo.selecao_b?.bandeira_emoji : jogo.selecao_a?.bandeira_emoji
+              const advIso   = eA ? jogo.selecao_b?.codigo_iso : jogo.selecao_a?.codigo_iso
 
               return (
                 <div
@@ -123,7 +124,7 @@ export default function PerfilSelecao({ selecao, jogos, loadingJogos }) {
                     {toHorarioBrasilia(jogo.data_hora_utc)}
                   </div>
                   <div className="flex items-center gap-2 flex-1">
-                    <span className="text-xl">{selecao.bandeira_emoji}</span>
+                    <Bandeira iso={selecao.codigo_iso} className="h-6 w-auto" />
                     {temPlacar ? (
                       <span className="font-mono font-bold text-white text-sm tabular-nums">
                         {gaSelecao} — {gaAdvers}
@@ -131,7 +132,7 @@ export default function PerfilSelecao({ selecao, jogos, loadingJogos }) {
                     ) : (
                       <span className="text-gray-600 text-sm">vs</span>
                     )}
-                    <span className="text-xl">{advFlag}</span>
+                    <Bandeira iso={advIso} className="h-6 w-auto" />
                     <span className="text-xs text-gray-400 truncate">{advNome}</span>
                   </div>
                   <span className={`badge-${jogo.status} shrink-0`}>

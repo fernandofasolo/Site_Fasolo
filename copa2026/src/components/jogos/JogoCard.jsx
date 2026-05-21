@@ -1,4 +1,5 @@
 import { toHorarioBrasilia } from '../../utils/formatDate'
+import Bandeira from '../ui/Bandeira'
 
 const STATUS_LABEL = {
   agendado:     'Agendado',
@@ -25,7 +26,7 @@ export default function JogoCard({ jogo, compact = false }) {
       <div className="flex items-center justify-between gap-2">
         {/* seleção A */}
         <div className="flex flex-col items-center gap-1 flex-1">
-          <span className="text-3xl">{selecao_a?.bandeira_emoji}</span>
+          <Bandeira iso={selecao_a?.codigo_iso} className="h-10 w-auto" />
           <span className="text-xs text-gray-300 text-center leading-tight">
             {selecao_a?.nome_pt}
           </span>
@@ -51,7 +52,7 @@ export default function JogoCard({ jogo, compact = false }) {
 
         {/* seleção B */}
         <div className="flex flex-col items-center gap-1 flex-1">
-          <span className="text-3xl">{selecao_b?.bandeira_emoji}</span>
+          <Bandeira iso={selecao_b?.codigo_iso} className="h-10 w-auto" />
           <span className="text-xs text-gray-300 text-center leading-tight">
             {selecao_b?.nome_pt}
           </span>

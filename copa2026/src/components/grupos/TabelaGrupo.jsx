@@ -1,4 +1,5 @@
 import { toHora } from '../../utils/formatDate'
+import Bandeira from '../ui/Bandeira'
 
 // cores por posição na classificação
 function corPosicao(pos, totalJogos) {
@@ -22,7 +23,7 @@ function JogoGrupo({ jogo }) {
       {/* seleção A */}
       <div className="flex items-center gap-1.5 flex-1 justify-end">
         <span className="text-xs text-gray-400 text-right truncate max-w-[80px]">{selecao_a?.nome_pt}</span>
-        <span className="text-base">{selecao_a?.bandeira_emoji}</span>
+        <Bandeira iso={selecao_a?.codigo_iso} className="h-4 w-auto" />
       </div>
 
       {/* placar / hora */}
@@ -46,7 +47,7 @@ function JogoGrupo({ jogo }) {
 
       {/* seleção B */}
       <div className="flex items-center gap-1.5 flex-1">
-        <span className="text-base">{selecao_b?.bandeira_emoji}</span>
+        <Bandeira iso={selecao_b?.codigo_iso} className="h-4 w-auto" />
         <span className="text-xs text-gray-400 truncate max-w-[80px]">{selecao_b?.nome_pt}</span>
       </div>
     </div>
@@ -79,7 +80,7 @@ export default function TabelaGrupo({ dados, compact = false }) {
             GRUPO {grupo}
           </span>
           {cabecaChave && (
-            <span className="text-xl">{cabecaChave.bandeira_emoji}</span>
+            <Bandeira iso={cabecaChave.codigo_iso} className="h-6 w-auto" />
           )}
         </div>
         {!compact && cabecaChave && (
@@ -121,7 +122,7 @@ export default function TabelaGrupo({ dados, compact = false }) {
                 </td>
                 <td className="py-2 pr-2">
                   <div className="flex items-center gap-1.5">
-                    <span className="text-base">{sel.bandeira_emoji}</span>
+                    <Bandeira iso={sel.codigo_iso} className="h-4 w-auto" />
                     <span className={`${corPosicao(i + 1)} font-medium`}>
                       {compact ? (sel.nome_pt?.split(' ')[0]) : sel.nome_pt}
                     </span>

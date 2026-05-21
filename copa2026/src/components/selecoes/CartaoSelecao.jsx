@@ -1,3 +1,5 @@
+import Bandeira from '../ui/Bandeira'
+
 const CONF_COR = {
   UEFA:     'bg-blue-900/40 text-blue-400',
   CONMEBOL: 'bg-green-900/40 text-green-400',
@@ -14,8 +16,8 @@ export default function CartaoSelecao({ selecao, onClick }) {
       className="card group flex flex-col items-center gap-2 py-5 text-center
                  hover:border-copa-green/50 hover:bg-white/[0.03] transition-all"
     >
-      <span className="text-4xl group-hover:scale-110 transition-transform">
-        {selecao.bandeira_emoji}
+      <span className="group-hover:scale-110 transition-transform">
+        <Bandeira iso={selecao.codigo_iso} className="h-10 w-auto" />
       </span>
       <p className="text-sm font-medium text-gray-200 group-hover:text-white transition-colors leading-tight">
         {selecao.nome_pt}

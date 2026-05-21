@@ -5,6 +5,7 @@ import RodadaElim from '../components/bolao/RodadaElim'
 import useAppStore from '../store/useAppStore'
 import { computarTodosGrupos, extrairClassificados } from '../utils/classificacao'
 import { buildBracket } from '../utils/chaveamento'
+import Bandeira from '../components/ui/Bandeira'
 
 const ABAS = ['Grupos', 'Oitavas', 'Quartas', 'Semis', 'Final']
 
@@ -111,7 +112,7 @@ function CartaoCampeao({ time }) {
       style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 0%, #1a3a00 0%, #0A0A0A 70%)' }}
     >
       <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-copa-yellow via-copa-gold to-copa-yellow" />
-      <div className="text-6xl mb-4">{time.bandeira_emoji}</div>
+      <div className="mb-4"><Bandeira iso={time.codigo_iso} className="h-20 w-auto mx-auto" /></div>
       <p className="text-gray-500 text-xs uppercase tracking-widest mb-1">Campeão do Mundo</p>
       <h2 className="font-display text-5xl tracking-widest text-copa-yellow">
         {time.nome_pt.toUpperCase()}
@@ -411,7 +412,7 @@ export default function BolaoPage() {
               <p className="text-[10px] text-gray-600 uppercase tracking-widest mb-1">
                 Seu Campeão
               </p>
-              <div className="text-3xl">{bracket.final.vencedor.bandeira_emoji}</div>
+              <Bandeira iso={bracket.final.vencedor.codigo_iso} className="h-8 w-auto mx-auto" />
               <p className="text-sm text-copa-yellow font-medium mt-1">
                 {bracket.final.vencedor.nome_pt}
               </p>

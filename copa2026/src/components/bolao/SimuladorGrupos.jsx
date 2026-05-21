@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import PlacarInput from './PlacarInput'
 import { calcularClassificacaoGrupo } from '../../utils/classificacao'
+import Bandeira from '../ui/Bandeira'
 
 const POS_COR = ['text-copa-green', 'text-copa-green', 'text-copa-yellow', 'text-gray-600']
 
@@ -23,7 +24,7 @@ function MiniTabela({ classificacao }) {
               {i + 1}
             </td>
             <td className="py-1.5">
-              <span className="mr-1">{s.bandeira_emoji}</span>
+              <Bandeira iso={s.codigo_iso} className="h-4 w-auto mr-1 align-middle" />
               <span className={i < 2 ? 'text-gray-200' : 'text-gray-500'}>
                 {s.nome_pt?.split(' ')[0]}
               </span>
@@ -51,7 +52,7 @@ function JogoPalpite({ jogo, palpite, onMudar }) {
       preenchido ? 'bg-black/20' : 'bg-black/10'
     }`}>
       <div className="flex items-center gap-1.5 flex-1 min-w-0">
-        <span className="text-sm shrink-0">{jogo.selecao_a?.bandeira_emoji}</span>
+        <Bandeira iso={jogo.selecao_a?.codigo_iso} className="h-4 w-auto shrink-0" />
         <span className="text-xs text-gray-400 truncate hidden sm:block">
           {jogo.selecao_a?.nome_pt?.split(' ')[0]}
         </span>
@@ -67,7 +68,7 @@ function JogoPalpite({ jogo, palpite, onMudar }) {
         <span className="text-xs text-gray-400 truncate hidden sm:block">
           {jogo.selecao_b?.nome_pt?.split(' ')[0]}
         </span>
-        <span className="text-sm shrink-0">{jogo.selecao_b?.bandeira_emoji}</span>
+        <Bandeira iso={jogo.selecao_b?.codigo_iso} className="h-4 w-auto shrink-0" />
       </div>
 
       {!preenchido && (
@@ -110,7 +111,7 @@ function GrupoAcordeon({ letra, jogos, selecoes, palpites, onMudar }) {
         <div className="flex items-center gap-3">
           <div className="hidden sm:flex items-center gap-1">
             {classificacao.slice(0, 2).map(s => (
-              <span key={s.selecao_id} className="text-sm">{s.bandeira_emoji}</span>
+              <Bandeira key={s.selecao_id} iso={s.codigo_iso} className="h-4 w-auto" />
             ))}
           </div>
           <span className="text-gray-500 text-sm">{aberto ? '▲' : '▼'}</span>
