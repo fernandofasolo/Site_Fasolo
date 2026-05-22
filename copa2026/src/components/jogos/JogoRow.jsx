@@ -52,19 +52,19 @@ export default function JogoRow({ jogo, onClick }) {
         </div>
       </div>
 
-      {/* layout mobile: empilhado */}
+      {/* layout mobile: cada bandeira ao lado do seu nome */}
       <div className="sm:hidden flex items-center gap-3">
-        <div className="flex flex-col items-center w-8">
-          <Bandeira iso={selecao_a?.codigo_iso} className="h-7 w-auto" />
+        <div className="flex-1 min-w-0 flex flex-col gap-1.5">
+          <div className="flex items-center gap-2">
+            <Bandeira iso={selecao_a?.codigo_iso} className="h-5 w-auto shrink-0" />
+            <p className="text-sm font-medium text-gray-200 truncate">{selecao_a?.nome_pt}</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <Bandeira iso={selecao_b?.codigo_iso} className="h-5 w-auto shrink-0" />
+            <p className="text-sm font-medium text-gray-200 truncate">{selecao_b?.nome_pt}</p>
+          </div>
         </div>
-        <div className="flex-1 min-w-0">
-          <p className="text-sm font-medium text-gray-200 truncate">{selecao_a?.nome_pt}</p>
-          <p className="text-sm font-medium text-gray-200 truncate">{selecao_b?.nome_pt}</p>
-        </div>
-        <div className="flex flex-col items-center w-8">
-          <Bandeira iso={selecao_b?.codigo_iso} className="h-7 w-auto" />
-        </div>
-        <div className="flex flex-col items-end gap-1 ml-2">
+        <div className="flex flex-col items-end gap-1 shrink-0">
           {temPlacar ? (
             <span className="font-mono text-lg font-bold text-white">{gols_a} — {gols_b}</span>
           ) : (
