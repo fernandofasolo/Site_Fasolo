@@ -78,8 +78,7 @@ export default function HomePage() {
         <div
           className="absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage:
-              "url('https://digitalhub.fifa.com/transform/de1fd0e5-c091-49ac-a115-00faec1217b1/FIFA-World-Cup-26-Official-Brand-unveiled-in-Los-Angeles?&io=transform:fill,width:1024&quality=75')",
+            backgroundImage: "url('/copa2026/hero-fifa-2026.jpg')",
           }}
         />
         {/* overlay escuro com gradiente para fundir com o fundo da página */}
