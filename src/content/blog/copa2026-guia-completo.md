@@ -1,7 +1,7 @@
 ---
 title: 'Copa do Mundo 2026: tudo que você precisa saber'
-description: 'A maior Copa da história está chegando. Guia completo com sedes, formato, grupos e como acompanhar cada jogo ao vivo.'
-pubDate: '2026-05-08'
+description: 'A maior Copa da história está chegando. Guia completo com sedes, formato, grupos, jogos do Brasil e a convocação oficial da CBF.'
+pubDate: '2026-05-22'
 author: 'Fernando Fasolo Jr.'
 category: 'Esportes'
 ---
@@ -22,7 +22,61 @@ A Copa acontece em três países:
 
 ## Brasil na Copa
 
-O Brasil está no **Grupo E** e começa sua campanha com força total. Com uma geração talentosa e fome de título após décadas de espera, a torcida brasileira nunca esteve tão animada.
+O Brasil está no **Grupo C** ao lado de Marrocos, Haiti e Escócia. A campanha começa no dia 13 de junho contra Marrocos, em Nova Jersey!
+
+### Jogos do Brasil na fase de grupos
+
+| Data | Horário (Brasília) | Confronto | Estádio |
+|------|-------------------|-----------|---------|
+| Sáb 13/06 | 19h00 | Brasil 🆚 Marrocos | MetLife Stadium, Nova York |
+| Sex 19/06 | 21h30 | Brasil 🆚 Haiti | Lincoln Financial Field, Filadélfia |
+| Qua 24/06 | 19h00 | Escócia 🆚 Brasil | Hard Rock Stadium, Miami |
+
+## A convocação oficial — os 26 do Hexa
+
+O técnico **Carlo Ancelotti** anunciou os 26 convocados no dia 18 de maio. A grande novidade é o **retorno de Neymar**, que volta à Seleção depois de mais de dois anos! Também entram na lista as revelações Rayan e Igor Thiago. Vai Hexa! 🇧🇷
+
+### Goleiros
+| Jogador | Clube |
+|---------|-------|
+| Alisson | Liverpool |
+| Ederson | Fenerbahçe |
+| Weverton | Grêmio |
+
+### Defensores
+| Jogador | Clube |
+|---------|-------|
+| Marquinhos | Paris Saint-Germain |
+| Gabriel Magalhães | Arsenal |
+| Bremer | Juventus |
+| Ibañez | Al Ahli |
+| Léo Pereira | Flamengo |
+| Wesley | Roma |
+| Alex Sandro | Flamengo |
+| Douglas Santos | Zenit |
+| Danilo | Flamengo |
+
+### Meias
+| Jogador | Clube |
+|---------|-------|
+| Casemiro | Manchester United |
+| Bruno Guimarães | Newcastle |
+| Danilo | Botafogo |
+| Lucas Paquetá | Flamengo |
+| Fabinho | Al-Ittihad |
+
+### Atacantes
+| Jogador | Clube |
+|---------|-------|
+| Raphinha | Barcelona |
+| Vinicius Júnior | Real Madrid |
+| Luiz Henrique | Zenit |
+| Gabriel Martinelli | Arsenal |
+| Neymar | Santos |
+| Endrick | Real Madrid |
+| Matheus Cunha | Manchester United |
+| Rayan | Bournemouth |
+| Igor Thiago | Brentford |
 
 ## Onde acompanhar tudo
 
@@ -40,4 +94,4 @@ Aqui no site, montamos um aplicativo completo para você não perder nada:
 
 A bola vai rolar a partir de **11 de junho de 2026**. A final está marcada para **19 de julho de 2026** no MetLife Stadium, em Nova York.
 
-Prepara o coração, a Copa tá chegando!
+Prepara o coração, a Copa tá chegando! 🏆
