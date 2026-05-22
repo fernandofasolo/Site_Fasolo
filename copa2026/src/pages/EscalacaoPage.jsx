@@ -4,6 +4,7 @@ import CampoFutebol from '../components/escalacao/CampoFutebol'
 import ListaConvocados from '../components/escalacao/ListaConvocados'
 import { FORMACOES, NOMES_FORMACAO, migrarTitulares } from '../utils/formacoes'
 import useAppStore from '../store/useAppStore'
+import Bandeira from '../components/ui/Bandeira'
 
 const SELECAO_BRASIL_ID = 9
 
@@ -269,7 +270,9 @@ export default function EscalacaoPage() {
       {/* cabeçalho */}
       <div className="flex items-end justify-between flex-wrap gap-2">
         <div>
-          <h1 className="font-display text-4xl tracking-widest text-white">ESCALAÇÃO 🇧🇷</h1>
+          <h1 className="font-display text-4xl tracking-widest text-white flex items-center gap-3">
+            ESCALAÇÃO <Bandeira iso="BR" className="h-8 w-auto" />
+          </h1>
           <p className="text-gray-500 text-sm mt-1">
             Monte seu time ideal para a Copa do Mundo 2026
           </p>
