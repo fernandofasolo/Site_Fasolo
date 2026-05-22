@@ -73,59 +73,64 @@ export default function HomePage() {
     <div className="space-y-16 pb-16">
 
       {/* ── HERO ── */}
-      <section className="relative -mx-4 px-4 py-24 overflow-hidden text-center">
-        {/* imagem de fundo oficial FIFA */}
-        <img
-          src="/copa2026/hero-fifa-2026.jpg"
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover object-center -z-20 select-none pointer-events-none"
-        />
-        {/* overlay escuro com gradiente para fundir com o fundo da página */}
-        <div
-          className="absolute inset-0 -z-10"
-          style={{
-            background:
-              'linear-gradient(to bottom, rgba(0,0,0,0.50) 0%, rgba(10,10,10,0.75) 70%, #0A0A0A 100%)',
-          }}
-        />
-        {/* linha decorativa no topo */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-copa-green via-copa-yellow to-copa-green" />
-
-        {/* slogan principal */}
-        <h1 className="font-display tracking-widest leading-none mb-4">
-          <span className="block text-6xl sm:text-8xl lg:text-9xl text-white drop-shadow-lg">
-            WE ARE
-          </span>
-          <span className="block text-8xl sm:text-[10rem] lg:text-[12rem] text-copa-yellow drop-shadow-lg">
-            26
-          </span>
-        </h1>
-
-        {/* sedes */}
-        <p className="text-gray-300 tracking-[0.35em] uppercase text-sm sm:text-base mb-10">
-          EUA &bull; Canadá &bull; México
-        </p>
-
-        {/* countdown */}
-        <div className="mb-10">
-          <p className="text-xs text-gray-500 tracking-widest uppercase mb-4">
-            Abertura &mdash; 11 jun 2026 às 17h (Brasília)
-          </p>
-          <Countdown />
+      <section className="relative -mx-4 overflow-hidden text-center">
+        {/* camada de fundo: imagem + overlay */}
+        <div className="absolute inset-0">
+          <img
+            src="/copa2026/hero-fifa-2026.jpg"
+            alt=""
+            aria-hidden="true"
+            className="w-full h-full object-cover object-center select-none pointer-events-none"
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                'linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(10,10,10,0.78) 70%, #0A0A0A 100%)',
+            }}
+          />
         </div>
 
-        {/* CTAs */}
-        <div className="flex gap-3 justify-center flex-wrap">
-          <Link to="/tabela" className="btn-primary">
-            Ver Tabela de Jogos
-          </Link>
-          <Link
-            to="/bolao"
-            className="border border-copa-border text-gray-300 font-bold py-2 px-6 rounded-lg hover:border-copa-gold hover:text-copa-gold transition-colors"
-          >
-            Montar Bolão
-          </Link>
+        {/* linha decorativa no topo */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-copa-green via-copa-yellow to-copa-green z-10" />
+
+        {/* conteúdo sobre o fundo */}
+        <div className="relative z-10 px-4 py-24">
+          {/* slogan principal */}
+          <h1 className="font-display tracking-widest leading-none mb-4">
+            <span className="block text-6xl sm:text-8xl lg:text-9xl text-white drop-shadow-lg">
+              WE ARE
+            </span>
+            <span className="block text-8xl sm:text-[10rem] lg:text-[12rem] text-copa-yellow drop-shadow-lg">
+              26
+            </span>
+          </h1>
+
+          {/* sedes */}
+          <p className="text-gray-300 tracking-[0.35em] uppercase text-sm sm:text-base mb-10">
+            EUA &bull; Canadá &bull; México
+          </p>
+
+          {/* countdown */}
+          <div className="mb-10">
+            <p className="text-xs text-gray-500 tracking-widest uppercase mb-4">
+              Abertura &mdash; 11 jun 2026 às 17h (Brasília)
+            </p>
+            <Countdown />
+          </div>
+
+          {/* CTAs */}
+          <div className="flex gap-3 justify-center flex-wrap">
+            <Link to="/tabela" className="btn-primary">
+              Ver Tabela de Jogos
+            </Link>
+            <Link
+              to="/bolao"
+              className="border border-copa-border text-gray-300 font-bold py-2 px-6 rounded-lg hover:border-copa-gold hover:text-copa-gold transition-colors"
+            >
+              Montar Bolão
+            </Link>
+          </div>
         </div>
       </section>
 
