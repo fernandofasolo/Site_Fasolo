@@ -75,18 +75,18 @@ export default function HomePage() {
       {/* ── HERO ── */}
       <section className="relative -mx-4 px-4 py-24 overflow-hidden text-center">
         {/* imagem de fundo oficial FIFA */}
-        <div
-          className="absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('/copa2026/hero-fifa-2026.jpg')",
-          }}
+        <img
+          src="/copa2026/hero-fifa-2026.jpg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover object-center -z-20 select-none pointer-events-none"
         />
         {/* overlay escuro com gradiente para fundir com o fundo da página */}
         <div
           className="absolute inset-0 -z-10"
           style={{
             background:
-              'linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(10,10,10,0.80) 70%, #0A0A0A 100%)',
+              'linear-gradient(to bottom, rgba(0,0,0,0.50) 0%, rgba(10,10,10,0.75) 70%, #0A0A0A 100%)',
           }}
         />
         {/* linha decorativa no topo */}
