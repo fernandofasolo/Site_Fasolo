@@ -73,39 +73,44 @@ export default function HomePage() {
     <div className="space-y-16 pb-16">
 
       {/* ── HERO ── */}
-      <section className="relative -mx-4 px-4 py-20 overflow-hidden text-center">
-        {/* fundo gradiente */}
+      <section className="relative -mx-4 px-4 py-24 overflow-hidden text-center">
+        {/* imagem de fundo oficial FIFA */}
+        <div
+          className="absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage:
+              "url('https://digitalhub.fifa.com/transform/de1fd0e5-c091-49ac-a115-00faec1217b1/FIFA-World-Cup-26-Official-Brand-unveiled-in-Los-Angeles?&io=transform:fill,width:1024&quality=75')",
+          }}
+        />
+        {/* overlay escuro com gradiente para fundir com o fundo da página */}
         <div
           className="absolute inset-0 -z-10"
           style={{
             background:
-              'radial-gradient(ellipse 80% 60% at 50% 0%, #002776 0%, #0A0A0A 70%)',
+              'linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(10,10,10,0.80) 70%, #0A0A0A 100%)',
           }}
         />
-        {/* linha decorativa copa-green no topo */}
+        {/* linha decorativa no topo */}
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-copa-green via-copa-yellow to-copa-green" />
 
-        {/* troféu */}
-        <div className="text-7xl mb-6 select-none">🏆</div>
-
-        {/* título */}
-        <h1 className="font-display tracking-widest leading-none mb-2">
-          <span className="block text-5xl sm:text-7xl lg:text-8xl text-white">
-            COPA DO MUNDO
+        {/* slogan principal */}
+        <h1 className="font-display tracking-widest leading-none mb-4">
+          <span className="block text-6xl sm:text-8xl lg:text-9xl text-white drop-shadow-lg">
+            WE ARE
           </span>
-          <span className="block text-6xl sm:text-8xl lg:text-9xl text-copa-yellow">
-            2026
+          <span className="block text-8xl sm:text-[10rem] lg:text-[12rem] text-copa-yellow drop-shadow-lg">
+            26
           </span>
         </h1>
 
-        {/* tagline */}
-        <p className="text-gray-400 tracking-[0.4em] uppercase text-sm sm:text-base mt-4 mb-10">
-          We Are 26 &nbsp;&bull;&nbsp; EUA &bull; Canadá &bull; México
+        {/* sedes */}
+        <p className="text-gray-300 tracking-[0.35em] uppercase text-sm sm:text-base mb-10">
+          EUA &bull; Canadá &bull; México
         </p>
 
         {/* countdown */}
         <div className="mb-10">
-          <p className="text-xs text-gray-600 tracking-widest uppercase mb-4">
+          <p className="text-xs text-gray-500 tracking-widest uppercase mb-4">
             Abertura &mdash; 11 jun 2026 às 17h (Brasília)
           </p>
           <Countdown />
