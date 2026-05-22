@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Countdown from '../components/countdown/Countdown'
 import ProximosJogos from '../components/jogos/ProximosJogos'
 import UltimosResultados from '../components/jogos/UltimosResultados'
+import Bandeira from '../components/ui/Bandeira'
 
 // ---------- count-up hook ----------
 function useCountUp(target, duration = 1800) {
@@ -162,7 +163,7 @@ export default function HomePage() {
           <QuickLink to="/tabela"    icon="📅" label="Tabela de Jogos"        desc="Todos os 104 jogos, filtros por fase, grupo e seleção" />
           <QuickLink to="/grupos"    icon="🏆" label="Grupos e Classificação" desc="12 grupos, tabela atualizada com regras FIFA" />
           <QuickLink to="/elencos"   icon="👕" label="Elencos"                desc="48 seleções e seus jogadores" />
-          <QuickLink to="/escalacao" icon="🇧🇷" label="Escalação do Brasil"   desc="Monte sua escalação com drag & drop" />
+          <QuickLink to="/escalacao" icon={<Bandeira iso="BR" className="h-8 w-auto" />} label="Escalação do Brasil" desc="Monte sua escalação com drag & drop" />
         </div>
       </section>
 
