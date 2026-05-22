@@ -96,16 +96,16 @@ export default function TabelaGrupo({ dados, compact = false }) {
               <th className="text-left pl-5 py-2 font-normal w-6">#</th>
               <th className="text-left py-2 font-normal">Seleção</th>
               <th className="text-center py-2 font-normal px-1">J</th>
-              <th className="text-center py-2 font-normal px-1">V</th>
-              <th className="text-center py-2 font-normal px-1">E</th>
-              <th className="text-center py-2 font-normal px-1">D</th>
+              <th className="hidden sm:table-cell text-center py-2 font-normal px-1">V</th>
+              <th className="hidden sm:table-cell text-center py-2 font-normal px-1">E</th>
+              <th className="hidden sm:table-cell text-center py-2 font-normal px-1">D</th>
               {!compact && (
                 <>
-                  <th className="text-center py-2 font-normal px-1">GP</th>
-                  <th className="text-center py-2 font-normal px-1">GC</th>
+                  <th className="hidden sm:table-cell text-center py-2 font-normal px-1">GP</th>
+                  <th className="hidden sm:table-cell text-center py-2 font-normal px-1">GC</th>
                 </>
               )}
-              <th className="text-center py-2 font-normal px-1">SG</th>
+              <th className="hidden sm:table-cell text-center py-2 font-normal px-1">SG</th>
               <th className="text-center py-2 font-normal pr-4 font-semibold">Pts</th>
             </tr>
           </thead>
@@ -134,16 +134,16 @@ export default function TabelaGrupo({ dados, compact = false }) {
                   </div>
                 </td>
                 <td className="text-center py-2 text-gray-400 px-1">{sel.jogos}</td>
-                <td className="text-center py-2 text-gray-400 px-1">{sel.vitorias}</td>
-                <td className="text-center py-2 text-gray-400 px-1">{sel.empates}</td>
-                <td className="text-center py-2 text-gray-400 px-1">{sel.derrotas}</td>
+                <td className="hidden sm:table-cell text-center py-2 text-gray-400 px-1">{sel.vitorias}</td>
+                <td className="hidden sm:table-cell text-center py-2 text-gray-400 px-1">{sel.empates}</td>
+                <td className="hidden sm:table-cell text-center py-2 text-gray-400 px-1">{sel.derrotas}</td>
                 {!compact && (
                   <>
-                    <td className="text-center py-2 text-gray-400 px-1">{sel.gols_pro}</td>
-                    <td className="text-center py-2 text-gray-400 px-1">{sel.gols_contra}</td>
+                    <td className="hidden sm:table-cell text-center py-2 text-gray-400 px-1">{sel.gols_pro}</td>
+                    <td className="hidden sm:table-cell text-center py-2 text-gray-400 px-1">{sel.gols_contra}</td>
                   </>
                 )}
-                <td className="text-center py-2 text-gray-400 px-1">
+                <td className="hidden sm:table-cell text-center py-2 text-gray-400 px-1">
                   {sel.saldo_gols > 0 ? `+${sel.saldo_gols}` : sel.saldo_gols}
                 </td>
                 <td className={`text-center py-2 pr-4 font-bold ${corPosicao(i + 1)}`}>
