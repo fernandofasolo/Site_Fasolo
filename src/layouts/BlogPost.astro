@@ -25,7 +25,13 @@ const authorColor: Record<string, string> = {
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead
+      title={title}
+      description={description}
+      type="article"
+      pubDate={pubDate}
+      articleAuthor={author}
+    />
     <style>
       .tag {
         display:inline-block; padding:2px 10px; border-radius:9999px;
