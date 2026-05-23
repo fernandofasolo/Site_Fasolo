@@ -246,12 +246,19 @@ const categoryColor: Record<string, string> = {
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { icon:'💻', title:'Tecnologia', desc:'Novidades em IA, telecom, SaaS e tendências do mercado tech.', color:'amber', tags:['🤖 IA · Claude','🖥️ Proxmox'] },
-            { icon:'📈', title:'Negócios',   desc:'Empreendedorismo, estratégia, experiências reais do dia a dia empresarial.', color:'amber', tags:[] },
-            { icon:'🎮', title:'Gameplay',   desc:'Dicas, descobertas e momentos épicos no Roblox e Minecraft. E futebol também — o Fasolinho é florianopolitano raiz, nasceu e cresceu na Grande Floripa torcendo pro Figueirense.', color:'green', tags:[] },
-            { icon:'☀️', title:'Cotidiano',  desc:'A vida real de pai e filho curiosos, sempre aprendendo algo novo.', color:'orange', tags:[] },
-          ].map(item => (
-            <div class="card-glass rounded-xl p-6">
+            { icon:'💻', title:'Tecnologia', desc:'Homelab, infraestrutura e IA aplicada — do Proxmox ao Claude, passando por Docker, VoIP e VPN.', color:'amber', href:'/tecnologia', tags:[
+              {label:'🤖 IA',             cls:'bg-amber-900/40 text-amber-300'},
+              {label:'🐳 Docker',         cls:'bg-blue-900/40 text-blue-300'},
+              {label:'🐧 Linux',          cls:'bg-yellow-900/40 text-yellow-300'},
+              {label:'🖥️ Proxmox',        cls:'bg-orange-900/40 text-orange-300'},
+              {label:'📞 VoIP · Issabel', cls:'bg-teal-900/40 text-teal-300'},
+              {label:'🔒 VPN',            cls:'bg-violet-900/40 text-violet-300'},
+            ]},
+            { icon:'📈', title:'Negócios',   desc:'Empreendedorismo, estratégia, experiências reais do dia a dia empresarial.', color:'amber', href:'', tags:[] },
+            { icon:'🎮', title:'Gameplay',   desc:'Dicas, descobertas e momentos épicos no Roblox e Minecraft. E futebol também — o Fasolinho é florianopolitano raiz, nasceu e cresceu na Grande Floripa torcendo pro Figueirense.', color:'green', href:'', tags:[] },
+            { icon:'☀️', title:'Cotidiano',  desc:'A vida real de pai e filho curiosos, sempre aprendendo algo novo.', color:'orange', href:'', tags:[] },
+          ].map(item => {
+            const inner = <>
               <div class={`w-10 h-10 rounded-lg bg-${item.color}-900/60 flex items-center justify-center mb-4 text-xl`}>
                 {item.icon}
               </div>
@@ -259,11 +266,15 @@ const categoryColor: Record<string, string> = {
               <p class="text-slate-400 text-sm">{item.desc}</p>
               {item.tags.length > 0 && (
                 <div class="flex flex-wrap gap-1 mt-3">
-                  {item.tags.map(t => <span class="tag bg-amber-900/40 text-amber-300">{t}</span>)}
+                  {item.tags.map(t => <span class={`tag ${t.cls}`}>{t.label}</span>)}
                 </div>
               )}
-            </div>
-          ))}
+              {item.href && <p class="text-xs text-amber-500 mt-4 font-semibold">Ver mais →</p>}
+            </>;
+            return item.href
+              ? <a href={item.href} class="card-glass rounded-xl p-6 block group">{inner}</a>
+              : <div class="card-glass rounded-xl p-6">{inner}</div>;
+          })}
         </div>
       </div>
     </section>

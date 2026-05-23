@@ -1,0 +1,235 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <BaseHead
+      title={`Tecnologia — ${SITE_TITLE}`}
+      description="Fernando Fasolo — stack, ferramentas e projetos em andamento: homelab com Proxmox, Docker, Linux, VoIP com Issabel, VPN, IA e muito mais."
+    />
+    <style>
+      .card-glass {
+        background: rgba(15,15,25,.7);
+        border: 1px solid rgba(255,255,255,.07);
+        backdrop-filter: blur(12px);
+        transition: border-color .3s, transform .3s;
+      }
+      .card-glass:hover { border-color: rgba(217,119,6,.4); transform: translateY(-3px); }
+      .tag {
+        display:inline-block; padding:2px 10px; border-radius:9999px;
+        font-size:.7rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+      }
+      .glow-amber { text-shadow: 0 0 20px rgba(217,119,6,.8); }
+      .hero-bg {
+        background: radial-gradient(ellipse at 20% 40%, rgba(217,119,6,.13) 0%, transparent 60%),
+                    radial-gradient(ellipse at 80% 10%, rgba(139,92,246,.07) 0%, transparent 50%),
+                    #050508;
+      }
+      .divider {
+        border: none;
+        border-top: 1px solid rgba(255,255,255,.06);
+        margin: 2rem 0;
+      }
+      .badge-dev {
+        display:inline-flex; align-items:center; gap:6px;
+        padding:3px 12px; border-radius:9999px;
+        font-size:.7rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+        background: rgba(34,197,94,.12); color: #86efac;
+        border: 1px solid rgba(34,197,94,.25);
+      }
+      .badge-dev::before {
+        content:''; width:6px; height:6px; border-radius:50%;
+        background:#22c55e;
+        animation: pulse-dot 2s ease-in-out infinite;
+      }
+      @keyframes pulse-dot {
+        0%,100%{ opacity:1; transform:scale(1); }
+        50%{ opacity:.4; transform:scale(.7); }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+
+    <main class="hero-bg pt-28 pb-20 min-h-screen">
+      <div class="max-w-4xl mx-auto px-6">
+
+        <!-- cabeçalho -->
+        <div class="flex items-center gap-5 mb-12">
+          <div class="w-20 h-20 rounded-full bg-amber-900/60 border-2 border-amber-500 flex items-center justify-center text-4xl shrink-0">
+            💻
+          </div>
+          <div>
+            <p class="text-amber-400 text-xs font-bold uppercase tracking-widest mb-1">Fernando Fasolo</p>
+            <h1 class="text-4xl md:text-5xl font-black text-white glow-amber" style="font-family:'Orbitron',monospace;">
+              Tecnologia
+            </h1>
+            <p class="text-slate-400 text-sm mt-1">Stack, homelab e projetos em andamento</p>
+          </div>
+        </div>
+
+        <!-- stack -->
+        <section class="mb-14">
+          <h2 class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-6">Stack do dia a dia</h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+            <div class="card-glass rounded-2xl p-6">
+              <div class="text-2xl mb-3">🤖</div>
+              <h3 class="font-bold text-white mb-2">Inteligência Artificial</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                IA generativa no dia a dia — automações com Claude, exploração de novas ferramentas e vibe coding. Usar IA é hoje uma habilidade tão fundamental quanto saber usar a internet.
+              </p>
+              <div class="flex flex-wrap gap-1 mt-4">
+                <span class="tag bg-amber-900/40 text-amber-300">Claude</span>
+                <span class="tag bg-slate-800 text-slate-300">Automações</span>
+              </div>
+            </div>
+
+            <div class="card-glass rounded-2xl p-6">
+              <div class="text-2xl mb-3">🐳</div>
+              <h3 class="font-bold text-white mb-2">Docker</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Containerização de serviços é parte da rotina. Isola ambientes, facilita deploys e mantém o homelab organizado. Acaba com o clássico "na minha máquina funciona".
+              </p>
+              <div class="flex flex-wrap gap-1 mt-4">
+                <span class="tag bg-blue-900/40 text-blue-300">Containers</span>
+                <span class="tag bg-slate-800 text-slate-300">Deploy</span>
+              </div>
+            </div>
+
+            <div class="card-glass rounded-2xl p-6">
+              <div class="text-2xl mb-3">🐧</div>
+              <h3 class="font-bold text-white mb-2">Linux</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Base de toda a infraestrutura. Seja no servidor, nas VMs ou no homelab, Linux é onde tudo roda. Debian e Ubuntu são os principais no dia a dia.
+              </p>
+              <div class="flex flex-wrap gap-1 mt-4">
+                <span class="tag bg-yellow-900/40 text-yellow-300">Debian</span>
+                <span class="tag bg-slate-800 text-slate-300">Ubuntu</span>
+              </div>
+            </div>
+
+            <div class="card-glass rounded-2xl p-6">
+              <div class="text-2xl mb-3">🖥️</div>
+              <h3 class="font-bold text-white mb-2">Proxmox</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Hypervisor de escolha para virtualização. Roda várias VMs no homelab — PBX, servidores de teste, containers LXC. Proxmox VE facilita muito a gestão do ambiente local.
+              </p>
+              <div class="flex flex-wrap gap-1 mt-4">
+                <span class="tag bg-orange-900/40 text-orange-300">Homelab</span>
+                <span class="tag bg-slate-800 text-slate-300">VMs · LXC</span>
+              </div>
+            </div>
+
+            <div class="card-glass rounded-2xl p-6">
+              <div class="text-2xl mb-3">📞</div>
+              <h3 class="font-bold text-white mb-2">VoIP · Issabel</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Telecomunicações é o negócio. Issabel (Asterisk-based) para PBX, ramais SIP, troncos e roteamento de chamadas. VoIP é a espinha dorsal da operação na BRSip.
+              </p>
+              <div class="flex flex-wrap gap-1 mt-4">
+                <span class="tag bg-teal-900/40 text-teal-300">Asterisk</span>
+                <span class="tag bg-slate-800 text-slate-300">SIP · PBX</span>
+              </div>
+            </div>
+
+            <div class="card-glass rounded-2xl p-6">
+              <div class="text-2xl mb-3">🔒</div>
+              <h3 class="font-bold text-white mb-2">VPN</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Acesso seguro à rede interna, tunelamento entre sites e proteção de tráfego. Conecta ambientes remotos ao homelab e garante a segurança dos serviços em produção.
+              </p>
+              <div class="flex flex-wrap gap-1 mt-4">
+                <span class="tag bg-violet-900/40 text-violet-300">Segurança</span>
+                <span class="tag bg-slate-800 text-slate-300">Tunneling</span>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- projetos -->
+        <section class="mb-14">
+          <h2 class="text-xs font-bold text-amber-400 uppercase tracking-widest mb-6">Projetos em andamento</h2>
+          <div class="flex flex-col gap-6">
+
+            <!-- app mobile -->
+            <div class="card-glass rounded-2xl p-8">
+              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-5">
+                <div>
+                  <h3 class="text-xl font-bold text-white mb-1">📱 App Mobile SIP</h3>
+                  <p class="text-slate-500 text-sm">Softphone white-label para clientes BRSip</p>
+                </div>
+                <span class="badge-dev shrink-0">Em desenvolvimento</span>
+              </div>
+              <p class="text-slate-300 leading-relaxed mb-5">
+                Softphone white-label para os clientes da <span class="text-amber-400 font-semibold">BRSip</span>. O app usa <strong class="text-white">WebTrit</strong> (Flutter, MIT) com um backend adaptador em FastAPI que conecta ao Issabel via SIP. O celular não fala SIP diretamente — usa WebRTC/HTTPS com o backend, mantendo o PBX protegido atrás da rede.
+              </p>
+              <hr class="divider" />
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center mb-5">
+                <div>
+                  <p class="text-white font-bold">Flutter</p>
+                  <p class="text-xs text-slate-500 mt-1">App iOS · Android</p>
+                </div>
+                <div>
+                  <p class="text-white font-bold">FastAPI</p>
+                  <p class="text-xs text-slate-500 mt-1">Backend adaptador</p>
+                </div>
+                <div>
+                  <p class="text-white font-bold">Issabel</p>
+                  <p class="text-xs text-slate-500 mt-1">PBX · SIP</p>
+                </div>
+                <div>
+                  <p class="text-white font-bold">WebRTC</p>
+                  <p class="text-xs text-slate-500 mt-1">Protocolo de mídia</p>
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span class="tag bg-blue-900/40 text-blue-300">🐳 Docker</span>
+                <span class="tag bg-yellow-900/40 text-yellow-300">🐧 Linux</span>
+                <span class="tag bg-teal-900/40 text-teal-300">📞 VoIP</span>
+                <span class="tag bg-violet-900/40 text-violet-300">🔒 VPN</span>
+              </div>
+            </div>
+
+            <!-- click2call -->
+            <div class="card-glass rounded-2xl p-8">
+              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-5">
+                <div>
+                  <h3 class="text-xl font-bold text-white mb-1">☎️ Click2Call</h3>
+                  <p class="text-slate-500 text-sm">Chamada VoIP diretamente do navegador</p>
+                </div>
+                <span class="badge-dev shrink-0">Em desenvolvimento</span>
+              </div>
+              <p class="text-slate-300 leading-relaxed mb-5">
+                Botão de chamada integrado para sites. Permite que visitantes iniciem uma ligação VoIP diretamente do navegador, sem instalar nada. Um clique conecta o cliente ao atendimento — integrado à infraestrutura de telefonia da <span class="text-amber-400 font-semibold">BRSip</span>.
+              </p>
+              <hr class="divider" />
+              <div class="flex flex-wrap gap-2">
+                <span class="tag bg-teal-900/40 text-teal-300">📞 VoIP · Issabel</span>
+                <span class="tag bg-orange-900/40 text-orange-300">🖥️ Proxmox</span>
+                <span class="tag bg-amber-900/40 text-amber-300">🤖 IA</span>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- voltar -->
+        <div class="text-center mt-10">
+          <a href="/" class="text-sm text-slate-500 hover:text-amber-400 transition-colors">
+            ← Voltar para a home
+          </a>
+        </div>
+
+      </div>
+    </main>
+
+    <Footer />
+  </body>
+</html>
