@@ -1,0 +1,89 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../../components/BaseHead.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { SITE_TITLE } from '../../../consts';
+
+const posts = (await getCollection('blog'))
+  .filter(p => p.data.author === 'Fernando Fasolo')
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const categoryColor: Record<string, string> = {
+  Tech:      'bg-amber-900/40 text-amber-300',
+  Negócios:  'bg-amber-900/40 text-amber-300',
+  Games:     'bg-green-900/40 text-green-300',
+  Esportes:  'bg-green-900/40 text-green-300',
+  Cotidiano: 'bg-orange-900/40 text-orange-300',
+};
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <BaseHead
+      title={`Blog · Fernando Fasolo — ${SITE_TITLE}`}
+      description="Artigos sobre tecnologia, negócios e vibe coding por Fernando Fasolo."
+    />
+    <style>
+      .card-glass {
+        background: rgba(15,15,25,.7);
+        border: 1px solid rgba(255,255,255,.07);
+        backdrop-filter: blur(12px);
+        transition: border-color .3s, transform .3s;
+      }
+      .card-glass:hover { border-color: rgba(217,119,6,.5); transform: translateY(-4px); }
+      .tag {
+        display:inline-block; padding:2px 10px; border-radius:9999px;
+        font-size:.7rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+
+    <main class="pt-28 pb-20">
+      <div class="max-w-6xl mx-auto px-6">
+
+        <div class="mb-4">
+          <a href="/blog" class="text-slate-500 hover:text-amber-400 transition-colors text-sm">← Blog</a>
+        </div>
+
+        <div class="text-center mb-14">
+          <div class="w-20 h-20 rounded-full bg-amber-900/40 border-2 border-amber-500/40 flex items-center justify-center mx-auto mb-6 text-3xl font-black text-amber-400" style="font-family:'Orbitron',monospace;">FF</div>
+          <h1 class="text-4xl md:text-5xl font-black text-white mb-2" style="font-family:'Orbitron',monospace;">Fernando Fasolo</h1>
+          <p class="text-amber-500/70 font-medium mb-4">Velho Pai</p>
+          <p class="text-slate-400 max-w-xl mx-auto text-sm">
+            Tecnologia, negócios e o dia a dia de quem constrói coisas sem ter estudado para isso.
+          </p>
+        </div>
+
+        {posts.length === 0 ? (
+          <p class="text-center text-slate-500">Nenhum post ainda. Em breve!</p>
+        ) : (
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {posts.map(post => (
+              <a href={`/blog/${post.id}/`} class="card-glass rounded-2xl p-6 block group">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class={`tag ${categoryColor[post.data.category] ?? 'bg-slate-800 text-slate-300'}`}>
+                    {post.data.category}
+                  </span>
+                  <span class="text-xs text-slate-600">
+                    {post.data.pubDate.toLocaleDateString('pt-BR', { day:'2-digit', month:'short', year:'numeric' })}
+                  </span>
+                </div>
+                <h2 class="text-white font-bold text-lg mb-2 group-hover:text-amber-400 transition-colors leading-snug">
+                  {post.data.title}
+                </h2>
+                <p class="text-slate-400 text-sm leading-relaxed line-clamp-3">{post.data.description}</p>
+              </a>
+            ))}
+          </div>
+        )}
+
+      </div>
+    </main>
+
+    <Footer />
+  </body>
+</html>

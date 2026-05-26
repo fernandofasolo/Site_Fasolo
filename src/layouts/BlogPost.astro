@@ -8,6 +8,8 @@ type Props = CollectionEntry<'blog'>['data'];
 
 const { title, description, pubDate, updatedDate, author, category } = Astro.props;
 
+const authorSection = author === 'Fernando Fasolo Jr.' ? '/blog/fasolinho' : '/blog/fernando-fasolo';
+
 const categoryColor: Record<string, string> = {
   Tech:      'bg-amber-900/40 text-amber-300',
   Negócios:  'bg-amber-900/40 text-amber-300',
@@ -73,7 +75,7 @@ const authorColor: Record<string, string> = {
 
         <!-- rodapé do post -->
         <div class="mt-12 pt-8 border-t border-slate-800">
-          <a href="/blog" class="text-amber-400 hover:text-amber-300 transition-colors text-sm">← Voltar ao Blog</a>
+          <a href={authorSection} class="text-amber-400 hover:text-amber-300 transition-colors text-sm">← Voltar ao Blog</a>
         </div>
 
       </article>
