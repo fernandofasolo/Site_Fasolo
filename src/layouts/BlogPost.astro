@@ -1,12 +1,13 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, author, category } = Astro.props;
+const { title, description, pubDate, updatedDate, author, category, heroImage } = Astro.props;
 
 const authorSection = author === 'Fernando Fasolo Jr.' ? '/blog/fasolinho' : '/blog/fernando-fasolo';
 
@@ -67,6 +68,12 @@ const authorColor: Record<string, string> = {
           )}
           <hr class="mt-8 border-slate-800" />
         </header>
+
+        {heroImage && (
+          <div class="mb-10 rounded-2xl overflow-hidden">
+            <Image src={heroImage} alt={title} width={900} class="w-full object-cover max-h-96" />
+          </div>
+        )}
 
         <!-- conteúdo do post -->
         <div class="prose max-w-none">
