@@ -311,7 +311,7 @@ const categoryColor: Record<string, string> = {
 
     <!-- VISITOR WIDGET -->
     <div id="visitor-widget" class="hidden fixed bottom-4 right-4 z-50">
-      <div class="card-glass rounded-xl p-4 w-52 shadow-xl shadow-black/40">
+      <div class="card-glass rounded-xl p-4 w-56 shadow-xl shadow-black/40">
         <div class="flex items-center justify-between mb-3">
           <span class="text-amber-400 font-semibold text-xs uppercase tracking-widest">👁 Sua visita</span>
           <button id="visitor-close" class="text-slate-600 hover:text-slate-300 text-lg leading-none transition-colors">×</button>
@@ -328,45 +328,77 @@ const categoryColor: Record<string, string> = {
         const info     = document.getElementById('visitor-info')!;
         const closeBtn = document.getElementById('visitor-close')!;
 
-        // Detect browser & OS from user agent
         const ua = navigator.userAgent;
         let browser = 'Desconhecido', os = 'Desconhecido';
 
-        if      (ua.includes('Firefox/'))                       browser = 'Firefox';
-        else if (ua.includes('Edg/'))                           browser = 'Edge';
-        else if (ua.includes('OPR/') || ua.includes('Opera'))   browser = 'Opera';
-        else if (ua.includes('Chrome/'))                        browser = 'Chrome';
+        if      (ua.includes('Firefox/'))                          browser = 'Firefox';
+        else if (ua.includes('Edg/'))                              browser = 'Edge';
+        else if (ua.includes('OPR/') || ua.includes('Opera'))      browser = 'Opera';
+        else if (ua.includes('Chrome/'))                           browser = 'Chrome';
         else if (ua.includes('Safari/') && !ua.includes('Chrome')) browser = 'Safari';
 
-        if      (ua.includes('Android'))                        os = 'Android';
-        else if (ua.includes('iPhone') || ua.includes('iPad'))  os = 'iOS';
-        else if (ua.includes('Windows NT'))                     os = 'Windows';
-        else if (ua.includes('Mac OS X'))                       os = 'macOS';
-        else if (ua.includes('Linux'))                          os = 'Linux';
+        if      (ua.includes('Android'))                           os = 'Android';
+        else if (ua.includes('iPhone') || ua.includes('iPad'))     os = 'iOS';
+        else if (ua.includes('Windows NT'))                        os = 'Windows';
+        else if (ua.includes('Mac OS X'))                          os = 'macOS';
+        else if (ua.includes('Linux'))                             os = 'Linux';
 
         widget.classList.remove('hidden');
         closeBtn.addEventListener('click', () => widget.remove());
 
-        try {
-          const res  = await fetch('https://ipinfo.io/json');
-          const data = await res.json();
+        function weatherLabel(code: number): [string, string] {
+          if (code === 0)  return ['☀️', 'Céu limpo'];
+          if (code <= 3)   return ['⛅', 'Nublado'];
+          if (code <= 48)  return ['🌫️', 'Neblina'];
+          if (code <= 55)  return ['🌦️', 'Garoa'];
+          if (code <= 65)  return ['🌧️', 'Chuva'];
+          if (code <= 75)  return ['❄️', 'Neve'];
+          if (code <= 82)  return ['🌦️', 'Pancadas'];
+          if (code <= 99)  return ['⛈️', 'Trovoada'];
+          return ['🌡️', '—'];
+        }
 
-          const rows: [string, string][] = [
-            ['🌐 IP',      data.ip           ?? '—'],
-            ['📍 Local',   `${data.city ?? '?'}, ${data.country ?? '?'}`],
-            ['🗺️ Região',  data.region       ?? '—'],
-            ['🖥️ Browser', browser],
-            ['💻 Sistema', os],
-          ];
+        function row(label: string, value: string) {
+          return `<div class="flex justify-between gap-2">
+            <span class="text-slate-500">${label}</span>
+            <span class="text-slate-300 font-medium truncate max-w-28 text-right">${value}</span>
+          </div>`;
+        }
+        const divider = `<div class="border-t border-slate-700/50 my-1"></div>`;
+
+        try {
+          const ipRes  = await fetch('https://ipinfo.io/json');
+          const ip     = await ipRes.json();
+
+          let html = [
+            row('🌐 IP',      ip.ip              ?? '—'),
+            row('📍 Local',   `${ip.city ?? '?'}, ${ip.country ?? '?'}`),
+            row('🗺️ Região',  ip.region          ?? '—'),
+            row('🖥️ Browser', browser),
+            row('💻 Sistema', os),
+          ].join('');
+
+          if (ip.loc) {
+            const [lat, lon] = ip.loc.split(',');
+            const wRes  = await fetch(
+              `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
+              `&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&timezone=auto`
+            );
+            const wData = await wRes.json();
+            const cur   = wData.current;
+            const [icon, label] = weatherLabel(cur.weather_code);
+
+            html += divider + [
+              row(`${icon} Tempo`,   label),
+              row('🌡️ Temp',        `${cur.temperature_2m}°C`),
+              row('💧 Umidade',     `${cur.relative_humidity_2m}%`),
+              row('💨 Vento',       `${cur.wind_speed_10m} km/h`),
+            ].join('');
+          }
 
           loading.classList.add('hidden');
           info.classList.remove('hidden');
-          info.innerHTML = rows.map(([label, value]) => `
-            <div class="flex justify-between gap-2">
-              <span class="text-slate-500">${label}</span>
-              <span class="text-slate-300 font-medium truncate max-w-28 text-right">${value}</span>
-            </div>
-          `).join('');
+          info.innerHTML = html;
         } catch {
           loading.textContent = 'indisponível';
         }
