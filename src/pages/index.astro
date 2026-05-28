@@ -308,5 +308,69 @@ const categoryColor: Record<string, string> = {
     </section>
 
     <Footer />
+
+    <!-- VISITOR WIDGET -->
+    <div id="visitor-widget" class="hidden fixed bottom-4 right-4 z-50">
+      <div class="card-glass rounded-xl p-4 w-52 shadow-xl shadow-black/40">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-amber-400 font-semibold text-xs uppercase tracking-widest">👁 Sua visita</span>
+          <button id="visitor-close" class="text-slate-600 hover:text-slate-300 text-lg leading-none transition-colors">×</button>
+        </div>
+        <div id="visitor-loading" class="text-xs text-slate-600 text-center py-1">carregando...</div>
+        <div id="visitor-info" class="hidden space-y-2 text-xs"></div>
+      </div>
+    </div>
+
+    <script>
+      (async () => {
+        const widget   = document.getElementById('visitor-widget')!;
+        const loading  = document.getElementById('visitor-loading')!;
+        const info     = document.getElementById('visitor-info')!;
+        const closeBtn = document.getElementById('visitor-close')!;
+
+        // Detect browser & OS from user agent
+        const ua = navigator.userAgent;
+        let browser = 'Desconhecido', os = 'Desconhecido';
+
+        if      (ua.includes('Firefox/'))                       browser = 'Firefox';
+        else if (ua.includes('Edg/'))                           browser = 'Edge';
+        else if (ua.includes('OPR/') || ua.includes('Opera'))   browser = 'Opera';
+        else if (ua.includes('Chrome/'))                        browser = 'Chrome';
+        else if (ua.includes('Safari/') && !ua.includes('Chrome')) browser = 'Safari';
+
+        if      (ua.includes('Android'))                        os = 'Android';
+        else if (ua.includes('iPhone') || ua.includes('iPad'))  os = 'iOS';
+        else if (ua.includes('Windows NT'))                     os = 'Windows';
+        else if (ua.includes('Mac OS X'))                       os = 'macOS';
+        else if (ua.includes('Linux'))                          os = 'Linux';
+
+        widget.classList.remove('hidden');
+        closeBtn.addEventListener('click', () => widget.remove());
+
+        try {
+          const res  = await fetch('https://ipinfo.io/json');
+          const data = await res.json();
+
+          const rows: [string, string][] = [
+            ['🌐 IP',      data.ip           ?? '—'],
+            ['📍 Local',   `${data.city ?? '?'}, ${data.country ?? '?'}`],
+            ['🗺️ Região',  data.region       ?? '—'],
+            ['🖥️ Browser', browser],
+            ['💻 Sistema', os],
+          ];
+
+          loading.classList.add('hidden');
+          info.classList.remove('hidden');
+          info.innerHTML = rows.map(([label, value]) => `
+            <div class="flex justify-between gap-2">
+              <span class="text-slate-500">${label}</span>
+              <span class="text-slate-300 font-medium truncate max-w-28 text-right">${value}</span>
+            </div>
+          `).join('');
+        } catch {
+          loading.textContent = 'indisponível';
+        }
+      })();
+    </script>
   </body>
 </html>
