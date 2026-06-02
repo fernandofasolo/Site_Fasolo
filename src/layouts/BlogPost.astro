@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -8,6 +8,10 @@ import Footer from '../components/Footer.astro';
 type Props = CollectionEntry<'blog'>['data'];
 
 const { title, description, pubDate, updatedDate, author, category, heroImage } = Astro.props;
+
+const ogImage = heroImage
+  ? (await getImage({ src: heroImage, width: 1200, height: 630, format: 'webp' })).src
+  : undefined;
 
 const authorSection = author === 'Fernando Fasolo Jr.' ? '/blog/fasolinho' : '/blog/fernando-fasolo';
 
@@ -31,6 +35,7 @@ const authorColor: Record<string, string> = {
     <BaseHead
       title={title}
       description={description}
+      image={ogImage}
       type="article"
       pubDate={pubDate}
       articleAuthor={author}
