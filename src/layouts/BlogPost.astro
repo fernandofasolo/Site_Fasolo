@@ -13,7 +13,7 @@ const ogImage = heroImage
   ? (await getImage({ src: heroImage, width: 1200, height: 630, format: 'webp' })).src
   : undefined;
 
-const authorSection = author === 'Fernando Fasolo Jr.' ? '/blog/fasolinho' : '/blog/fernando-fasolo';
+const authorSection = author === 'Fernando Fasolo Jr.' ? '/blog/fasolinho/' : '/blog/fernando-fasolo/';
 
 const categoryColor: Record<string, string> = {
   Tech:      'bg-amber-900/40 text-amber-300',
