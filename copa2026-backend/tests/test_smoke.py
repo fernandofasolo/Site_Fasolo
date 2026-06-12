@@ -93,9 +93,9 @@ def run():
     s, b = get("/api/selecoes/99999")
     check("GET /api/selecoes/99999 -> 404", s, b, expect_status=404)
 
-    # Jogadores Brasil (selecao_id=25)
+    # Jogadores Brasil (selecao_id=9)
     print("\n[ Jogadores - Brasil ]")
-    s, b = get("/api/selecoes/25/jogadores")
+    s, b = get("/api/selecoes/9/jogadores")
     check("GET /api/selecoes/25/jogadores (>=23)", s, b,
           assert_fn=lambda b: len(b) >= 23 and all("posicao" in j for j in b))
     check("Brasil tem 3 goleiros", s, b,
