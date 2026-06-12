@@ -11,10 +11,16 @@ import sys
 import os
 from pathlib import Path
 
-BASE = Path(__file__).parent
-DB_PATH = BASE / "copa2026.db"
+BASE = Path(__file__).parent          # .../db
+BACKEND_DIR = BASE.parent             # raiz do backend
 MIGRATIONS_DIR = BASE / "migrations"
 SEEDS_DIR = BASE / "seeds"
+
+# Respeita DB_PATH (mesma lógica do app/config.py): absoluto (ex: /var/data/copa2026.db
+# no Render) ou relativo à raiz do backend (ex: db/copa2026.db em dev).
+_db_env = os.getenv("DB_PATH", "db/copa2026.db")
+DB_PATH = Path(_db_env) if Path(_db_env).is_absolute() else BACKEND_DIR / _db_env
+DB_PATH.parent.mkdir(parents=True, exist_ok=True)
 
 
 def get_conn():
