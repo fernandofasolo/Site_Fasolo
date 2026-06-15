@@ -109,8 +109,9 @@ INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,est
 -- =========================================================
 -- GRUPO H — Espanha(29) Uruguai(30) Arábia Saudita(31) Cabo Verde(32)
 -- =========================================================
+INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,gols_a,gols_b,status) VALUES
+('grupo','H',1,29,32,'2026-06-15T16:00:00','Mercedes-Benz Stadium','Atlanta','EUA',0,0,'encerrado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','H',1,29,32,'2026-06-15T16:00:00','Mercedes-Benz Stadium','Atlanta','EUA','agendado'),
 ('grupo','H',1,31,30,'2026-06-15T22:00:00','Hard Rock Stadium',    'Miami',  'EUA','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
 ('grupo','H',2,29,31,'2026-06-21T16:00:00','Mercedes-Benz Stadium','Atlanta','EUA','agendado'),
