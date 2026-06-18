@@ -3,7 +3,7 @@ import { useJogos } from '../../hooks/useJogos'
 import JogoCard from './JogoCard'
 
 export default function UltimosResultados() {
-  const { jogos, loading, error } = useJogos({ status: 'encerrado', limit: 5 })
+  const { jogos, loading, error } = useJogos({ status: 'encerrado', limit: 5, order: 'desc' })
 
   if (!loading && jogos.length === 0) return null
 

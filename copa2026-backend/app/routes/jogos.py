@@ -56,6 +56,7 @@ def listar_jogos(
     data: Optional[str] = None,
     selecao_id: Optional[int] = None,
     limit: Optional[int] = None,
+    order: str = "asc",
     page: int = 1,
     per_page: int = 20,
 ):
@@ -82,7 +83,8 @@ def listar_jogos(
         sql = JOGO_SELECT
         if where:
             sql += " WHERE " + " AND ".join(where)
-        sql += " ORDER BY j.data_hora_utc ASC"
+        direction = "DESC" if order.lower() == "desc" else "ASC"
+        sql += f" ORDER BY j.data_hora_utc {direction}"
 
         if limit:
             sql += f" LIMIT {int(limit)}"
