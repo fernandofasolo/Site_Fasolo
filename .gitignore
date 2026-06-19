@@ -9,3 +9,6 @@ dist/
 copa2026/dist/
 public/copa2026/
 .vercel
+
+# Pesquisa Telecom (local only)
+pesquisa-telecom/
