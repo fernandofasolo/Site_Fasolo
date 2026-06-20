@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
 import TabelaGrupo from '../components/grupos/TabelaGrupo'
+import TabelaGeral from '../components/grupos/TabelaGeral'
 import PotesSection from '../components/grupos/PotesSection'
 import { apiFetch } from '../utils/api'
 
 const LETRAS = 'ABCDEFGHIJKL'.split('')
 const ABAS = [
-  { key: 'visao-geral', label: 'Visão Geral' },
-  { key: 'potes',       label: 'Potes' },
+  { key: 'visao-geral',     label: 'Visão Geral' },
+  { key: 'pontos-corridos', label: '★ Pontos Corridos' },
+  { key: 'potes',           label: 'Potes' },
 ]
 
 function Skeleton() {
@@ -76,7 +78,7 @@ export default function GruposPage() {
         </div>
 
         {/* seletor de grupo individual */}
-        {aba !== 'potes' && (
+        {aba !== 'potes' && aba !== 'pontos-corridos' && (
           <div className="flex gap-1 overflow-x-auto pb-1 scrollbar-none">
             <button
               onClick={() => setGrupoAtivo(null)}
@@ -111,6 +113,13 @@ export default function GruposPage() {
           <p className="text-2xl mb-2">⚠️</p>
           <p>Não foi possível carregar os grupos.</p>
         </div>
+      )}
+
+      {/* ── PONTOS CORRIDOS ── */}
+      {aba === 'pontos-corridos' && !error && (
+        loading
+          ? <Skeleton />
+          : <TabelaGeral grupos={grupos} />
       )}
 
       {/* ── POTES ── */}
