@@ -103,8 +103,8 @@ INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,est
 ('grupo','G',1,26,28,'2026-06-16T01:00:00','SoFi Stadium','Los Angeles','EUA',2,2,'encerrado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,gols_a,gols_b,status) VALUES
 ('grupo','G',2,25,26,'2026-06-21T19:00:00','SoFi Stadium','Los Angeles','EUA',0,0,'encerrado');
-INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','G',2,28,27,'2026-06-22T01:00:00','BC Place',    'Vancouver',  'Canadá','agendado');
+INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,gols_a,gols_b,status) VALUES
+('grupo','G',2,28,27,'2026-06-22T01:00:00','BC Place',    'Vancouver',  'Canadá',1,3,'encerrado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
 ('grupo','G',3,27,26,'2026-06-27T03:00:00','Lumen Field','Seattle',    'EUA','agendado'),
 ('grupo','G',3,28,25,'2026-06-27T03:00:00','BC Place',   'Vancouver',  'Canadá','agendado');
