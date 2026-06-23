@@ -154,8 +154,9 @@ INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,est
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,gols_a,gols_b,status) VALUES
 ('grupo','K',1,41,44,'2026-06-17T17:00:00','NRG Stadium',   'Houston',          'EUA',   1,1,'encerrado'),
 ('grupo','K',1,43,42,'2026-06-18T02:00:00','Estádio Azteca','Cidade do México',  'México',1,3,'encerrado');
+INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,gols_a,gols_b,status) VALUES
+('grupo','K',2,41,43,'2026-06-23T17:00:00','NRG Stadium',   'Houston',          'EUA',   5,0,'encerrado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('grupo','K',2,41,43,'2026-06-23T17:00:00','NRG Stadium',   'Houston',          'EUA',   'agendado'),
 ('grupo','K',2,42,44,'2026-06-24T02:00:00','Estadio Akron', 'Guadalajara',       'México','agendado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
 ('grupo','K',3,42,41,'2026-06-27T23:30:00','Hard Rock Stadium',    'Miami',  'EUA','agendado'),
