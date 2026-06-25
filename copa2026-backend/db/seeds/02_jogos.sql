@@ -25,8 +25,8 @@ INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,est
 ('grupo','A',2, 4, 3,'2026-06-18T16:00:00','Mercedes-Benz Stadium','Atlanta',         'EUA',   1,1,'encerrado'),
 ('grupo','A',2, 1, 2,'2026-06-19T01:00:00','Estadio Akron',        'Guadalajara',     'México',1,0,'encerrado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,gols_a,gols_b,status) VALUES
-('grupo','A',3, 4, 1,'2026-06-25T01:00:00','Estádio Azteca',       'Cidade do México','México',0,1,'encerrado'),
-('grupo','A',3, 3, 2,'2026-06-25T01:00:00','Estadio BBVA',         'Monterrey',       'México',1,2,'encerrado');
+('grupo','A',3, 4, 1,'2026-06-25T01:00:00','Estádio Azteca',       'Cidade do México','México',0,3,'encerrado'),
+('grupo','A',3, 3, 2,'2026-06-25T01:00:00','Estadio BBVA',         'Monterrey',       'México',1,0,'encerrado');
 
 -- =========================================================
 -- GRUPO B — Canadá(5) Suíça(6) Catar(7) Bósnia(8)
@@ -39,7 +39,7 @@ INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,est
 ('grupo','B',2, 5, 7,'2026-06-18T22:00:00','BC Place',     'Vancouver',   'Canadá',6,0,'encerrado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,gols_a,gols_b,status) VALUES
 ('grupo','B',3, 6, 5,'2026-06-24T19:00:00','BC Place',     'Vancouver',   'Canadá',2,1,'encerrado'),
-('grupo','B',3, 8, 7,'2026-06-24T19:00:00','Lumen Field',  'Seattle',     'EUA',  2,2,'encerrado');
+('grupo','B',3, 8, 7,'2026-06-24T19:00:00','Lumen Field',  'Seattle',     'EUA',  3,1,'encerrado');
 
 -- =========================================================
 -- GRUPO C — Brasil(9) Marrocos(10) Escócia(11) Haiti(12)
@@ -51,8 +51,8 @@ INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,est
 ('grupo','C',2,11,10,'2026-06-19T22:00:00','Gillette Stadium',       'Boston',      'EUA',0,1,'encerrado'),
 ('grupo','C',2, 9,12,'2026-06-20T00:30:00','Lincoln Financial Field','Filadélfia',  'EUA',3,0,'encerrado');
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,gols_a,gols_b,status) VALUES
-('grupo','C',3,11, 9,'2026-06-24T22:00:00','Hard Rock Stadium',      'Miami',       'EUA',0,2,'encerrado'),
-('grupo','C',3,10,12,'2026-06-24T22:00:00','Mercedes-Benz Stadium',  'Atlanta',     'EUA',3,0,'encerrado');
+('grupo','C',3,11, 9,'2026-06-24T22:00:00','Hard Rock Stadium',      'Miami',       'EUA',0,3,'encerrado'),
+('grupo','C',3,10,12,'2026-06-24T22:00:00','Mercedes-Benz Stadium',  'Atlanta',     'EUA',4,2,'encerrado');
 
 -- =========================================================
 -- GRUPO D — EUA(13) Austrália(14) Paraguai(15) Turquia(16)
