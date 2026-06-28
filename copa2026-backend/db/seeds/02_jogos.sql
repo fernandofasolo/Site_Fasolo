@@ -173,3 +173,28 @@ INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,est
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,gols_a,gols_b,status) VALUES
 ('grupo','L',3,47,45,'2026-06-27T21:00:00','MetLife Stadium',        'Nova York',  'EUA',0,2,'encerrado'),
 ('grupo','L',3,46,48,'2026-06-27T21:00:00','Lincoln Financial Field','Filadélfia', 'EUA',2,1,'encerrado');
+
+-- =========================================================
+-- MATA-MATA — ROUND OF 32 (16-avos / "Oitavas" no app) — 28/06 a 03/07
+-- Chaveamento oficial FIFA (Wikipedia). 8 melhores 3ºs: grupos B,D,E,F,I,J,K,L.
+-- Confrontos (Match 73–88 FIFA):
+--   2A×2B, 1E×3D, 1F×2C, 1C×2F, 1I×3F, 2E×2I, 1A×3E, 1L×3K,
+--   1D×3B, 1G×3I, 2K×2L, 1H×2J, 1B×3J, 1J×2H, 1K×3L, 2D×2G
+-- =========================================================
+INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
+('oitavas',NULL,NULL, 3, 5,'2026-06-28T19:00:00','SoFi Stadium',          'Inglewood',       'EUA',   'agendado'), -- M73 África do Sul × Canadá
+('oitavas',NULL,NULL, 9,22,'2026-06-29T17:00:00','NRG Stadium',           'Houston',         'EUA',   'agendado'), -- M76 Brasil × Japão
+('oitavas',NULL,NULL,17,15,'2026-06-29T20:30:00','Gillette Stadium',      'Foxborough',      'EUA',   'agendado'), -- M74 Alemanha × Paraguai
+('oitavas',NULL,NULL,21,10,'2026-06-30T01:00:00','Estadio BBVA',          'Guadalupe',       'México','agendado'), -- M75 Holanda × Marrocos
+('oitavas',NULL,NULL,19,35,'2026-06-30T17:00:00','AT&T Stadium',          'Arlington',       'EUA',   'agendado'), -- M78 Costa do Marfim × Noruega
+('oitavas',NULL,NULL,33,24,'2026-06-30T21:00:00','MetLife Stadium',       'Nova York',       'EUA',   'agendado'), -- M77 França × Suécia
+('oitavas',NULL,NULL, 1,18,'2026-07-01T01:00:00','Estádio Azteca',        'Cidade do México','México','agendado'), -- M79 México × Equador
+('oitavas',NULL,NULL,45,44,'2026-07-01T16:00:00','Mercedes-Benz Stadium', 'Atlanta',         'EUA',   'agendado'), -- M80 Inglaterra × Rep. Dem. do Congo
+('oitavas',NULL,NULL,25,34,'2026-07-01T20:00:00','Lumen Field',           'Seattle',         'EUA',   'agendado'), -- M82 Bélgica × Senegal
+('oitavas',NULL,NULL,13, 8,'2026-07-02T00:00:00','Levi''s Stadium',       'Santa Clara',     'EUA',   'agendado'), -- M81 Estados Unidos × Bósnia e Herzegovina
+('oitavas',NULL,NULL,29,38,'2026-07-02T19:00:00','SoFi Stadium',          'Inglewood',       'EUA',   'agendado'), -- M84 Espanha × Áustria
+('oitavas',NULL,NULL,41,46,'2026-07-02T23:00:00','BMO Field',             'Toronto',         'Canadá','agendado'), -- M83 Portugal × Croácia
+('oitavas',NULL,NULL, 6,39,'2026-07-03T03:00:00','BC Place',              'Vancouver',       'Canadá','agendado'), -- M85 Suíça × Argélia
+('oitavas',NULL,NULL,14,27,'2026-07-03T18:00:00','AT&T Stadium',          'Arlington',       'EUA',   'agendado'), -- M88 Austrália × Egito
+('oitavas',NULL,NULL,37,32,'2026-07-03T22:00:00','Hard Rock Stadium',     'Miami Gardens',   'EUA',   'agendado'), -- M86 Argentina × Cabo Verde
+('oitavas',NULL,NULL,42,48,'2026-07-04T01:30:00','Arrowhead Stadium',     'Kansas City',     'EUA',   'agendado'); -- M87 Colômbia × Gana
