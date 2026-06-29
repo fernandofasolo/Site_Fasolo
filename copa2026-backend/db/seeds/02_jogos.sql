@@ -181,8 +181,11 @@ INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,est
 --   2A×2B, 1E×3D, 1F×2C, 1C×2F, 1I×3F, 2E×2I, 1A×3E, 1L×3K,
 --   1D×3B, 1G×3I, 2K×2L, 1H×2J, 1B×3J, 1J×2H, 1K×3L, 2D×2G
 -- =========================================================
+-- Encerrados:
+INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,gols_a,gols_b,status) VALUES
+('oitavas',NULL,NULL, 3, 5,'2026-06-28T19:00:00','SoFi Stadium',          'Inglewood',       'EUA',   0,1,'encerrado'); -- M73 África do Sul 0×1 Canadá (Eustáquio 90+2') — Canadá avança
+-- Agendados:
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('oitavas',NULL,NULL, 3, 5,'2026-06-28T19:00:00','SoFi Stadium',          'Inglewood',       'EUA',   'agendado'), -- M73 África do Sul × Canadá
 ('oitavas',NULL,NULL, 9,22,'2026-06-29T17:00:00','NRG Stadium',           'Houston',         'EUA',   'agendado'), -- M76 Brasil × Japão
 ('oitavas',NULL,NULL,17,15,'2026-06-29T20:30:00','Gillette Stadium',      'Foxborough',      'EUA',   'agendado'), -- M74 Alemanha × Paraguai
 ('oitavas',NULL,NULL,21,10,'2026-06-30T01:00:00','Estadio BBVA',          'Guadalupe',       'México','agendado'), -- M75 Holanda × Marrocos
