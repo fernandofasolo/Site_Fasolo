@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS jogadores (
 
 CREATE TABLE IF NOT EXISTS jogos (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    fase TEXT NOT NULL CHECK(fase IN ('grupo','oitavas','quartas','semi','terceiro','final')),
+    fase TEXT NOT NULL CHECK(fase IN ('grupo','dezesseis_avos','oitavas','quartas','semi','terceiro','final')),
     grupo TEXT,
     rodada INTEGER,
     selecao_a_id INTEGER REFERENCES selecoes(id),

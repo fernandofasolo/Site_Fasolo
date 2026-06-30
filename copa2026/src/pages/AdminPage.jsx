@@ -5,8 +5,9 @@ import { toHorarioBrasilia } from '../utils/formatDate'
 import Bandeira from '../components/ui/Bandeira'
 
 const FASES = [
-  { value: 'grupo',    label: 'Grupos'       },
-  { value: 'oitavas',  label: 'Oitavas'      },
+  { value: 'grupo',          label: 'Grupos'       },
+  { value: 'dezesseis_avos', label: '16-avos'      },
+  { value: 'oitavas',        label: 'Oitavas'      },
   { value: 'quartas',  label: 'Quartas'      },
   { value: 'semi',     label: 'Semis'        },
   { value: 'terceiro', label: '3° lugar'     },

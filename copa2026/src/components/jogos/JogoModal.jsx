@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { toHorarioBrasilia } from '../../utils/formatDate'
 import { apiFetch } from '../../utils/api'
+import { faseLabel, temPenaltis } from '../../utils/fases'
 import Bandeira from '../ui/Bandeira'
 
 const STATUS_LABEL = {
@@ -70,9 +71,10 @@ export default function JogoModal({ jogo, onClose }) {
     return () => window.removeEventListener('keydown', onKey)
   }, [onClose])
 
-  const { selecao_a, selecao_b, gols_a, gols_b, status, data_hora_utc,
+  const { selecao_a, selecao_b, gols_a, gols_b, penaltis_a, penaltis_b, status, data_hora_utc,
           estadio, cidade, pais_sede, fase, grupo } = jogo
   const temPlacar = status !== 'agendado'
+  const penaltis  = temPenaltis(jogo)
 
   return (
     <div
@@ -83,7 +85,7 @@ export default function JogoModal({ jogo, onClose }) {
         {/* header */}
         <div className="flex items-center justify-between p-4 border-b border-copa-border">
           <span className="text-xs text-gray-500 tracking-widest uppercase">
-            {fase === 'grupo' ? `Fase de Grupos — Grupo ${grupo}` : fase}
+            {fase === 'grupo' ? `Fase de Grupos — Grupo ${grupo}` : faseLabel(fase, grupo)}
           </span>
           <button
             onClick={onClose}
@@ -111,6 +113,11 @@ export default function JogoModal({ jogo, onClose }) {
               ) : (
                 <span className="font-mono text-3xl font-bold text-copa-yellow">
                   {toHorarioBrasilia(data_hora_utc).split(', ')[1]}
+                </span>
+              )}
+              {penaltis && (
+                <span className="font-mono text-sm text-copa-yellow tabular-nums">
+                  ({penaltis_a} — {penaltis_b} pên.)
                 </span>
               )}
               <span className={`badge-${status}`}>{STATUS_LABEL[status]}</span>

@@ -1,4 +1,5 @@
 import { toHorarioBrasilia } from '../../utils/formatDate'
+import { faseLabel, temPenaltis } from '../../utils/fases'
 import Bandeira from '../ui/Bandeira'
 
 const STATUS_LABEL = {
@@ -8,17 +9,16 @@ const STATUS_LABEL = {
 }
 
 export default function JogoCard({ jogo, compact = false }) {
-  const { selecao_a, selecao_b, gols_a, gols_b, status, data_hora_utc, estadio, cidade, fase, grupo } = jogo
+  const { selecao_a, selecao_b, gols_a, gols_b, penaltis_a, penaltis_b, status, data_hora_utc, estadio, cidade, fase, grupo } = jogo
   const encerrado = status === 'encerrado'
   const aoVivo    = status === 'em_andamento'
+  const penaltis  = temPenaltis(jogo)
 
   return (
     <div className="card flex flex-col gap-3 min-w-[260px] sm:min-w-0">
       {/* cabeçalho */}
       <div className="flex items-center justify-between text-xs text-gray-500">
-        <span>
-          {fase === 'grupo' ? `Grupo ${grupo}` : fase.charAt(0).toUpperCase() + fase.slice(1)}
-        </span>
+        <span>{faseLabel(fase, grupo)}</span>
         <span className={`badge-${status}`}>{STATUS_LABEL[status]}</span>
       </div>
 
@@ -41,6 +41,11 @@ export default function JogoCard({ jogo, compact = false }) {
           ) : (
             <span className="font-mono text-lg font-semibold text-gray-500">
               {toHorarioBrasilia(data_hora_utc).split(', ')[1] ?? '--:--'}
+            </span>
+          )}
+          {penaltis && (
+            <span className="font-mono text-[11px] text-copa-yellow tabular-nums mt-0.5">
+              ({penaltis_a} — {penaltis_b} pên.)
             </span>
           )}
           {!compact && (

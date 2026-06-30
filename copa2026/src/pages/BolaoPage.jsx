@@ -7,7 +7,7 @@ import { computarTodosGrupos, extrairClassificados } from '../utils/classificaca
 import { buildBracket } from '../utils/chaveamento'
 import Bandeira from '../components/ui/Bandeira'
 
-const ABAS = ['Grupos', 'Oitavas', 'Quartas', 'Semis', 'Final']
+const ABAS = ['Grupos', '16-avos', 'Oitavas', 'Quartas', 'Semis', 'Final']
 
 // ── Gestão de bolões ──────────────────────────────────────────────────
 function SeletorBolao({ boloes, bolaoAtivo, onSelecionar, onCreate, onDeletar }) {
@@ -335,6 +335,13 @@ export default function BolaoPage() {
                       onMudar={handleMudarPalpite}
                     />
                   )}
+                  {aba === '16-avos' && (
+                    <RodadaElim
+                      jogos={bracket.dezesseis_avos}
+                      onVencedor={handleKnockoutVencedor}
+                      colunas={4}
+                    />
+                  )}
                   {aba === 'Oitavas' && (
                     <RodadaElim
                       jogos={bracket.oitavas}
@@ -350,24 +357,11 @@ export default function BolaoPage() {
                     />
                   )}
                   {aba === 'Semis' && (
-                    <div className="space-y-6">
-                      <div>
-                        <p className="text-xs text-gray-600 uppercase tracking-widest mb-3">Semi-Final</p>
-                        <RodadaElim
-                          jogos={bracket.semis}
-                          onVencedor={handleKnockoutVencedor}
-                          colunas={2}
-                        />
-                      </div>
-                      <div>
-                        <p className="text-xs text-gray-600 uppercase tracking-widest mb-3">Meia-Final</p>
-                        <RodadaElim
-                          jogos={bracket.meias_finais}
-                          onVencedor={handleKnockoutVencedor}
-                          colunas={2}
-                        />
-                      </div>
-                    </div>
+                    <RodadaElim
+                      jogos={bracket.semi}
+                      onVencedor={handleKnockoutVencedor}
+                      colunas={2}
+                    />
                   )}
                   {aba === 'Final' && (
                     <div className="space-y-6">
@@ -422,7 +416,7 @@ export default function BolaoPage() {
           {/* dica */}
           <div className="text-[11px] text-gray-700 leading-relaxed">
             <p><span className="text-gray-500">Grupos →</span> Preencha os 72 placares da fase de grupos.</p>
-            <p className="mt-1"><span className="text-gray-500">Oitavas em diante →</span> Clique numa seleção para indicar o vencedor.</p>
+            <p className="mt-1"><span className="text-gray-500">16-avos em diante →</span> Clique numa seleção para indicar o vencedor.</p>
             <p className="mt-1">Os palpites são salvos automaticamente.</p>
           </div>
         </div>

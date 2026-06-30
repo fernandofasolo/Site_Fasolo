@@ -1,4 +1,5 @@
 import { toHora } from '../../utils/formatDate'
+import { faseLabel, temPenaltis } from '../../utils/fases'
 import Bandeira from '../ui/Bandeira'
 
 const STATUS_LABEL = {
@@ -8,10 +9,11 @@ const STATUS_LABEL = {
 }
 
 export default function JogoRow({ jogo, onClick }) {
-  const { selecao_a, selecao_b, gols_a, gols_b, status, data_hora_utc, estadio, cidade, fase, grupo } = jogo
+  const { selecao_a, selecao_b, gols_a, gols_b, penaltis_a, penaltis_b, status, data_hora_utc, estadio, cidade, fase, grupo } = jogo
   const encerrado = status === 'encerrado'
   const aoVivo    = status === 'em_andamento'
   const temPlacar = encerrado || aoVivo
+  const penaltis  = temPenaltis(jogo)
 
   return (
     <button
@@ -37,6 +39,11 @@ export default function JogoRow({ jogo, onClick }) {
           ) : (
             <span className="font-mono text-xl font-semibold text-copa-yellow">
               {toHora(data_hora_utc)}
+            </span>
+          )}
+          {penaltis && (
+            <span className="font-mono text-[11px] text-copa-yellow tabular-nums">
+              ({penaltis_a} &mdash; {penaltis_b} pên.)
             </span>
           )}
           <span className={`badge-${status} text-[10px]`}>{STATUS_LABEL[status]}</span>
@@ -70,6 +77,9 @@ export default function JogoRow({ jogo, onClick }) {
           ) : (
             <span className="font-mono text-base text-copa-yellow">{toHora(data_hora_utc)}</span>
           )}
+          {penaltis && (
+            <span className="font-mono text-[10px] text-copa-yellow tabular-nums">({penaltis_a} — {penaltis_b} pên.)</span>
+          )}
           <span className={`badge-${status} text-[10px]`}>{STATUS_LABEL[status]}</span>
         </div>
       </div>
@@ -77,7 +87,7 @@ export default function JogoRow({ jogo, onClick }) {
       {/* rodapé sempre visível */}
       <div className="mt-2 flex items-center justify-between text-[11px] text-gray-600 border-t border-copa-border/50 pt-2">
         <span>{estadio} &bull; {cidade}</span>
-        <span>{fase === 'grupo' ? `Grupo ${grupo}` : fase}</span>
+        <span>{faseLabel(fase, grupo)}</span>
       </div>
     </button>
   )

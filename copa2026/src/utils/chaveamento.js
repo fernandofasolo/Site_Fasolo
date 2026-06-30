@@ -20,7 +20,8 @@ export const R32_JOGOS = [
   { id: 'M16', slotA: 'T3', slotB: 'T7' },
 ]
 
-export const QUARTAS_JOGOS = [
+// Oitavas de final (Round of 16) — 8 jogos. IDs Q* mantidos por compat. de palpites salvos.
+export const OITAVAS_JOGOS = [
   { id: 'Q1', parentA: 'M01', parentB: 'M02' },
   { id: 'Q2', parentA: 'M03', parentB: 'M04' },
   { id: 'Q3', parentA: 'M05', parentB: 'M06' },
@@ -31,14 +32,16 @@ export const QUARTAS_JOGOS = [
   { id: 'Q8', parentA: 'M15', parentB: 'M16' },
 ]
 
-export const SEMIS_JOGOS = [
+// Quartas de final — 4 jogos. IDs S* mantidos por compat.
+export const QUARTAS_JOGOS = [
   { id: 'S1', parentA: 'Q1', parentB: 'Q2' },
   { id: 'S2', parentA: 'Q3', parentB: 'Q4' },
   { id: 'S3', parentA: 'Q5', parentB: 'Q6' },
   { id: 'S4', parentA: 'Q7', parentB: 'Q8' },
 ]
 
-export const MEIASFINAIS_JOGOS = [
+// Semifinais — 2 jogos. IDs SF* mantidos por compat.
+export const SEMIS_JOGOS = [
   { id: 'SF1', parentA: 'S1', parentB: 'S2' },
   { id: 'SF2', parentA: 'S3', parentB: 'S4' },
 ]
@@ -67,8 +70,8 @@ export function buildBracket(classificados, knockoutDecisoes = {}) {
     return side === 'a' ? winners[matchId + '_A'] : winners[matchId + '_B']
   }
 
-  // R32: resolve from group results
-  const oitavas = R32_JOGOS.map(jogo => {
+  // 16-avos (Round of 32): resolve from group results
+  const dezesseis_avos = R32_JOGOS.map(jogo => {
     const teamA = resolveSlot(jogo.slotA, classificados)
     const teamB = resolveSlot(jogo.slotB, classificados)
     const vencedorId = knockoutDecisoes[jogo.id]
@@ -93,9 +96,9 @@ export function buildBracket(classificados, knockoutDecisoes = {}) {
     })
   }
 
-  const quartas     = buildRound(QUARTAS_JOGOS)
-  const semis       = buildRound(SEMIS_JOGOS)
-  const meias_finais = buildRound(MEIASFINAIS_JOGOS)
+  const oitavas = buildRound(OITAVAS_JOGOS)
+  const quartas = buildRound(QUARTAS_JOGOS)
+  const semi    = buildRound(SEMIS_JOGOS)
 
   const terceiro = {
     ...TERCEIRO_JOGO,
@@ -119,5 +122,5 @@ export function buildBracket(classificados, knockoutDecisoes = {}) {
     })(),
   }
 
-  return { oitavas, quartas, semis, meias_finais, terceiro, final }
+  return { dezesseis_avos, oitavas, quartas, semi, terceiro, final }
 }
