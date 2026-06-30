@@ -101,7 +101,7 @@ export default function JogoModal({ jogo, onClose }) {
             {/* seleção A */}
             <div className="flex flex-col items-center gap-2 flex-1">
               <Bandeira iso={selecao_a?.codigo_iso} className="h-14 w-auto" />
-              <span className="text-sm font-medium text-gray-200">{selecao_a?.nome_pt}</span>
+              <span className="text-sm font-medium text-gray-200">{selecao_a?.nome_pt ?? 'A definir'}</span>
             </div>
 
             {/* placar / hora */}
@@ -126,7 +126,7 @@ export default function JogoModal({ jogo, onClose }) {
             {/* seleção B */}
             <div className="flex flex-col items-center gap-2 flex-1">
               <Bandeira iso={selecao_b?.codigo_iso} className="h-14 w-auto" />
-              <span className="text-sm font-medium text-gray-200">{selecao_b?.nome_pt}</span>
+              <span className="text-sm font-medium text-gray-200">{selecao_b?.nome_pt ?? 'A definir'}</span>
             </div>
           </div>
 

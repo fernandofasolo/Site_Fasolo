@@ -25,7 +25,7 @@ export default function JogoRow({ jogo, onClick }) {
         {/* seleção A */}
         <div className="flex items-center gap-3 justify-end">
           <span className="text-sm text-gray-200 font-medium group-hover:text-white transition-colors text-right">
-            {selecao_a?.nome_pt}
+            {selecao_a?.nome_pt ?? 'A definir'}
           </span>
           <Bandeira iso={selecao_a?.codigo_iso} className="h-9 w-auto" />
         </div>
@@ -54,7 +54,7 @@ export default function JogoRow({ jogo, onClick }) {
         <div className="flex items-center gap-3">
           <Bandeira iso={selecao_b?.codigo_iso} className="h-9 w-auto" />
           <span className="text-sm text-gray-200 font-medium group-hover:text-white transition-colors">
-            {selecao_b?.nome_pt}
+            {selecao_b?.nome_pt ?? 'A definir'}
           </span>
         </div>
       </div>
@@ -64,11 +64,11 @@ export default function JogoRow({ jogo, onClick }) {
         <div className="flex-1 min-w-0 flex flex-col gap-1.5">
           <div className="flex items-center gap-2">
             <Bandeira iso={selecao_a?.codigo_iso} className="h-5 w-auto shrink-0" />
-            <p className="text-sm font-medium text-gray-200 truncate">{selecao_a?.nome_pt}</p>
+            <p className="text-sm font-medium text-gray-200 truncate">{selecao_a?.nome_pt ?? 'A definir'}</p>
           </div>
           <div className="flex items-center gap-2">
             <Bandeira iso={selecao_b?.codigo_iso} className="h-5 w-auto shrink-0" />
-            <p className="text-sm font-medium text-gray-200 truncate">{selecao_b?.nome_pt}</p>
+            <p className="text-sm font-medium text-gray-200 truncate">{selecao_b?.nome_pt ?? 'A definir'}</p>
           </div>
         </div>
         <div className="flex flex-col items-end gap-1 shrink-0">

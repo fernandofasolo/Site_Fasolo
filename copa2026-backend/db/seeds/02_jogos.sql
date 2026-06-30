@@ -203,3 +203,14 @@ INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,est
 ('dezesseis_avos',NULL,NULL,14,27,'2026-07-03T18:00:00','AT&T Stadium',          'Arlington',       'EUA',   'agendado'), -- M88 Austrália × Egito
 ('dezesseis_avos',NULL,NULL,37,32,'2026-07-03T22:00:00','Hard Rock Stadium',     'Miami Gardens',   'EUA',   'agendado'), -- M86 Argentina × Cabo Verde
 ('dezesseis_avos',NULL,NULL,42,48,'2026-07-04T01:30:00','Arrowhead Stadium',     'Kansas City',     'EUA',   'agendado'); -- M87 Colômbia × Gana
+
+-- =========================================================
+-- OITAVAS DE FINAL (Round of 16) — 04/07 a 07/07
+-- Chaveamento oficial FIFA (Wikipedia). Confrontos M89–M96.
+-- Vencedores já definidos do R32 posicionados; selecao NULL = "a definir"
+-- (depende de jogo do R32 ainda não disputado). Preencher conforme avançam.
+-- =========================================================
+INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
+('oitavas',NULL,NULL,15,NULL,'2026-07-04T21:00:00','Lincoln Financial Field','Filadélfia',     'EUA','agendado'), -- M89 Paraguai × (vencedor M77 França/Suécia)
+('oitavas',NULL,NULL, 5,  10,'2026-07-04T17:00:00','NRG Stadium',            'Houston',        'EUA','agendado'), -- M90 Canadá × Marrocos
+('oitavas',NULL,NULL, 9,NULL,'2026-07-05T20:00:00','MetLife Stadium',        'East Rutherford','EUA','agendado'); -- M91 Brasil × (vencedor M78 Costa do Marfim/Noruega)

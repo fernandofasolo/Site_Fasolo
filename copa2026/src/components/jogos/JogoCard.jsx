@@ -28,7 +28,7 @@ export default function JogoCard({ jogo, compact = false }) {
         <div className="flex flex-col items-center gap-1 flex-1">
           <Bandeira iso={selecao_a?.codigo_iso} className="h-10 w-auto" />
           <span className="text-xs text-gray-300 text-center leading-tight">
-            {selecao_a?.nome_pt}
+            {selecao_a?.nome_pt ?? 'A definir'}
           </span>
         </div>
 
@@ -59,7 +59,7 @@ export default function JogoCard({ jogo, compact = false }) {
         <div className="flex flex-col items-center gap-1 flex-1">
           <Bandeira iso={selecao_b?.codigo_iso} className="h-10 w-auto" />
           <span className="text-xs text-gray-300 text-center leading-tight">
-            {selecao_b?.nome_pt}
+            {selecao_b?.nome_pt ?? 'A definir'}
           </span>
         </div>
       </div>
