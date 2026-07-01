@@ -185,15 +185,15 @@ INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,est
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,gols_a,gols_b,status) VALUES
 ('dezesseis_avos',NULL,NULL, 3, 5,'2026-06-28T19:00:00','SoFi Stadium',          'Inglewood',       'EUA',   0,1,'encerrado'), -- M73 África do Sul 0×1 Canadá (Eustáquio 90+2') — Canadá avança
 ('dezesseis_avos',NULL,NULL, 9,22,'2026-06-29T17:00:00','NRG Stadium',           'Houston',         'EUA',   2,1,'encerrado'), -- M76 Brasil 2×1 Japão (Casemiro 56', Martinelli 90+1'; Sano 29') — Brasil avança
-('dezesseis_avos',NULL,NULL,19,35,'2026-06-30T17:00:00','AT&T Stadium',          'Arlington',       'EUA',   1,2,'encerrado'); -- M78 Costa do Marfim 1×2 Noruega (Diallo 74'; Nusa 39', Haaland 86') — Noruega avança
+('dezesseis_avos',NULL,NULL,19,35,'2026-06-30T17:00:00','AT&T Stadium',          'Arlington',       'EUA',   1,2,'encerrado'), -- M78 Costa do Marfim 1×2 Noruega (Diallo 74'; Nusa 39', Haaland 86') — Noruega avança
+('dezesseis_avos',NULL,NULL,33,24,'2026-06-30T21:00:00','MetLife Stadium',       'Nova York',       'EUA',   3,0,'encerrado'), -- M77 França 3×0 Suécia (Mbappé 45', Barcola 53', Mbappé 74') — França avança
+('dezesseis_avos',NULL,NULL, 1,18,'2026-07-01T01:00:00','Estádio Azteca',        'Cidade do México','México',2,0,'encerrado'); -- M79 México 2×0 Equador (Quiñones 22', Jiménez 31') — México avança
 -- Encerrados (decididos nos pênaltis):
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,gols_a,gols_b,penaltis_a,penaltis_b,status) VALUES
 ('dezesseis_avos',NULL,NULL,17,15,'2026-06-29T20:30:00','Gillette Stadium',      'Foxborough',      'EUA',   1,1,3,4,'encerrado'), -- M74 Alemanha 1×1 Paraguai (Havertz; Enciso) — Paraguai vence 4×3 nos pênaltis (morte súbita) e avança
 ('dezesseis_avos',NULL,NULL,21,10,'2026-06-30T01:00:00','Estadio BBVA',          'Guadalupe',       'México',1,1,2,3,'encerrado'); -- M75 Holanda 1×1 Marrocos (Gakpo 72'; Diop 90+) — Marrocos vence 3×2 nos pênaltis e avança
 -- Agendados:
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('dezesseis_avos',NULL,NULL,33,24,'2026-06-30T21:00:00','MetLife Stadium',       'Nova York',       'EUA',   'agendado'), -- M77 França × Suécia
-('dezesseis_avos',NULL,NULL, 1,18,'2026-07-01T01:00:00','Estádio Azteca',        'Cidade do México','México','agendado'), -- M79 México × Equador
 ('dezesseis_avos',NULL,NULL,45,44,'2026-07-01T16:00:00','Mercedes-Benz Stadium', 'Atlanta',         'EUA',   'agendado'), -- M80 Inglaterra × Rep. Dem. do Congo
 ('dezesseis_avos',NULL,NULL,25,34,'2026-07-01T20:00:00','Lumen Field',           'Seattle',         'EUA',   'agendado'), -- M82 Bélgica × Senegal
 ('dezesseis_avos',NULL,NULL,13, 8,'2026-07-02T00:00:00','Levi''s Stadium',       'Santa Clara',     'EUA',   'agendado'), -- M81 Estados Unidos × Bósnia e Herzegovina
@@ -211,6 +211,6 @@ INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,est
 -- (depende de jogo do R32 ainda não disputado). Preencher conforme avançam.
 -- =========================================================
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('oitavas',NULL,NULL,15,NULL,'2026-07-04T21:00:00','Lincoln Financial Field','Filadélfia',     'EUA','agendado'), -- M89 Paraguai × (vencedor M77 França/Suécia)
+('oitavas',NULL,NULL,15,  33,'2026-07-04T21:00:00','Lincoln Financial Field','Filadélfia',     'EUA','agendado'), -- M89 Paraguai × França (vencedor M77)
 ('oitavas',NULL,NULL, 5,  10,'2026-07-04T17:00:00','NRG Stadium',            'Houston',        'EUA','agendado'), -- M90 Canadá × Marrocos
 ('oitavas',NULL,NULL, 9,  35,'2026-07-05T20:00:00','MetLife Stadium',        'East Rutherford','EUA','agendado'); -- M91 Brasil × Noruega (vencedor M78)
