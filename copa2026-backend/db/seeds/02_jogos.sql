@@ -213,4 +213,9 @@ INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,est
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
 ('oitavas',NULL,NULL,15,  33,'2026-07-04T21:00:00','Lincoln Financial Field','Filadélfia',     'EUA','agendado'), -- M89 Paraguai × França (vencedor M77)
 ('oitavas',NULL,NULL, 5,  10,'2026-07-04T17:00:00','NRG Stadium',            'Houston',        'EUA','agendado'), -- M90 Canadá × Marrocos
-('oitavas',NULL,NULL, 9,  35,'2026-07-05T20:00:00','MetLife Stadium',        'East Rutherford','EUA','agendado'); -- M91 Brasil × Noruega (vencedor M78)
+('oitavas',NULL,NULL, 9,  35,'2026-07-05T20:00:00','MetLife Stadium',        'East Rutherford','EUA','agendado'), -- M91 Brasil × Noruega (vencedor M78)
+('oitavas',NULL,NULL, 1,NULL,'2026-07-06T00:00:00','Estádio Azteca',         'Cidade do México','México','agendado'), -- M92 México × (vencedor M80 Inglaterra/Congo)
+('oitavas',NULL,NULL,NULL,NULL,'2026-07-06T19:00:00','AT&T Stadium',          'Arlington',      'EUA',   'agendado'), -- M93 (vencedor M83 Portugal/Croácia) × (vencedor M84 Espanha/Áustria)
+('oitavas',NULL,NULL,NULL,NULL,'2026-07-07T00:00:00','Lumen Field',           'Seattle',        'EUA',   'agendado'), -- M94 (vencedor M81 EUA/Bósnia) × (vencedor M82 Bélgica/Senegal)
+('oitavas',NULL,NULL,NULL,NULL,'2026-07-07T16:00:00','Mercedes-Benz Stadium', 'Atlanta',        'EUA',   'agendado'), -- M95 (vencedor M86 Argentina/Cabo Verde) × (vencedor M88 Austrália/Egito)
+('oitavas',NULL,NULL,NULL,NULL,'2026-07-07T20:00:00','BC Place',              'Vancouver',      'Canadá','agendado'); -- M96 (vencedor M85 Suíça/Argélia) × (vencedor M87 Colômbia/Gana)
