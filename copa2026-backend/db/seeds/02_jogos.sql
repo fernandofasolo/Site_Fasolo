@@ -190,14 +190,14 @@ INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,est
 ('dezesseis_avos',NULL,NULL, 1,18,'2026-07-01T01:00:00','Estádio Azteca',        'Cidade do México','México',2,0,'encerrado'), -- M79 México 2×0 Equador (Quiñones 22', Jiménez 31') — México avança
 ('dezesseis_avos',NULL,NULL,45,44,'2026-07-01T16:00:00','Mercedes-Benz Stadium', 'Atlanta',         'EUA',   2,1,'encerrado'), -- M80 Inglaterra 2×1 Rep. Dem. do Congo (Kane 75', 86'; Cipenga 7') — Inglaterra avança
 ('dezesseis_avos',NULL,NULL,25,34,'2026-07-01T20:00:00','Lumen Field',           'Seattle',         'EUA',   3,2,'encerrado'), -- M82 Bélgica 3×2 Senegal (a.e.t.) (Lukaku 86', Tielemans 89'/120+5' pên.; Diarra 25', I. Sarr) — Bélgica avança
-('dezesseis_avos',NULL,NULL,13, 8,'2026-07-02T00:00:00','Levi''s Stadium',       'Santa Clara',     'EUA',   2,0,'encerrado'); -- M81 Estados Unidos 2×0 Bósnia e Herzegovina (Balogun 45', Tillman 82') — EUA avança (Balogun expulso 64')
+('dezesseis_avos',NULL,NULL,13, 8,'2026-07-02T00:00:00','Levi''s Stadium',       'Santa Clara',     'EUA',   2,0,'encerrado'), -- M81 Estados Unidos 2×0 Bósnia e Herzegovina (Balogun 45', Tillman 82') — EUA avança (Balogun expulso 64')
+('dezesseis_avos',NULL,NULL,29,38,'2026-07-02T19:00:00','SoFi Stadium',          'Inglewood',       'EUA',   3,0,'encerrado'); -- M84 Espanha 3×0 Áustria (Oyarzabal 36', 89'; Porro 66') — Espanha avança
 -- Encerrados (decididos nos pênaltis):
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,gols_a,gols_b,penaltis_a,penaltis_b,status) VALUES
 ('dezesseis_avos',NULL,NULL,17,15,'2026-06-29T20:30:00','Gillette Stadium',      'Foxborough',      'EUA',   1,1,3,4,'encerrado'), -- M74 Alemanha 1×1 Paraguai (Havertz; Enciso) — Paraguai vence 4×3 nos pênaltis (morte súbita) e avança
 ('dezesseis_avos',NULL,NULL,21,10,'2026-06-30T01:00:00','Estadio BBVA',          'Guadalupe',       'México',1,1,2,3,'encerrado'); -- M75 Holanda 1×1 Marrocos (Gakpo 72'; Diop 90+) — Marrocos vence 3×2 nos pênaltis e avança
 -- Agendados:
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('dezesseis_avos',NULL,NULL,29,38,'2026-07-02T19:00:00','SoFi Stadium',          'Inglewood',       'EUA',   'agendado'), -- M84 Espanha × Áustria
 ('dezesseis_avos',NULL,NULL,41,46,'2026-07-02T23:00:00','BMO Field',             'Toronto',         'Canadá','agendado'), -- M83 Portugal × Croácia
 ('dezesseis_avos',NULL,NULL, 6,39,'2026-07-03T03:00:00','BC Place',              'Vancouver',       'Canadá','agendado'), -- M85 Suíça × Argélia
 ('dezesseis_avos',NULL,NULL,14,27,'2026-07-03T18:00:00','AT&T Stadium',          'Arlington',       'EUA',   'agendado'), -- M88 Austrália × Egito
@@ -215,7 +215,7 @@ INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,est
 ('oitavas',NULL,NULL, 5,  10,'2026-07-04T17:00:00','NRG Stadium',            'Houston',        'EUA','agendado'), -- M90 Canadá × Marrocos
 ('oitavas',NULL,NULL, 9,  35,'2026-07-05T20:00:00','MetLife Stadium',        'East Rutherford','EUA','agendado'), -- M91 Brasil × Noruega (vencedor M78)
 ('oitavas',NULL,NULL, 1,  45,'2026-07-06T00:00:00','Estádio Azteca',         'Cidade do México','México','agendado'), -- M92 México × Inglaterra (vencedor M80)
-('oitavas',NULL,NULL,NULL,NULL,'2026-07-06T19:00:00','AT&T Stadium',          'Arlington',      'EUA',   'agendado'), -- M93 (vencedor M83 Portugal/Croácia) × (vencedor M84 Espanha/Áustria)
+('oitavas',NULL,NULL,NULL,  29,'2026-07-06T19:00:00','AT&T Stadium',          'Arlington',      'EUA',   'agendado'), -- M93 (vencedor M83 Portugal/Croácia) × Espanha (vencedor M84)
 ('oitavas',NULL,NULL,13,    25,'2026-07-07T00:00:00','Lumen Field',           'Seattle',        'EUA',   'agendado'), -- M94 Estados Unidos (vencedor M81) × Bélgica (vencedor M82)
 ('oitavas',NULL,NULL,NULL,NULL,'2026-07-07T16:00:00','Mercedes-Benz Stadium', 'Atlanta',        'EUA',   'agendado'), -- M95 (vencedor M86 Argentina/Cabo Verde) × (vencedor M88 Austrália/Egito)
 ('oitavas',NULL,NULL,NULL,NULL,'2026-07-07T20:00:00','BC Place',              'Vancouver',      'Canadá','agendado'); -- M96 (vencedor M85 Suíça/Argélia) × (vencedor M87 Colômbia/Gana)
