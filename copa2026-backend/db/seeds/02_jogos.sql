@@ -220,3 +220,14 @@ INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,est
 ('oitavas',NULL,NULL,13,    25,'2026-07-07T00:00:00','Lumen Field',           'Seattle',        'EUA',   'agendado'), -- M94 Estados Unidos (vencedor M81) × Bélgica (vencedor M82)
 ('oitavas',NULL,NULL,37,    27,'2026-07-07T16:00:00','Mercedes-Benz Stadium', 'Atlanta',        'EUA',   'agendado'), -- M95 Argentina (vencedor M86) × Egito (vencedor M88)
 ('oitavas',NULL,NULL, 6,    42,'2026-07-07T20:00:00','BC Place',              'Vancouver',      'Canadá','agendado'); -- M96 Suíça (vencedor M85) × Colômbia (vencedor M87)
+
+-- =========================================================
+-- QUARTAS DE FINAL (Quarter-finals) — 09/07 a 11/07
+-- Chaveamento oficial FIFA (Wikipedia): M97=W89×W90, M98=W93×W94, M99=W91×W92, M100=W95×W96.
+-- M97 já definido (França×Marrocos); demais selecao NULL = "a definir" (dependem das Oitavas).
+-- =========================================================
+INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
+('quartas',NULL,NULL,  33,    10,'2026-07-09T20:00:00','Gillette Stadium',      'Foxborough',     'EUA',   'agendado'), -- M97 França (vencedor M89) × Marrocos (vencedor M90)
+('quartas',NULL,NULL,NULL,  NULL,'2026-07-10T19:00:00','SoFi Stadium',          'Inglewood',      'EUA',   'agendado'), -- M98 (vencedor M93) × (vencedor M94)
+('quartas',NULL,NULL,NULL,  NULL,'2026-07-11T21:00:00','Hard Rock Stadium',     'Miami Gardens',  'EUA',   'agendado'), -- M99 (vencedor M91) × (vencedor M92)
+('quartas',NULL,NULL,NULL,  NULL,'2026-07-12T01:00:00','Arrowhead Stadium',     'Kansas City',    'EUA',   'agendado'); -- M100 (vencedor M95) × (vencedor M96)
