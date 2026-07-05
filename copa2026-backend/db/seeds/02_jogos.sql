@@ -208,9 +208,12 @@ INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,est
 -- Vencedores já definidos do R32 posicionados; selecao NULL = "a definir"
 -- (depende de jogo do R32 ainda não disputado). Preencher conforme avançam.
 -- =========================================================
+-- Encerrados (04/07)
+INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,gols_a,gols_b,status) VALUES
+('oitavas',NULL,NULL,15,  33,'2026-07-04T21:00:00','Lincoln Financial Field','Filadélfia',     'EUA',0,1,'encerrado'), -- M89 Paraguai 0×1 França (Mbappé 70' pên. — 19º gol em Copas, empata Messi; MOTM Orlando Gill (PAR)) — França avança
+('oitavas',NULL,NULL, 5,  10,'2026-07-04T17:00:00','NRG Stadium',            'Houston',        'EUA',0,3,'encerrado'); -- M90 Canadá 0×3 Marrocos (Ounahi x2, Rahimi; MOTM Ounahi) — Marrocos avança
+-- Agendados
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('oitavas',NULL,NULL,15,  33,'2026-07-04T21:00:00','Lincoln Financial Field','Filadélfia',     'EUA','agendado'), -- M89 Paraguai × França (vencedor M77)
-('oitavas',NULL,NULL, 5,  10,'2026-07-04T17:00:00','NRG Stadium',            'Houston',        'EUA','agendado'), -- M90 Canadá × Marrocos
 ('oitavas',NULL,NULL, 9,  35,'2026-07-05T20:00:00','MetLife Stadium',        'East Rutherford','EUA','agendado'), -- M91 Brasil × Noruega (vencedor M78)
 ('oitavas',NULL,NULL, 1,  45,'2026-07-06T00:00:00','Estádio Azteca',         'Cidade do México','México','agendado'), -- M92 México × Inglaterra (vencedor M80)
 ('oitavas',NULL,NULL,41,    29,'2026-07-06T19:00:00','AT&T Stadium',          'Arlington',      'EUA',   'agendado'), -- M93 Portugal (vencedor M83) × Espanha (vencedor M84)
