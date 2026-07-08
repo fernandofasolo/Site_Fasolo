@@ -208,18 +208,18 @@ INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,est
 -- Vencedores já definidos do R32 posicionados; selecao NULL = "a definir"
 -- (depende de jogo do R32 ainda não disputado). Preencher conforme avançam.
 -- =========================================================
--- Encerrados (04/07 e 05/07)
+-- Encerrados (04/07 a 07/07)
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,gols_a,gols_b,status) VALUES
 ('oitavas',NULL,NULL,15,  33,'2026-07-04T21:00:00','Lincoln Financial Field','Filadélfia',     'EUA',0,1,'encerrado'), -- M89 Paraguai 0×1 França (Mbappé 70' pên. — 19º gol em Copas, empata Messi; MOTM Orlando Gill (PAR)) — França avança
 ('oitavas',NULL,NULL, 5,  10,'2026-07-04T17:00:00','NRG Stadium',            'Houston',        'EUA',0,3,'encerrado'), -- M90 Canadá 0×3 Marrocos (Ounahi x2, Rahimi; MOTM Ounahi) — Marrocos avança
 ('oitavas',NULL,NULL, 9,  35,'2026-07-05T20:00:00','MetLife Stadium',        'East Rutherford','EUA',1,2,'encerrado'), -- M91 Brasil 1×2 Noruega (Neymar 90+10' pên. — última partida dele, aposentou; Haaland 79'/90'; MOTM Haaland) — Noruega avança
 ('oitavas',NULL,NULL, 1,  45,'2026-07-06T00:00:00','Estádio Azteca',         'Cidade do México','México',2,3,'encerrado'), -- M92 México 2×3 Inglaterra (Quiñones 42', Jiménez 69' pên.; Bellingham 36'/38', Kane 60' pên.) — Inglaterra avança
 ('oitavas',NULL,NULL,41,  29,'2026-07-06T19:00:00','AT&T Stadium',           'Arlington',      'EUA',0,1,'encerrado'), -- M93 Portugal 0×1 Espanha (Merino 90+1' — assist. Ferran Torres; última Copa de Ronaldo, Martínez pediu demissão) — Espanha avança
-('oitavas',NULL,NULL,13,  25,'2026-07-07T00:00:00','Lumen Field',            'Seattle',        'EUA',1,4,'encerrado'); -- M94 EUA 1×4 Bélgica (Tillman 31'; De Ketelaere 9'/33', Vanaken 57', Lukaku 90+3') — Bélgica avança
--- Agendados
-INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('oitavas',NULL,NULL,37,    27,'2026-07-07T16:00:00','Mercedes-Benz Stadium', 'Atlanta',        'EUA',   'agendado'), -- M95 Argentina (vencedor M86) × Egito (vencedor M88)
-('oitavas',NULL,NULL, 6,    42,'2026-07-07T20:00:00','BC Place',              'Vancouver',      'Canadá','agendado'); -- M96 Suíça (vencedor M85) × Colômbia (vencedor M87)
+('oitavas',NULL,NULL,13,  25,'2026-07-07T00:00:00','Lumen Field',            'Seattle',        'EUA',1,4,'encerrado'), -- M94 EUA 1×4 Bélgica (Tillman 31'; De Ketelaere 9'/33', Vanaken 57', Lukaku 90+3') — Bélgica avança
+('oitavas',NULL,NULL,37,  27,'2026-07-07T16:00:00','Mercedes-Benz Stadium', 'Atlanta',        'EUA',   3,2,'encerrado'); -- M95 Argentina 3×2 Egito (Romero 79', Messi 83', Enzo Fernández 90+3'; Y. Ibrahim 15', Ziko 67'; Messi perdeu pên. 21') — Argentina avança
+-- Encerrados (decididos nos pênaltis):
+INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,gols_a,gols_b,penaltis_a,penaltis_b,status) VALUES
+('oitavas',NULL,NULL, 6,  42,'2026-07-07T20:00:00','BC Place',              'Vancouver',      'Canadá',0,0,4,3,'encerrado'); -- M96 Suíça 0×0 Colômbia — Suíça vence 4×3 nos pênaltis (Vargas marcou o decisivo) e avança; último jogo no Canadá
 
 -- =========================================================
 -- QUARTAS DE FINAL (Quarter-finals) — 09/07 a 11/07
@@ -230,4 +230,4 @@ INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,est
 ('quartas',NULL,NULL,  33,    10,'2026-07-09T20:00:00','Gillette Stadium',      'Foxborough',     'EUA',   'agendado'), -- M97 França (vencedor M89) × Marrocos (vencedor M90)
 ('quartas',NULL,NULL,  29,    25,'2026-07-10T19:00:00','SoFi Stadium',          'Inglewood',      'EUA',   'agendado'), -- M98 Espanha (vencedor M93) × Bélgica (vencedor M94)
 ('quartas',NULL,NULL,  35,    45,'2026-07-11T21:00:00','Hard Rock Stadium',     'Miami Gardens',  'EUA',   'agendado'), -- M99 Noruega (vencedor M91) × Inglaterra (vencedor M92)
-('quartas',NULL,NULL,NULL,  NULL,'2026-07-12T01:00:00','Arrowhead Stadium',     'Kansas City',    'EUA',   'agendado'); -- M100 (vencedor M95) × (vencedor M96)
+('quartas',NULL,NULL,  37,     6,'2026-07-12T01:00:00','Arrowhead Stadium',     'Kansas City',    'EUA',   'agendado'); -- M100 Argentina (vencedor M95) × Suíça (vencedor M96)
