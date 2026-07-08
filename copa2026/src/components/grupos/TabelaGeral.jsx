@@ -1,5 +1,6 @@
-import { Fragment } from 'react'
+import { Fragment, useState, useEffect } from 'react'
 import Bandeira from '../ui/Bandeira'
+import { apiFetch } from '../../utils/api'
 
 const SEPARADORES = {
   1:  '— Pódio —',
@@ -23,22 +24,57 @@ function barraLateral(pos) {
   return null
 }
 
-export default function TabelaGeral({ grupos }) {
-  const todas = grupos
-    .flatMap(g => g.classificacao.map(sel => ({ ...sel, grupo: g.grupo })))
-    .sort((a, b) => {
-      if (b.pontos      !== a.pontos)      return b.pontos      - a.pontos
-      if (b.saldo_gols  !== a.saldo_gols)  return b.saldo_gols  - a.saldo_gols
-      if (b.gols_pro    !== a.gols_pro)    return b.gols_pro    - a.gols_pro
-      return (a.ranking_fifa || 999) - (b.ranking_fifa || 999)
-    })
+export default function TabelaGeral() {
+  const [classificacao, setClassificacao] = useState([])
+  const [totalJogos, setTotalJogos]       = useState(0)
+  const [loading, setLoading]             = useState(true)
+  const [error, setError]                 = useState(false)
+
+  useEffect(() => {
+    apiFetch('/api/pontos-corridos')
+      .then(r => { if (!r.ok) throw new Error(); return r.json() })
+      .then(data => {
+        setClassificacao(data.classificacao || [])
+        setTotalJogos(data.total_jogos || 0)
+        setLoading(false)
+      })
+      .catch(() => { setError(true); setLoading(false) })
+  }, [])
+
+  if (error) {
+    return (
+      <div className="card text-center py-12 text-gray-500">
+        <p className="text-2xl mb-2">⚠️</p>
+        <p>Não foi possível carregar os pontos corridos.</p>
+      </div>
+    )
+  }
+
+  if (loading) {
+    return (
+      <div className="card animate-pulse p-0 overflow-hidden">
+        <div className="px-4 py-3 border-b border-copa-border bg-black/20 flex gap-2">
+          <div className="h-5 bg-copa-border rounded w-32" />
+        </div>
+        <div className="p-3 space-y-2">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <div key={i} className="h-7 bg-copa-border/40 rounded" />
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  const todas = classificacao
 
   return (
     <div className="card overflow-hidden p-0">
       <div className="px-4 py-3 border-b border-copa-border bg-black/20 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <span className="font-display text-lg text-copa-yellow tracking-widest">PONTOS CORRIDOS</span>
-          <span className="text-[10px] text-gray-600 italic">classificação hipotética — todas as 48 seleções</span>
+          <span className="text-[10px] text-gray-600 italic">
+            48 seleções · grupos + mata-mata{totalJogos ? ` · ${totalJogos} jogos` : ''}
+          </span>
         </div>
       </div>
 
@@ -109,7 +145,7 @@ export default function TabelaGeral({ grupos }) {
         <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-sm bg-copa-yellow inline-block" /> Líder</span>
         <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-sm bg-gray-400 inline-block" /> Pódio (Top 3)</span>
         <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-sm bg-copa-green inline-block" /> Top 16</span>
-        <span className="ml-auto italic text-gray-700">★ Brincadeira — critérios: Pts › SG › GP › Ranking FIFA</span>
+        <span className="ml-auto italic text-gray-700">★ Brincadeira — todos os jogos · pênaltis = empate · Pts › SG › GP › Ranking FIFA</span>
       </div>
     </div>
   )

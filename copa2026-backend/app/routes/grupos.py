@@ -40,6 +40,21 @@ def listar_grupos():
         return [build_grupo(g, conn) for g in GRUPOS]
 
 
+@router.get("/pontos-corridos")
+def pontos_corridos():
+    """Classificação-geral hipotética (pontos corridos): soma TODOS os jogos
+    já encerrados de todas as fases (grupos + mata-mata). Jogos decididos nos
+    pênaltis contam como empate (o placar do tempo normal/prorrogação fica igual).
+    Novas fases entram automaticamente conforme os jogos são encerrados."""
+    with get_db() as conn:
+        selecoes = conn.execute("SELECT * FROM selecoes").fetchall()
+        jogos = conn.execute("SELECT * FROM jogos WHERE status = 'encerrado'").fetchall()
+        classificacao = calcular_classificacao(
+            [dict(j) for j in jogos], [dict(s) for s in selecoes]
+        )
+        return {"classificacao": classificacao, "total_jogos": len(jogos)}
+
+
 @router.get("/grupos/{letra}")
 def detalhe_grupo(letra: str):
     letra = letra.upper()

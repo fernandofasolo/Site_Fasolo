@@ -115,11 +115,9 @@ export default function GruposPage() {
         </div>
       )}
 
-      {/* ── PONTOS CORRIDOS ── */}
-      {aba === 'pontos-corridos' && !error && (
-        loading
-          ? <Skeleton />
-          : <TabelaGeral grupos={grupos} />
+      {/* ── PONTOS CORRIDOS ── (busca /api/pontos-corridos por conta própria) */}
+      {aba === 'pontos-corridos' && (
+        <TabelaGeral />
       )}
 
       {/* ── POTES ── */}

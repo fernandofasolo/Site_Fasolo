@@ -10,6 +10,7 @@ def calcular_classificacao(jogos: List[Dict], selecoes: List[Dict]) -> List[Dict
         "ranking_fifa": s.get("ranking_fifa"),
         "eh_cabeca_chave": s.get("eh_cabeca_chave", 0),
         "pote": s.get("pote"),
+        "grupo": s.get("grupo"),
         "jogos": 0, "vitorias": 0, "empates": 0, "derrotas": 0,
         "gols_pro": 0, "gols_contra": 0, "saldo_gols": 0, "pontos": 0,
     } for s in selecoes}
