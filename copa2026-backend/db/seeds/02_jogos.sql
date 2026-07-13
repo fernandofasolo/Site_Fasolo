@@ -226,11 +226,35 @@ INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,est
 -- Chaveamento oficial FIFA (Wikipedia): M97=W89×W90, M98=W93×W94, M99=W91×W92, M100=W95×W96.
 -- M97 já definido (França×Marrocos); demais selecao NULL = "a definir" (dependem das Oitavas).
 -- =========================================================
--- Encerrados:
+-- Encerrados (QUARTAS 100% completas — 4/4):
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,gols_a,gols_b,status) VALUES
-('quartas',NULL,NULL,  33,    10,'2026-07-09T20:00:00','Gillette Stadium',      'Foxborough',     'EUA',   2,0,'encerrado'); -- M97 França 2×0 Marrocos (Mbappé 60' — 20º gol em Copas, perdeu pên. no 1ºT; Dembélé 66', assist. Mbappé) — França avança
+('quartas',NULL,NULL,  33,    10,'2026-07-09T20:00:00','Gillette Stadium',      'Foxborough',     'EUA',   2,0,'encerrado'), -- M97 França 2×0 Marrocos (Mbappé 60' — 20º gol em Copas, perdeu pên. no 1ºT; Dembélé 66', assist. Mbappé) — França avança
+('quartas',NULL,NULL,  29,    25,'2026-07-10T19:00:00','SoFi Stadium',          'Inglewood',      'EUA',   2,1,'encerrado'), -- M98 Espanha 2×1 Bélgica (Fabián 30', Merino 88'; De Ketelaere 41'; MOTM Lamine Yamal) — Espanha avança
+('quartas',NULL,NULL,  35,    45,'2026-07-11T21:00:00','Hard Rock Stadium',     'Miami Gardens',  'EUA',   1,2,'encerrado'), -- M99 Noruega 1×2 Inglaterra (a.e.t.) (Schjelderup 36'; Bellingham 45+2'/93'; MOTM Bellingham) — Inglaterra avança
+('quartas',NULL,NULL,  37,     6,'2026-07-12T01:00:00','Arrowhead Stadium',     'Kansas City',    'EUA',   3,1,'encerrado'); -- M100 Argentina 3×1 Suíça (a.e.t.) (Mac Allister 10', J. Álvarez 112', La. Martínez 120+1'; Ndoye 67'; Embolo expulso 72'; MOTM J. Álvarez) — Argentina avança
+
+-- =========================================================
+-- SEMIFINAIS (Semi-finals) — 14/07 e 15/07
+-- Chaveamento oficial FIFA: M101=W97×W98, M102=W99×W100.
+-- Ambas definidas: M101 França×Espanha, M102 Inglaterra×Argentina.
+-- =========================================================
 -- Agendados:
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('quartas',NULL,NULL,  29,    25,'2026-07-10T19:00:00','SoFi Stadium',          'Inglewood',      'EUA',   'agendado'), -- M98 Espanha (vencedor M93) × Bélgica (vencedor M94)
-('quartas',NULL,NULL,  35,    45,'2026-07-11T21:00:00','Hard Rock Stadium',     'Miami Gardens',  'EUA',   'agendado'), -- M99 Noruega (vencedor M91) × Inglaterra (vencedor M92)
-('quartas',NULL,NULL,  37,     6,'2026-07-12T01:00:00','Arrowhead Stadium',     'Kansas City',    'EUA',   'agendado'); -- M100 Argentina (vencedor M95) × Suíça (vencedor M96)
+('semi',NULL,NULL,  33,    29,'2026-07-14T19:00:00','AT&T Stadium',          'Arlington',      'EUA',   'agendado'), -- M101 França (venc. M97) × Espanha (venc. M98)
+('semi',NULL,NULL,  45,    37,'2026-07-15T19:00:00','Mercedes-Benz Stadium', 'Atlanta',        'EUA',   'agendado'); -- M102 Inglaterra (venc. M99) × Argentina (venc. M100)
+
+-- =========================================================
+-- DISPUTA DE 3º LUGAR — 18/07
+-- M103 = Perdedor M101 × Perdedor M102 (a definir).
+-- =========================================================
+-- Agendados:
+INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
+('terceiro',NULL,NULL,  NULL,  NULL,'2026-07-18T21:00:00','Hard Rock Stadium',   'Miami Gardens',  'EUA',   'agendado'); -- M103 Perdedor M101 × Perdedor M102
+
+-- =========================================================
+-- FINAL — 19/07
+-- M104 = Vencedor M101 × Vencedor M102 (a definir).
+-- =========================================================
+-- Agendados:
+INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
+('final',NULL,NULL,  NULL,  NULL,'2026-07-19T19:00:00','MetLife Stadium',     'East Rutherford','EUA',   'agendado'); -- M104 Vencedor M101 × Vencedor M102
