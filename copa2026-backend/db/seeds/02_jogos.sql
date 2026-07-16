@@ -238,25 +238,23 @@ INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,est
 -- Chaveamento oficial FIFA: M101=W97×W98, M102=W99×W100.
 -- Ambas definidas: M101 França×Espanha, M102 Inglaterra×Argentina.
 -- =========================================================
--- Encerrados:
+-- Encerrados (SEMIS 100% completas — 2\2):
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,gols_a,gols_b,status) VALUES
-('semi',NULL,NULL,  33,    29,'2026-07-14T19:00:00','AT&T Stadium',          'Arlington',      'EUA',   0,2,'encerrado'); -- M101 França 0×2 Espanha (Oyarzabal 22' pên., Pedro Porro 58'; árbitro Iván Barton/ESA) — Espanha avança à FINAL
--- Agendados:
-INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('semi',NULL,NULL,  45,    37,'2026-07-15T19:00:00','Mercedes-Benz Stadium', 'Atlanta',        'EUA',   'agendado'); -- M102 Inglaterra (venc. M99) × Argentina (venc. M100)
+('semi',NULL,NULL,  33,    29,'2026-07-14T19:00:00','AT&T Stadium',          'Arlington',      'EUA',   0,2,'encerrado'), -- M101 França 0×2 Espanha (Oyarzabal 22' pên., Pedro Porro 58'; árbitro Iván Barton/ESA) — Espanha avança à FINAL
+('semi',NULL,NULL,  45,    37,'2026-07-15T19:00:00','Mercedes-Benz Stadium', 'Atlanta',        'EUA',   1,2,'encerrado'); -- M102 Inglaterra 1×2 Argentina (Gordon 55'; Enzo Fernández 85', La. Martínez 90+2'; árbitro Ismail Elfath/EUA) — Argentina avança à FINAL
 
 -- =========================================================
 -- DISPUTA DE 3º LUGAR — 18/07
--- M103 = Perdedor M101 × Perdedor M102 (a definir).
+-- M103 = Perdedor M101 × Perdedor M102 — confronto definido: França × Inglaterra.
 -- =========================================================
 -- Agendados:
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('terceiro',NULL,NULL,  33,    NULL,'2026-07-18T21:00:00','Hard Rock Stadium',   'Miami Gardens',  'EUA',   'agendado'); -- M103 França (perdedor M101) × Perdedor M102
+('terceiro',NULL,NULL,  33,      45,'2026-07-18T21:00:00','Hard Rock Stadium',   'Miami Gardens',  'EUA',   'agendado'); -- M103 França (perdedor M101) × Inglaterra (perdedor M102)
 
 -- =========================================================
 -- FINAL — 19/07
--- M104 = Vencedor M101 × Vencedor M102 (a definir).
+-- M104 = Vencedor M101 × Vencedor M102 — confronto definido: Espanha × Argentina.
 -- =========================================================
 -- Agendados:
 INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('final',NULL,NULL,  29,    NULL,'2026-07-19T19:00:00','MetLife Stadium',     'East Rutherford','EUA',   'agendado'); -- M104 Espanha (vencedor M101) × Vencedor M102
+('final',NULL,NULL,  29,      37,'2026-07-19T19:00:00','MetLife Stadium',     'East Rutherford','EUA',   'agendado'); -- M104 Espanha (vencedor M101) × Argentina (vencedor M102)
