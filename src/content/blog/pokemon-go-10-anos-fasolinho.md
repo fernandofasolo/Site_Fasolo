@@ -1,6 +1,6 @@
 ---
 title: 'Pokémon GO: 10 anos de aventura com o pai'
-description: 'Comecei a jogar com 3 anos, junto com a minha mana. A mana saiu, meu pai ficou — e dez anos depois ainda estamos em campo, disputando lendários com jogadores de GPS falso enquanto a gente vai de carro até o ginásio mais próximo.'
+description: 'Comecei a jogar com 3 anos, junto com a minha mana. A mana saiu, meu pai ficou — e dez anos depois ainda estamos em campo, indo a pé, de bicicleta ou de carro até o ginásio mais próximo e jogando do nosso jeito, no ritmo da vida real.'
 pubDate: '2026-06-06'
 author: 'Fernando Fasolo Jr.'
 category: 'Games'
@@ -29,17 +29,15 @@ Claro que mudou a dinâmica. Com 3 anos, eu era carregado no colo até os PokéS
 
 Mas a gente não desistiu. Ainda fazemos algumas dinâmicas juntos, ainda aproveitamos o que dá — e apesar das muitas mudanças, tanto na vida quanto na gameplay, o jogo ainda nos conecta de um jeito que poucos hobbies conseguem.
 
-E é essa disputa com os Fly que une qualquer jogador honesto — porque todo mundo que joga de verdade já sentiu isso na pele.
+E, no fim, o que mais importa pra gente é o nosso jeito de jogar — no ritmo da vida real.
 
-## Os Fly dividem o jogo ao meio
+## Dois jeitos de jogar
 
-Pokémon GO tem uma linha invisível que separa dois tipos de jogador. De um lado, quem usa GPS falso — os chamados Fly — que aparecem em qualquer ginásio do mundo sem sair do sofá, capturam lendários de raids simultâneas em continentes diferentes e dominam arenas em cidades que nunca pisaram. Do outro lado, jogadores como a gente: que no máximo entram no carro, dirigem até o ginásio mais próximo e torcem para ter gente suficiente para fechar a raid.
+Pokémon GO tem dois jeitos bem diferentes de jogar. De um lado, quem usa GPS falso — os chamados Fly — que aparecem em qualquer ginásio do mundo sem sair do sofá e capturam lendários de raids em continentes diferentes. Do outro, jogadores como a gente: que vão a pé, de bicicleta ou de carro até o ginásio mais próximo e torcem para ter gente suficiente para fechar a raid.
 
-Essa divisão é real e é frustrante. Você organiza grupo, combina horário, pega o carro com o pai numa tarde de sábado — e quando chega na raid, percebe que metade das contas participando nunca estiveram fisicamente lá. Estavam no sofá, em outra cidade, talvez em outro país.
+Por um tempo isso me incomodava. Hoje penso diferente: cada um escolhe como quer jogar, e tá tudo bem. Eu gosto do meu lado — andar, explorar, aparecer no mundo real, que é pra isso que o jogo foi feito. Mas se alguém prefere jogar de casa, no fundo não muda muito a nossa jogatina: a raid que a gente quer, a gente fecha do mesmo jeito.
 
-O jogo foi construído para ser vivido no mundo real. Andar, explorar, aparecer. Os Fly transformam isso numa planilha de coordenadas.
-
-Mas o jogo genuíno ainda existe. Nas raids organizadas por WhatsApp de grupo local, nos eventos presenciais do GO Fest, nas pessoas que você encontra por acaso num PokéStop e que viram parceiros de jogo. Esse lado ainda vale a pena — e é por ele que a gente continua.
+O que vale pra mim é o meu jeito de jogar. As raids combinadas no WhatsApp do grupo local, os eventos presenciais do GO Fest, as pessoas que a gente encontra por acaso num PokéStop e que viram parceiros. Esse lado é o que faz o jogo valer a pena — e é por ele que a gente continua, sem precisar implicar com quem joga diferente.
 
 ## A Kyogre Primal e o momento do ano
 

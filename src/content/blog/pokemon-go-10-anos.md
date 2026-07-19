@@ -1,13 +1,13 @@
 ---
 title: 'Pokémon GO: 10 anos jogando devagar e sempre'
-description: 'Uma década de caminhadas, raids e muita frustração com Fly. A história de um jogador canela que não desiste — e que começou essa aventura ao lado do filho.'
+description: 'Uma década de caminhadas, raids e do nosso jeito canela de jogar — respeitando quem joga diferente. A história de um jogador que não desiste, e que começou essa aventura ao lado do filho.'
 pubDate: '2026-06-06'
 author: 'Fernando Fasolo'
 category: 'Games'
 heroImage: '../../assets/groudon-primal.jpg'
 ---
 
-Julho de 2016. O mundo parou. Pessoas andando pela rua olhando pro celular, grupos se formando em praças, adultos correndo atrás de Pokémon invisíveis. Eu era um deles — e ao meu lado estava o Fasolinho, com nove anos, mais animado do que nunca.
+Julho de 2016. O mundo parou. Pessoas andando pela rua olhando pro celular, grupos se formando em praças, adultos correndo atrás de Pokémon invisíveis. Eu era um deles — e ao meu lado estava o Fasolinho, com três anos, mais animado do que nunca.
 
 Dez anos depois, ainda estamos aqui.
 
@@ -21,15 +21,15 @@ Não porque não me importe com o jogo. Me importo muito. Mas porque jogar tem q
 
 Em 10 anos acumulei memórias que nenhuma Pokédex consegue guardar.
 
-## O problema chama-se Fly
+## Os Fly e o nosso jeito de jogar
 
 Se você joga Pokémon GO, já topou com eles: jogadores que aparecem em qualquer lugar do mundo sem sair do sofá. Um cara em Curitiba que de repente está em Tóquio. Uma conta que captura lendários de raids simultâneas em continentes diferentes.
 
-São os **Fly** — e eles arruínam o jogo pra quem joga de verdade.
+São os **Fly** — quem usa GPS falso para jogar de casa. Confesso que por muito tempo isso me incomodava. Hoje penso diferente: cada um joga do jeito que cabe na vida que leva.
 
-Chega na raid local, vê que o Pokémon raro foi capturado por 40 pessoas que moram no seu bairro, mas você nunca viu na vida. Tenta participar de um evento regional e a disputa é com contas automatizadas que já estavam lá. É desanimador.
+No fundo, o Fly não muda o que eu venho buscar aqui. O meu jogo é a caminhada, o ar livre, o PokéStop da esquina que eu já conheço de cor. Se outra pessoa prefere jogar do sofá, tudo bem — a escolha dela não tira a minha. A raid que eu quero fechar, a gente fecha do mesmo jeito; o Pokémon que eu quero, eu pego andando.
 
-Mas a gente continua. Porque o jogo é bom quando você foca no que importa: sair, explorar, jogar com quem você gosta.
+Respeito quem joga assim e sigo do meu jeito. O jogo é grande o suficiente pra caber todo mundo — e continua bom quando você foca no que importa: sair, explorar, jogar com quem você gosta.
 
 ## Uma década de momentos
 
