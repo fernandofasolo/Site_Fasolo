@@ -55,8 +55,8 @@ const categoryColor: Record<string, string> = {
       @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
       .float { animation: float 4s ease-in-out infinite; }
       @keyframes pulse-border {
-        0%,100%{border-color:rgba(217,119,6,.3)}
-        50%{border-color:rgba(217,119,6,.8)}
+        0%,100%{border-color:rgba(251,122,69,.3)}
+        50%{border-color:rgba(251,122,69,.8)}
       }
       .pulse-border { animation: pulse-border 3s ease-in-out infinite; }
       .card-glass {
@@ -65,19 +65,19 @@ const categoryColor: Record<string, string> = {
         backdrop-filter: blur(12px);
         transition: border-color .3s, transform .3s;
       }
-      .card-glass:hover { border-color: rgba(217,119,6,.5); transform: translateY(-4px); }
-      .card-game:hover  { border-color: rgba(34,197,94,.5) !important; }
+      .card-glass:hover { border-color: rgba(251,122,69,.5); transform: translateY(-4px); }
+      .card-game:hover  { border-color: rgba(31,199,182,.5) !important; }
       .hero-bg {
-        background: radial-gradient(ellipse at 20% 50%, rgba(217,119,6,.15) 0%,transparent 60%),
-                    radial-gradient(ellipse at 80% 20%, rgba(34,197,94,.10) 0%,transparent 50%),
-                    #050508;
+        background: radial-gradient(ellipse at 20% 50%, rgba(251,122,69,.15) 0%,transparent 60%),
+                    radial-gradient(ellipse at 80% 20%, rgba(31,199,182,.10) 0%,transparent 50%),
+                    #100c0d;
       }
       .tag {
         display:inline-block; padding:2px 10px; border-radius:9999px;
         font-size:.7rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
       }
-      .glow-amber  { text-shadow: 0 0 20px rgba(217,119,6,.8); }
-      .glow-green  { text-shadow: 0 0 20px rgba(34,197,94,.8); }
+      .glow-amber  { text-shadow: 0 0 20px rgba(251,122,69,.8); }
+      .glow-green  { text-shadow: 0 0 20px rgba(31,199,182,.8); }
     </style>
   </head>
   <body>
@@ -89,7 +89,7 @@ const categoryColor: Record<string, string> = {
         <div class="inline-block mb-6">
           <span class="tag bg-amber-900/60 text-amber-300 border border-amber-700/50">Tech · Negócios · Games · Esportes</span>
         </div>
-        <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight" style="font-family:'Orbitron',monospace;">
+        <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight" style="font-family:'Sora', sans-serif;">
           <span class="text-amber-400 glow-amber">[</span><span class="text-white glow-amber">FA</span><span class="text-amber-400">SOLO</span><span class="text-white">]</span>
         </h1>
         <p class="text-slate-300 text-lg md:text-2xl mb-4 max-w-2xl mx-auto">
@@ -121,7 +121,7 @@ const categoryColor: Record<string, string> = {
     <section id="sobre" class="py-20">
       <div class="max-w-6xl mx-auto px-6">
         <div class="text-center mb-14">
-          <h2 class="text-3xl md:text-4xl font-bold text-white mb-3" style="font-family:'Orbitron',monospace;">Quem Somos</h2>
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-3" style="font-family:'Sora', sans-serif;">Quem Somos</h2>
           <p class="text-slate-400 max-w-xl mx-auto">Pai e filho compartilhando o que amam — cada um do seu jeito.</p>
         </div>
         <div class="grid md:grid-cols-2 gap-8">
@@ -131,7 +131,7 @@ const categoryColor: Record<string, string> = {
                 <span class="text-amber-400">💼</span>
               </div>
               <div>
-                <h3 class="text-xl font-bold text-white" style="font-family:'Orbitron',monospace;">Fernando Fasolo</h3>
+                <h3 class="text-xl font-bold text-white" style="font-family:'Sora', sans-serif;">Fernando Fasolo</h3>
                 <span class="text-amber-400 text-sm">Tech · Negócios · Cotidiano</span>
               </div>
             </div>
@@ -151,7 +151,7 @@ const categoryColor: Record<string, string> = {
                 <span class="text-green-400">🎮</span>
               </div>
               <div>
-                <h3 class="text-xl font-bold text-white" style="font-family:'Orbitron',monospace;">Fernando Fasolo <span class="text-green-400">Jr.</span></h3>
+                <h3 class="text-xl font-bold text-white" style="font-family:'Sora', sans-serif;">Fernando Fasolo <span class="text-green-400">Jr.</span></h3>
                 <span class="text-green-400 text-sm">Gamer · Roblox · Minecraft</span>
               </div>
             </div>
@@ -175,7 +175,7 @@ const categoryColor: Record<string, string> = {
       <section class="py-20 bg-slate-950/50">
         <div class="max-w-6xl mx-auto px-6">
           <div class="text-center mb-14">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-3" style="font-family:'Orbitron',monospace;">Últimas Publicações</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-3" style="font-family:'Sora', sans-serif;">Últimas Publicações</h2>
             <p class="text-slate-400">O que saiu recentemente no blog</p>
           </div>
           <div class="grid md:grid-cols-3 gap-6">
@@ -211,25 +211,25 @@ const categoryColor: Record<string, string> = {
       <div class="max-w-6xl mx-auto px-6">
         <div class="text-center mb-14">
           <span class="tag bg-green-900/60 text-green-300 border border-green-700/50 mb-4 inline-block">Zona Gamer</span>
-          <h2 class="text-3xl md:text-4xl font-bold text-white mb-3 glow-green" style="font-family:'Orbitron',monospace;">Games em Destaque</h2>
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-3 glow-green" style="font-family:'Sora', sans-serif;">Games em Destaque</h2>
           <p class="text-slate-400">O que o Fasolinho tá jogando agora</p>
         </div>
         <div class="grid md:grid-cols-3 gap-6">
           <div class="card-glass card-game rounded-2xl p-6 text-center">
             <div class="mb-4 flex justify-center"><img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/minecraft_logo_icon_168974.png" class="w-16 h-16" alt="Minecraft" /></div>
-            <h4 class="text-lg font-bold text-white mb-2" style="font-family:'Orbitron',monospace;">Minecraft</h4>
+            <h4 class="text-lg font-bold text-white mb-2" style="font-family:'Sora', sans-serif;">Minecraft</h4>
             <p class="text-slate-400 text-sm mb-4">Construção, survival e criatividade sem limites. Um clássico que nunca sai de moda.</p>
             <span class="tag bg-green-900/40 text-green-300">Ativo</span>
           </div>
           <div class="card-glass card-game rounded-2xl p-6 text-center">
             <div class="mb-4 flex justify-center"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Roblox_%282025%29_%28App_Icon%29.svg" class="w-16 h-16 rounded-xl" alt="Roblox" /></div>
-            <h4 class="text-lg font-bold text-white mb-2" style="font-family:'Orbitron',monospace;">Roblox</h4>
+            <h4 class="text-lg font-bold text-white mb-2" style="font-family:'Sora', sans-serif;">Roblox</h4>
             <p class="text-slate-400 text-sm mb-4">Plataforma com centenas de jogos. Cada semana tem um novo hit pra descobrir e dominar.</p>
             <span class="tag bg-red-900/40 text-red-300">Plataforma Principal</span>
           </div>
           <a href="/copa2026" class="card-glass card-game rounded-2xl p-6 text-center block hover:border-green-500/50 transition-colors">
             <div class="text-5xl mb-4">⚽</div>
-            <h4 class="text-lg font-bold text-white mb-2" style="font-family:'Orbitron',monospace;">Copa 2026</h4>
+            <h4 class="text-lg font-bold text-white mb-2" style="font-family:'Sora', sans-serif;">Copa 2026</h4>
             <p class="text-slate-400 text-sm mb-4">Tabela, grupos, escalação do Brasil e bolão. Tudo sobre a Copa do Mundo FIFA 2026.</p>
             <span class="tag bg-green-900/40 text-green-300">Acompanhe →</span>
           </a>
@@ -241,7 +241,7 @@ const categoryColor: Record<string, string> = {
     <section class="py-20 bg-slate-950/50">
       <div class="max-w-6xl mx-auto px-6">
         <div class="text-center mb-14">
-          <h2 class="text-3xl md:text-4xl font-bold text-white mb-3" style="font-family:'Orbitron',monospace;">O Que Você Vai Encontrar</h2>
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-3" style="font-family:'Sora', sans-serif;">O Que Você Vai Encontrar</h2>
           <p class="text-slate-400">Conteúdo dos dois mundos</p>
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -282,7 +282,7 @@ const categoryColor: Record<string, string> = {
     <!-- CONTATO -->
     <section id="contato" class="py-20">
       <div class="max-w-2xl mx-auto px-6 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" style="font-family:'Orbitron',monospace;">Fale com a Gente</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" style="font-family:'Sora', sans-serif;">Fale com a Gente</h2>
         <p class="text-slate-400 mb-10">Dúvidas, parcerias ou só um oi — estamos aqui.</p>
         <div class="card-glass rounded-2xl p-8">
           <div class="flex flex-col gap-4">

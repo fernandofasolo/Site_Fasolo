@@ -1,9 +1,42 @@
 @import "tailwindcss";
 
+/* ============================================================
+   RESKIN "Litoral" — remapeia as escalas de cor do Tailwind:
+   ambar (pai) para coral #fb7a45 e verde (filho) para teal #1fc7b6.
+   As utilities amber e green usam var(--color-amber-N); este
+   :root (sem @layer) vence a camada theme do Tailwind e
+   recolore todas essas classes de uma vez.
+   ============================================================ */
 :root {
-  --color-bg: #050508;
-  --color-amber: #f59e0b;
-  --color-green: #4ade80;
+  --color-bg: #100c0d;
+  --color-amber: #fb7a45;
+  --color-green: #1fc7b6;
+
+  /* pai · coral (substitui amber) */
+  --color-amber-50:  #fff4ed;
+  --color-amber-100: #ffe6d5;
+  --color-amber-200: #fecbaa;
+  --color-amber-300: #fdac74;
+  --color-amber-400: #fb7a45;
+  --color-amber-500: #f75f28;
+  --color-amber-600: #e04812;
+  --color-amber-700: #b93a0f;
+  --color-amber-800: #932f12;
+  --color-amber-900: #782713;
+  --color-amber-950: #411208;
+
+  /* filho · teal (substitui green) */
+  --color-green-50:  #eafff8;
+  --color-green-100: #c9fdee;
+  --color-green-200: #93f7de;
+  --color-green-300: #4fe9cf;
+  --color-green-400: #1fc7b6;
+  --color-green-500: #12a597;
+  --color-green-600: #0d857b;
+  --color-green-700: #0c6a63;
+  --color-green-800: #0d544f;
+  --color-green-900: #0c3d3a;
+  --color-green-950: #04211f;
 }
 
 html {
@@ -21,8 +54,8 @@ body {
 /* grid background */
 body {
   background-image:
-    linear-gradient(rgba(217,119,6,.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(217,119,6,.05) 1px, transparent 1px);
+    linear-gradient(rgba(251,122,69,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(251,122,69,.05) 1px, transparent 1px);
   background-size: 40px 40px;
   background-color: var(--color-bg);
 }
@@ -34,16 +67,16 @@ body {
   font-size: 1.05rem;
 }
 .prose h1, .prose h2, .prose h3, .prose h4 {
-  font-family: 'Orbitron', monospace;
+  font-family: 'Sora', sans-serif;
   color: #f1f5f9;
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
-.prose h2 { font-size: 1.5rem; border-bottom: 1px solid rgba(217,119,6,.3); padding-bottom: .5rem; }
+.prose h2 { font-size: 1.5rem; border-bottom: 1px solid rgba(251,122,69,.3); padding-bottom: .5rem; }
 .prose h3 { font-size: 1.25rem; }
 .prose p { margin-bottom: 1.5rem; }
 .prose a { color: var(--color-amber); text-decoration: underline; }
-.prose a:hover { color: #fcd34d; }
+.prose a:hover { color: #fdac74; }
 .prose strong { color: #f1f5f9; }
 .prose ul, .prose ol { margin-left: 1.5rem; margin-bottom: 1.5rem; }
 .prose li { margin-bottom: .4rem; }
@@ -55,15 +88,15 @@ body {
   font-style: italic;
 }
 .prose code {
-  background: rgba(217,119,6,.15);
-  color: #fcd34d;
+  background: rgba(251,122,69,.15);
+  color: #fdac74;
   padding: 2px 6px;
   border-radius: 4px;
   font-size: .9em;
 }
 .prose pre {
   background: rgba(15,15,25,.8);
-  border: 1px solid rgba(217,119,6,.2);
+  border: 1px solid rgba(251,122,69,.2);
   border-radius: 8px;
   padding: 1.5rem;
   overflow-x: auto;
@@ -82,6 +115,6 @@ body {
 }
 .prose hr {
   border: none;
-  border-top: 1px solid rgba(217,119,6,.2);
+  border-top: 1px solid rgba(251,122,69,.2);
   margin: 2rem 0;
 }
