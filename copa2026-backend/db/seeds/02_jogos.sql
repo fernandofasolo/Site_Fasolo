@@ -245,11 +245,11 @@ INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,est
 
 -- =========================================================
 -- DISPUTA DE 3º LUGAR — 18/07
--- M103 = Perdedor M101 × Perdedor M102 — confronto definido: França × Inglaterra.
+-- M103 = Perdedor M101 × Perdedor M102 — França 4×6 Inglaterra (Inglaterra 3º, França 4º).
 -- =========================================================
--- Agendados:
-INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('terceiro',NULL,NULL,  33,      45,'2026-07-18T21:00:00','Hard Rock Stadium',   'Miami Gardens',  'EUA',   'agendado'); -- M103 França (perdedor M101) × Inglaterra (perdedor M102)
+-- Encerrados:
+INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,gols_a,gols_b,status) VALUES
+('terceiro',NULL,NULL,  33,      45,'2026-07-18T21:00:00','Hard Rock Stadium',   'Miami Gardens',  'EUA',   4,6,'encerrado'); -- M103 França 4×6 Inglaterra (Mbappé 48'/66', Barcola 54', Dembélé 90+6'; Rice 3', Konsa 18', Saka 37'/45+1'/87' pên., Bellingham 90+8'; árbitro Jesús Valenzuela/VEN; público 64.478; jogo com mais gols do torneio) — Inglaterra 3º, França 4º
 
 -- =========================================================
 -- FINAL — 19/07
