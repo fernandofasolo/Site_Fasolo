@@ -252,9 +252,9 @@ INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,est
 ('terceiro',NULL,NULL,  33,      45,'2026-07-18T21:00:00','Hard Rock Stadium',   'Miami Gardens',  'EUA',   4,6,'encerrado'); -- M103 França 4×6 Inglaterra (Mbappé 48'/66', Barcola 54', Dembélé 90+6'; Rice 3', Konsa 18', Saka 37'/45+1'/87' pên., Bellingham 90+8'; árbitro Jesús Valenzuela/VEN; público 64.478; jogo com mais gols do torneio) — Inglaterra 3º, França 4º
 
 -- =========================================================
--- FINAL — 19/07
--- M104 = Vencedor M101 × Vencedor M102 — confronto definido: Espanha × Argentina.
+-- FINAL — 19/07 — 🏆 ESPANHA CAMPEÃ
+-- M104 = Vencedor M101 × Vencedor M102 — Espanha 1×0 Argentina (a.e.t.).
 -- =========================================================
--- Agendados:
-INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,status) VALUES
-('final',NULL,NULL,  29,      37,'2026-07-19T19:00:00','MetLife Stadium',     'East Rutherford','EUA',   'agendado'); -- M104 Espanha (vencedor M101) × Argentina (vencedor M102)
+-- Encerrados:
+INSERT INTO jogos (fase,grupo,rodada,selecao_a_id,selecao_b_id,data_hora_utc,estadio,cidade,pais_sede,gols_a,gols_b,status) VALUES
+('final',NULL,NULL,  29,      37,'2026-07-19T19:00:00','MetLife Stadium',     'East Rutherford','EUA',   1,0,'encerrado'); -- M104 Espanha 1×0 Argentina (a.e.t.) — Ferran Torres 106' (assist. Nico Williams); árbitro Slavko Vinčić/SVN; público 80.663 — ESPANHA CAMPEÃ (2º título, após 2010); Argentina vice
