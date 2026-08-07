@@ -7,7 +7,9 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://fasolo.ia.br',
   trailingSlash: 'always',
-  integrations: [mdx(), sitemap()],
+  // Paginas internas ficam fora do sitemap (tambem tem noindex e Disallow no
+  // robots.txt). Manter esta lista em sincronia com o public/robots.txt.
+  integrations: [mdx(), sitemap({ filter: (page) => !page.includes('/esim-discord') })],
   vite: {
     plugins: [tailwindcss()],
   },

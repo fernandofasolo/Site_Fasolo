@@ -1,0 +1,607 @@
+---
+/* Briefing do operador do canal Discord — eSIM BRsip.
+   Pagina INTERNA: noindex, fora do menu, fora do sitemap e bloqueada no
+   robots.txt. Nao ha link para ca em lugar nenhum do site.
+
+   ATENCAO A QUEM FOR EDITAR: esta e a versao PUBLICA do
+   `MKT/23-briefing-discord-operador.md` (repo privado brsip-esim-landing).
+   A redacao aqui foi invertida de proposito para ensinar a mesma regra sem
+   expor estrategia: "anuncie sempre o 5 GB" no lugar de "nunca anuncie
+   R$ 15,90", "compare so EUA/Europa" no lugar de "na Asia perdemos", e
+   "confirme o prazo" no lugar de "a entrega e manual". noindex NAO e
+   protecao — nao trazer os trechos do doc 23 para ca.
+
+   Precos: NAO editar a mao aqui. A fonte e o catalogo do gerador da landing.
+   Se um preco mudar, atualizar tambem — ou, melhor, mandar o link. */
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE } from '../consts';
+
+const vitrine = [
+  { destino: 'Estados Unidos', pacote: '5 GB / 15 dias', preco: 'R$ 44,90', bandeira: '🇺🇸', destaque: true },
+  { destino: 'Europa',         pacote: '5 GB / 15 dias', preco: 'R$ 44,90', bandeira: '🇪🇺', destaque: true },
+  { destino: 'Ásia',           pacote: '5 GB / 15 dias', preco: 'R$ 105,90', bandeira: '⛩️' },
+  { destino: 'Américas',       pacote: '5 GB / 15 dias', preco: 'R$ 105,90', bandeira: '🌎' },
+  { destino: 'Caribe',         pacote: '5 GB / 15 dias', preco: 'R$ 168,90', bandeira: '☀️' },
+  { destino: 'África',         pacote: '10 GB / 7 dias', preco: 'R$ 160,90', bandeira: '🦁' },
+];
+
+const bans = [
+  {
+    n: '1',
+    titulo: 'Nunca mandar DM não solicitada',
+    txt: 'Nem uma. Nem "só pro pessoal interessado". A política do Discord proíbe contatar usuário sem permissão e enviar marketing por DM — vale pra você e vale pro bot. A única DM legítima é responder quem te chamou primeiro.',
+  },
+  {
+    n: '2',
+    titulo: 'Nunca postar link sem autorização do admin',
+    txt: 'Na maioria dos servidores você nem consegue: o sistema bloqueia link de quem não tem cargo. Onde consegue, postar sem permissão é o jeito mais rápido de tomar ban e queimar a marca naquele servidor pra sempre. Fale com o admin primeiro. Sempre.',
+  },
+  {
+    n: '3',
+    titulo: 'Nunca entrar num servidor só pra divulgar',
+    txt: 'Isso se percebe em cinco minutos e é o comportamento que a comunidade mais rejeita. Se você não usaria aquele servidor, ele não é seu alvo.',
+  },
+];
+
+const faq = [
+  ['Tem ligação ou SMS?', 'Não — é <strong>só dados</strong>. WhatsApp, iMessage e chamada por app funcionam normal.'],
+  ['Meu celular pega?', 'Manda usar o <code>/compat</code>. Em geral: iPhone XS+, Pixel 3+, Galaxy S20+.'],
+  ['Quando eu ativo?', 'Recebe o QR na hora e pode ativar antes de viajar. A validade começa conforme o pacote.'],
+  ['Como recebo?', 'Por e-mail e/ou WhatsApp, logo após a confirmação do pagamento.'],
+  ['Funciona em vários países?', 'Sim — os pacotes regionais cobrem vários países com o mesmo eSIM.'],
+  ['Dá pra usar hotspot?', 'Dá. A maioria dos aparelhos suporta compartilhar a conexão.'],
+  ['E se o dado acabar no meio da viagem?', 'Chama no WhatsApp que a gente resolve na hora com um pacote novo. Ninguém fica sem internet.'],
+  ['Qual a velocidade?', 'Rede 4G/LTE local do destino — em geral comparável ao 4G brasileiro.'],
+  ['Tem VPN mesmo?', 'Tem, grátis com plano ativo e mesma validade. É pra <strong>segurança em rede pública</strong> (aeroporto, hotel) — não é pra streaming.'],
+];
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <BaseHead
+      title={`Briefing — Canal Discord · eSIM BRsip`}
+      description="Guia interno de operação do canal Discord do eSIM BRsip."
+      noindex={true}
+    />
+    <style>
+      .card {
+        background: rgba(255,255,255,.035);
+        border: 1px solid rgba(255,255,255,.08);
+        border-radius: 1rem;
+      }
+      .card-teal {
+        background: linear-gradient(160deg, rgba(31,199,182,.10), rgba(31,199,182,.02));
+        border: 1px solid rgba(31,199,182,.28);
+      }
+      .card-red {
+        background: linear-gradient(160deg, rgba(248,113,113,.10), rgba(248,113,113,.02));
+        border: 1px solid rgba(248,113,113,.3);
+      }
+      /* 12px e o piso: abaixo disso o texto fica dificil no celular e o
+         responsive-check acusa. Nao reduzir. */
+      .eyebrow {
+        font-size: .75rem; font-weight: 800; letter-spacing: .16em;
+        text-transform: uppercase;
+      }
+      h1, h2, h3 { font-family: 'Sora', sans-serif; }
+      /* .9em sobre o text-sm (14px) da 12.6px — acima do piso de 12px. */
+      code {
+        background: rgba(31,199,182,.12); color: #93f7de;
+        padding: 1px 6px; border-radius: 5px; font-size: .9em;
+      }
+      .step-n {
+        width: 1.9rem; height: 1.9rem; flex: 0 0 1.9rem;
+        display: flex; align-items: center; justify-content: center;
+        border-radius: 9999px; font-weight: 800; font-size: .85rem;
+      }
+      /* portao de PIN */
+      #gate {
+        position: fixed; inset: 0; z-index: 60;
+        display: flex; align-items: center; justify-content: center;
+        padding: 1.5rem;
+        background: var(--color-bg);
+      }
+      #gate[hidden] { display: none; }
+      #pin {
+        font-family: 'Sora', sans-serif; font-size: 1.5rem; letter-spacing: .5em;
+        text-align: center; text-indent: .5em;
+        width: 100%; padding: .8rem 1rem;
+        background: rgba(255,255,255,.05); color: #fff;
+        border: 1px solid rgba(31,199,182,.35); border-radius: .75rem;
+        outline: none;
+      }
+      #pin:focus { border-color: #1fc7b6; box-shadow: 0 0 0 3px rgba(31,199,182,.18); }
+      #gate.erro #pin { border-color: #f87171; animation: shake .35s; }
+      @keyframes shake {
+        0%,100%{transform:translateX(0)} 25%{transform:translateX(-7px)}
+        75%{transform:translateX(7px)}
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #gate.erro #pin { animation: none; }
+      }
+      /* Conteudo so aparece depois do PIN. Ver o aviso no <script>: isto e
+         conveniencia, nao seguranca. */
+      #conteudo[hidden] { display: none; }
+
+      table { border-collapse: collapse; width: 100%; }
+      th, td { text-align: left; padding: .6rem .75rem; font-size: .9rem; }
+      thead th {
+        font-size: .75rem; text-transform: uppercase; letter-spacing: .1em;
+        color: #4fe9cf; border-bottom: 1px solid rgba(255,255,255,.12);
+      }
+      tbody tr + tr td { border-top: 1px solid rgba(255,255,255,.06); }
+      .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    </style>
+  </head>
+
+  <body>
+    <!-- portao de PIN -->
+    <div id="gate">
+      <div class="w-full max-w-xs text-center">
+        <div class="text-4xl mb-5">🔒</div>
+        <p class="eyebrow text-green-400 mb-2">Guia interno</p>
+        <p class="text-xl font-extrabold text-white mb-6" style="font-family:'Sora',sans-serif;">Canal Discord · eSIM BRsip</p>
+        <form id="gate-form" novalidate>
+          <label for="pin" class="sr-only">PIN de acesso</label>
+          <input
+            id="pin"
+            type="password"
+            inputmode="numeric"
+            autocomplete="off"
+            maxlength="8"
+            placeholder="••••"
+            aria-describedby="gate-msg"
+          />
+          <button
+            type="submit"
+            class="w-full mt-3 px-6 py-3 rounded-xl bg-green-700 hover:bg-green-600 text-white font-semibold transition-colors"
+          >
+            Entrar
+          </button>
+        </form>
+        <p id="gate-msg" role="status" aria-live="polite" class="text-red-400 text-sm mt-4 h-5"></p>
+        <p class="text-slate-600 text-xs mt-6">Peça o PIN ao Fernando.</p>
+      </div>
+    </div>
+
+    <main id="conteudo" class="min-h-screen" hidden>
+      <div class="max-w-3xl mx-auto px-5 sm:px-6 py-14 sm:py-20">
+
+        <!-- cabecalho -->
+        <header class="mb-14">
+          <p class="eyebrow text-green-400 mb-3">Guia interno · não divulgar</p>
+          <h1 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+            Canal <span class="text-green-400">Discord</span><br />eSIM BRsip
+          </h1>
+          <p class="text-slate-400 mt-4 leading-relaxed">
+            Este guia parte do princípio de que <strong class="text-slate-200">você já sabe
+            Discord</strong> — servidor, cargo, admin, slash command, o que irrita moderador.
+            O que ele explica é <strong class="text-slate-200">o produto e as regras do
+            negócio</strong>.
+          </p>
+        </header>
+
+        <!-- 1. o produto -->
+        <section class="mb-14">
+          <h2 class="eyebrow text-green-400 mb-5">1 · O que a gente vende</h2>
+          <p class="text-slate-300 leading-relaxed mb-6">
+            <strong class="text-white">eSIM de dados pra quem viaja.</strong> eSIM é o chip
+            virtual: em vez de encaixar um chip físico, a pessoa lê um QR Code e o celular passa
+            a ter internet no exterior — sem trocar o chip de casa e sem pagar roaming da
+            operadora brasileira.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-3">
+            <div class="card p-4">
+              <p class="font-bold text-white text-sm mb-1">Só dados</p>
+              <p class="text-slate-400 text-sm leading-relaxed">Não tem ligação nem SMS. WhatsApp e chamada por app funcionam normal.</p>
+            </div>
+            <div class="card p-4">
+              <p class="font-bold text-white text-sm mb-1">Paga em reais</p>
+              <p class="text-slate-400 text-sm leading-relaxed">PIX ou cartão, em BRL. Os apps internacionais cobram em dólar.</p>
+            </div>
+            <div class="card p-4">
+              <p class="font-bold text-white text-sm mb-1">Atendimento em português</p>
+              <p class="text-slate-400 text-sm leading-relaxed">Pelo WhatsApp, com gente de verdade.</p>
+            </div>
+            <div class="card p-4">
+              <p class="font-bold text-white text-sm mb-1">VPN inclusa</p>
+              <p class="text-slate-400 text-sm leading-relaxed">Grátis com plano ativo. Segurança em rede pública — <strong class="text-slate-300">não é pra streaming</strong>.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. vitrine -->
+        <section class="mb-14">
+          <h2 class="eyebrow text-green-400 mb-5">2 · O que anunciar</h2>
+
+          <div class="card-teal rounded-2xl p-5 sm:p-6 mb-6">
+            <p class="font-bold text-white mb-2">⭐ Anuncie sempre o pacote de 5 GB</p>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              É o pacote que cobre uma viagem de verdade — quem viaja não fica dois dias fora.
+              Existem pacotes menores, mas eles servem como <strong class="text-white">recarga</strong>
+              pra quem já é cliente e ficou sem dados no fim da viagem, não como oferta de entrada.
+            </p>
+            <p class="text-slate-300 text-sm leading-relaxed mt-3">
+              Se perguntarem <em>"não tem mais barato?"</em>, a resposta é:
+              <span class="text-green-300">"o 5 GB é o que cobre uma viagem de verdade; abaixo
+              disso a gente usa como recarga."</span>
+            </p>
+          </div>
+
+          <div class="card scroll-x p-1 sm:p-2">
+            <table>
+              <thead>
+                <tr><th>Destino</th><th>Pacote</th><th class="text-right">Preço</th></tr>
+              </thead>
+              <tbody>
+                {vitrine.map((v) => (
+                  <tr>
+                    <td class={v.destaque ? 'text-white font-semibold whitespace-nowrap' : 'text-slate-300 whitespace-nowrap'}>
+                      <span class="mr-1.5">{v.bandeira}</span>{v.destino}
+                    </td>
+                    <td class="text-slate-400 whitespace-nowrap">{v.pacote}</td>
+                    <td class={v.destaque ? 'text-green-300 font-bold text-right whitespace-nowrap' : 'text-slate-300 text-right whitespace-nowrap'}>{v.preco}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <p class="text-slate-500 text-xs mt-3 leading-relaxed">
+            ⚠️ Os preços mudam (câmbio, revisão mensal). <strong class="text-slate-400">Nunca decore
+            nem cole num print</strong> — manda o link, ou usa o bot. Print com preço velho circula
+            pra sempre.
+          </p>
+        </section>
+
+        <!-- 3. os bans -->
+        <section class="mb-14">
+          <h2 class="eyebrow text-red-400 mb-5">3 · As três coisas que dão ban</h2>
+          <p class="text-slate-400 text-sm mb-5 leading-relaxed">
+            Não são recomendações. São as que fazem perder a conta, o bot e o acesso ao servidor.
+          </p>
+
+          <div class="space-y-3">
+            {bans.map((b) => (
+              <div class="card-red rounded-2xl p-5 flex gap-4">
+                <div class="step-n bg-red-500/20 text-red-300 mt-0.5">{b.n}</div>
+                <div>
+                  <p class="font-bold text-white mb-1.5">⛔ {b.titulo}</p>
+                  <p class="text-slate-300 text-sm leading-relaxed">{b.txt}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p class="text-slate-300 text-sm mt-5 leading-relaxed border-l-2 border-green-500/50 pl-4">
+            <strong class="text-white">A regra que resume as três:</strong> a gente entra pela
+            <strong class="text-green-300"> utilidade</strong>, não pelo anúncio. Bot útil é
+            <em>convidado</em>; anúncio é <em>banido</em>.
+          </p>
+        </section>
+
+        <!-- 4. o dinheiro -->
+        <section class="mb-14">
+          <h2 class="eyebrow text-green-400 mb-5">4 · Como o dinheiro chega</h2>
+          <p class="text-slate-300 leading-relaxed mb-5">
+            O Discord <strong class="text-white">não processa venda nenhuma</strong>. Ele é onde a
+            pessoa descobre; o dinheiro entra no nosso site.
+          </p>
+
+          <div class="card flow p-5 mb-5 text-sm text-slate-300 leading-loose">
+            <p>1. pessoa pergunta no servidor</p>
+            <p class="text-slate-500 pl-4">↓ usa <code>/compat</code> ou <code>/planos</code></p>
+            <p>2. bot responde <strong class="text-white">só pra ela</strong> → botão “Ver planos”</p>
+            <p class="text-slate-500 pl-4">↓</p>
+            <p>3. cai no site com <code>utm_source=discord</code> e <code>utm_content=servidor</code></p>
+            <p class="text-slate-500 pl-4">↓ paga no PIX ou cartão</p>
+            <p>4. venda aparece pra equipe + QR do eSIM enviado ao cliente</p>
+          </div>
+
+          <div class="card-teal rounded-2xl p-5">
+            <p class="font-bold text-white mb-2">⚠️ A UTM é obrigatória — e é sua responsabilidade</p>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              O Google e o Meta grudam um identificador próprio no link, então a origem se salva
+              mesmo se alguém esquecer a UTM. <strong class="text-white">O Discord não gruda
+              nada.</strong> Link sem <code>utm_source=discord</code> vira origem desconhecida e
+              <strong class="text-white"> a venda não conta como sua</strong>.
+            </p>
+            <p class="text-slate-300 text-sm leading-relaxed mt-3">
+              E o <code>utm_content</code> diz <strong class="text-white">de qual servidor</strong>
+              veio — é literalmente como o parceiro recebe a comissão dele. Link errado = parceiro
+              não recebe = parceria acabou.
+            </p>
+            <p class="text-slate-400 text-sm leading-relaxed mt-3">
+              Na prática o bot monta o link certo sozinho. O risco é só quando você cola link à
+              mão — na dúvida, peça o link pronto.
+            </p>
+          </div>
+        </section>
+
+        <!-- 5. o bot -->
+        <section class="mb-14">
+          <h2 class="eyebrow text-green-400 mb-5">5 · O bot é seu argumento — mas não pro cliente</h2>
+
+          <div class="grid sm:grid-cols-3 gap-3 mb-5">
+            <div class="card p-4">
+              <p class="text-green-300 font-mono text-sm font-bold mb-1">/compat</p>
+              <p class="text-slate-400 text-sm leading-relaxed">Diz se o celular tem eSIM. Base de 202 aparelhos, com autocomplete.</p>
+            </div>
+            <div class="card p-4">
+              <p class="text-green-300 font-mono text-sm font-bold mb-1">/planos</p>
+              <p class="text-slate-400 text-sm leading-relaxed">Mostra o pacote de vitrine do destino, com botão de comprar.</p>
+            </div>
+            <div class="card p-4">
+              <p class="text-green-300 font-mono text-sm font-bold mb-1">/precos</p>
+              <p class="text-slate-400 text-sm leading-relaxed">Resumo por região.</p>
+            </div>
+          </div>
+
+          <p class="text-slate-300 text-sm leading-relaxed mb-5">
+            Tudo responde <strong class="text-white">só pra quem pediu</strong> — não polui o
+            canal. É esse detalhe que faz o admin aceitar.
+          </p>
+
+          <div class="card-teal rounded-2xl p-5">
+            <p class="font-bold text-white mb-2">⭐ O ponto que muda a conversa</p>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Você <strong class="text-white">não instala</strong> o bot no servidor dos outros —
+              <strong class="text-green-300"> o admin instala</strong>, porque exige permissão de
+              gerenciar servidor.
+            </p>
+            <p class="text-slate-300 text-sm leading-relaxed mt-3">
+              Ou seja: o bot não é ferramenta de venda pro cliente final. <strong class="text-white">É
+              a oferta que você faz ao admin.</strong> Você não pede espaço pra anunciar — você
+              oferece uma ferramenta pra comunidade dele. O <code class="text-green-300">/compat</code>
+              responde de graça a pergunta que aparece toda semana em servidor de viagem.
+            </p>
+          </div>
+        </section>
+
+        <!-- 6. abordagem -->
+        <section class="mb-14">
+          <h2 class="eyebrow text-green-400 mb-5">6 · Como falar com o admin</h2>
+          <p class="text-slate-300 text-sm leading-relaxed mb-4">
+            Chame <strong class="text-white">o admin</strong> no privado — isto é permitido, é
+            conversa entre pessoas sobre o servidor dele, não marketing em massa. Curto, e
+            <strong class="text-white"> sem link na primeira mensagem</strong>:
+          </p>
+
+          <blockquote class="card p-5 text-slate-300 text-sm leading-relaxed italic space-y-3 border-l-2 border-green-500/60">
+            <p>Oi! Sou o [nome], ajudo na BRsip — a gente vende eSIM de dados pra quem viaja (chip virtual pra ter internet fora sem pagar roaming).</p>
+            <p>Fiz um bot que responde <span class="not-italic font-mono text-green-300">/compat &lt;modelo do celular&gt;</span> e diz na hora se o aparelho aceita eSIM. É grátis, responde só pra quem pergunta (não aparece no canal) e não manda DM pra ninguém.</p>
+            <p>Vi que aqui aparece bastante dúvida de chip/internet no exterior. Faz sentido pro servidor? Se quiser eu te mostro funcionando antes, sem compromisso.</p>
+          </blockquote>
+
+          <div class="grid sm:grid-cols-2 gap-3 mt-5">
+            <div class="card p-4">
+              <p class="font-bold text-white text-sm mb-1.5">Se ele disser não</p>
+              <p class="text-slate-400 text-sm leading-relaxed">Agradeça e saia. Não insista, não volte depois, não tente por outro canal. Servidor é um mundo pequeno e admins conversam entre si.</p>
+            </div>
+            <div class="card p-4">
+              <p class="font-bold text-white text-sm mb-1.5">Se ele disser sim</p>
+              <p class="text-slate-400 text-sm leading-relaxed">Aí sim fale de comissão. Mas <strong class="text-slate-200">não prometa percentual</strong> antes de confirmar com a equipe.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. primeiras semanas -->
+        <section class="mb-14">
+          <h2 class="eyebrow text-green-400 mb-5">7 · Suas primeiras duas semanas</h2>
+          <div class="space-y-3">
+            {[
+              ['Instalar o bot no seu próprio servidor', 'e usar de verdade. Achar o que está esquisito, confuso ou quebrado — é pra isso que ele vai lá primeiro.'],
+              ['Anotar tudo que quebrar', 'mesmo bobagem: resposta feia, comando lento, texto errado.'],
+              ['Listar 10 a 15 servidores BR', 'de viagem, intercâmbio, mochilão ou nômade digital. Pra cada um: nome, quantos membros e o que diz a regra sobre divulgação.'],
+              ['Ficar nesses servidores como pessoa normal', 'por alguns dias, sem falar de eSIM. Ver que dúvida aparece e como o pessoal fala.'],
+              ['Só então falar com 2 ou 3 admins', 'sem pressa. Chegar com um bot que já funciona e com leitura do servidor vale dez abordagens frias.'],
+            ].map((p, i) => (
+              <div class="card p-4 flex gap-4">
+                <div class="step-n bg-green-500/15 text-green-300 mt-0.5">{i + 1}</div>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                  <strong class="text-white">{p[0]}</strong> — {p[1]}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- 8. faq -->
+        <section class="mb-14">
+          <h2 class="eyebrow text-green-400 mb-5">8 · Perguntas que vão te fazer</h2>
+          <div class="card divide-y divide-white/5">
+            {faq.map(([q, a]) => (
+              <div class="p-4">
+                <p class="font-semibold text-white text-sm mb-1">{q}</p>
+                <p class="text-slate-400 text-sm leading-relaxed" set:html={a} />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- 9. cuidado -->
+        <section class="mb-14">
+          <h2 class="eyebrow text-red-400 mb-5">9 · Cuidado com o que você afirma</h2>
+          <div class="space-y-3">
+            <div class="card-red rounded-2xl p-5">
+              <p class="font-bold text-white mb-1.5">Comparação de preço: só EUA e Europa</p>
+              <p class="text-slate-300 text-sm leading-relaxed">
+                Nesses dois destinos a comparação com os apps internacionais nos favorece.
+                <strong class="text-white"> Nos outros, não use preço como argumento</strong> —
+                venda pela conveniência: pagar em reais, suporte em português, PIX. E quando
+                comparar, compare <strong class="text-white">por GB e com a data</strong> da
+                consulta.
+              </p>
+            </div>
+            <div class="card-red rounded-2xl p-5">
+              <p class="font-bold text-white mb-1.5">Nunca cite concorrente pelo nome</p>
+              <p class="text-slate-300 text-sm leading-relaxed">
+                Fale <em>"os apps internacionais"</em>. Dar nome a marca que o público brasileiro
+                ainda não conhece é fazer propaganda de graça pra ela.
+              </p>
+            </div>
+            <div class="card-red rounded-2xl p-5">
+              <p class="font-bold text-white mb-1.5">Nunca invente cobertura</p>
+              <p class="text-slate-300 text-sm leading-relaxed">
+                Se não souber se cobre um país, <strong class="text-white">pergunte</strong>.
+                Prometer cobertura errada gera reembolso, cliente furioso e reclamação pública
+                no servidor.
+              </p>
+            </div>
+            <div class="card-red rounded-2xl p-5">
+              <p class="font-bold text-white mb-1.5">Nunca prometa prazo de entrega por conta própria</p>
+              <p class="text-slate-300 text-sm leading-relaxed">
+                <strong class="text-white">Confirme com a equipe antes.</strong> É a promessa mais
+                fácil de quebrar — e em comunidade a reclamação é pública.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 10. medicao -->
+        <section class="mb-14">
+          <h2 class="eyebrow text-green-400 mb-5">10 · Como a gente mede</h2>
+          <p class="text-slate-300 text-sm leading-relaxed mb-4">
+            Discord não tem impressão nem clique como Instagram. O que a gente olha:
+          </p>
+          <div class="card scroll-x p-1 sm:p-2">
+            <table>
+              <thead><tr><th>Métrica</th><th>O que significa</th></tr></thead>
+              <tbody>
+                <tr><td class="text-white whitespace-nowrap">Servidores com o bot</td><td class="text-slate-400">alcance real</td></tr>
+                <tr><td class="text-white whitespace-nowrap">Comandos usados</td><td class="text-slate-400">se o bot é útil de fato</td></tr>
+                <tr><td class="text-white whitespace-nowrap">Cliques no botão</td><td class="text-slate-400">interesse virando visita</td></tr>
+                <tr><td class="text-white whitespace-nowrap">Vendas com <code>utm_content</code></td><td class="text-slate-400">o que paga a comissão do parceiro</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-slate-300 text-sm mt-4 leading-relaxed border-l-2 border-green-500/50 pl-4">
+            <strong class="text-white">Uma venda de verdade vale mais que mil membros.</strong>
+            Servidor grande que não compra é vaidade.
+          </p>
+        </section>
+
+        <!-- 11. perguntar -->
+        <section class="mb-14">
+          <h2 class="eyebrow text-green-400 mb-5">11 · Quando perguntar em vez de decidir</h2>
+          <div class="card-teal rounded-2xl p-5">
+            <p class="text-slate-300 text-sm leading-relaxed mb-3">
+              Pergunte <strong class="text-white">sempre</strong> antes de:
+            </p>
+            <ul class="text-slate-300 text-sm leading-relaxed space-y-1.5 list-disc pl-5 marker:text-green-400">
+              <li>prometer percentual de comissão</li>
+              <li>afirmar cobertura de um país</li>
+              <li>dar desconto</li>
+              <li>prometer prazo de entrega</li>
+              <li>responder reclamação pública</li>
+              <li>postar qualquer coisa que pareça anúncio</li>
+            </ul>
+            <p class="text-slate-300 text-sm leading-relaxed mt-4">
+              <strong class="text-white">Nenhuma dessas perguntas é boba.</strong> Errar em
+              qualquer uma custa mais caro que esperar duas horas por uma resposta.
+            </p>
+          </div>
+        </section>
+
+        <!-- referencia -->
+        <section class="mb-6">
+          <h2 class="eyebrow text-green-400 mb-5">Referência rápida</h2>
+          <div class="card p-5 text-sm space-y-2">
+            <p class="text-slate-400">
+              Site: <a href="https://esim.brsip.com.br" class="text-green-300 hover:underline" rel="noopener">esim.brsip.com.br</a>
+            </p>
+            <p class="text-slate-400">
+              Verificador de aparelho: <a href="https://esim.brsip.com.br/#compat" class="text-green-300 hover:underline" rel="noopener">esim.brsip.com.br/#compat</a>
+            </p>
+            <p class="text-slate-400">WhatsApp de atendimento: 55 48 99148-6285</p>
+            <p class="text-slate-500 text-xs pt-2 leading-relaxed">
+              Em caso de divergência, <strong class="text-slate-400">o site manda</strong> — as
+              respostas oficiais estão no FAQ dele.
+            </p>
+          </div>
+        </section>
+
+        <p class="text-center text-slate-600 text-xs mt-12">
+          Guia interno · {SITE_TITLE}
+        </p>
+
+      </div>
+      <Footer />
+    </main>
+
+    <script is:inline>
+      /* Portao de PIN — CONVENIENCIA, NAO SEGURANCA.
+         Isto e um site estatico: o HTML inteiro ja chegou ao navegador antes do
+         PIN ser digitado, e qualquer pessoa ve o conteudo pelo "ver codigo-fonte".
+         Guardamos o HASH em vez do PIN so para evitar a leitura casual do numero
+         no fonte — um PIN de 4 digitos se quebra por forca bruta instantaneamente.
+         Por isso o conteudo desta pagina e a versao PUBLICA e reescrita do
+         briefing: ela e segura mesmo se vazar. NAO trazer para ca nada do
+         `23-briefing-discord-operador.md` (repo privado) contando com este portao.
+         Se um dia precisar de protecao de verdade: adapter da Vercel + rota
+         serverless com HTTP Basic (mesmo esquema do servidor de artifacts da VM). */
+      (function () {
+        var SALT = 'fasolo-esim-discord';
+        var HASH = '1767aa37ba5c4a868377197ce65aa541698056fa8d3ad5532d307f98145b0b0d';
+        var CHAVE = 'fasolo_guia_discord';
+
+        var gate = document.getElementById('gate');
+        var form = document.getElementById('gate-form');
+        var campo = document.getElementById('pin');
+        var msg = document.getElementById('gate-msg');
+        var conteudo = document.getElementById('conteudo');
+
+        function abrir() {
+          gate.hidden = true;
+          conteudo.hidden = false;
+        }
+
+        // Ja liberou antes neste navegador? Nao pede de novo.
+        try {
+          if (localStorage.getItem(CHAVE) === HASH) { abrir(); return; }
+        } catch (e) {}
+
+        campo.focus();
+
+        async function sha256(txt) {
+          var buf = new TextEncoder().encode(txt);
+          var dig = await crypto.subtle.digest('SHA-256', buf);
+          return Array.from(new Uint8Array(dig))
+            .map(function (b) { return b.toString(16).padStart(2, '0'); })
+            .join('');
+        }
+
+        form.addEventListener('submit', async function (ev) {
+          ev.preventDefault();
+          var valor = (campo.value || '').trim();
+          if (!valor) return;
+
+          var ok = false;
+          try {
+            ok = (await sha256(SALT + valor)) === HASH;
+          } catch (e) {
+            // crypto.subtle exige contexto seguro (https ou localhost)
+            msg.textContent = 'Abra a página por https para digitar o PIN.';
+            return;
+          }
+
+          if (ok) {
+            try { localStorage.setItem(CHAVE, HASH); } catch (e) {}
+            msg.textContent = '';
+            abrir();
+          } else {
+            gate.classList.remove('erro');
+            void gate.offsetWidth;          // reinicia a animacao
+            gate.classList.add('erro');
+            msg.textContent = 'PIN incorreto.';
+            campo.value = '';
+            campo.focus();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

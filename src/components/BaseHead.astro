@@ -8,10 +8,14 @@ interface Props {
   type?: string;
   pubDate?: Date;
   articleAuthor?: string;
+  /* Pagina interna: fora do menu, do sitemap e dos buscadores.
+     ATENCAO: noindex NAO e protecao — quem tiver a URL abre. Nao publicar
+     conteudo sensivel numa pagina so por ela estar "oculta". */
+  noindex?: boolean;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const { title, description, image = '/og-default.png?v=3', type = 'website', pubDate, articleAuthor } = Astro.props;
+const { title, description, image = '/og-default.png?v=3', type = 'website', pubDate, articleAuthor, noindex = false } = Astro.props;
 ---
 
 <meta charset="utf-8" />
@@ -29,7 +33,9 @@ const { title, description, image = '/og-default.png?v=3', type = 'website', pub
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Robots -->
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+{noindex
+  ? <meta name="robots" content="noindex, nofollow" />
+  : <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />}
 
 <!-- RSS -->
 <link rel="alternate" type="application/rss+xml" title="Fasolo Blog" href="/rss.xml" />

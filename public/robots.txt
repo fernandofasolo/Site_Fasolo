@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# Paginas internas (nao listadas no menu nem no sitemap).
+# Manter em sincronia com o filter do sitemap em astro.config.mjs.
+Disallow: /esim-discord/
+
 Sitemap: https://fasolo.ia.br/sitemap-index.xml
