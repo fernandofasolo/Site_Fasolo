@@ -10,7 +10,7 @@ Meu pai chegou com a ideia: colocar a nossa Pokédex no site. Todos os Pokémon,
 
 Eu falei "boa, vai ser legal".
 
-Aí eu vi a página pronta, com todos os que faltam desbotados de uma vez, e foi tipo um soco. É muita coisa.
+Aí ele preencheu a lista dele e me mostrou a página, com todos os que faltam desbotados de uma vez. Foi tipo um soco. É muita coisa — e a minha ainda nem tá preenchida.
 
 ## 1025
 
@@ -62,4 +62,4 @@ E quando a Niantic soltar Pokémon novo, já sei onde ele vai aparecer na minha 
 
 Se você também joga, dá uma olhada na sua Pokédex hoje. É meio assustador, mas é bom saber onde você está.
 
-*Ah: se você abrir agora e estiver 100%, é porque a gente ainda não preencheu as listas. Calma que vai ficar bem mais feio.*
+*Ah: se você abrir a minha Pokédex agora e ela estiver 100% completa, não acredita não. É que eu ainda não sentei pra preencher a minha lista. A do meu pai já tá preenchida — [essa aqui vale](/pokedex/fernando/). A minha vem, e vai ficar bem mais feia.*

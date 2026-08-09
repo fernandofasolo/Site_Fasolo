@@ -52,4 +52,4 @@ O que essa página faz não é nos apressar. É dar contorno a uma coisa que est
 
 E, sinceramente, ver a lista de caça encolher um número por vez tem um charme que eu não esperava.
 
-*A propósito: se você abrir as páginas agora e encontrar as duas em 100%, é porque ainda não sentamos para preencher as listas. Esse é o próximo capítulo — e vai doer um pouco.*
+*A propósito: a minha lista já está preenchida, e o número que aparece na página é o real — inclusive as duas primeiras gerações fechadas, que foi a única boa notícia do dia. A do Fasolinho ainda está em branco, então a Pokédex dele aparece completa por enquanto. Não está. Ele senta para preencher nos próximos dias.*
