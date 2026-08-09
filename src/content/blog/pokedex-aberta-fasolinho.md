@@ -6,7 +6,9 @@ author: 'Fernando Fasolo Jr.'
 category: 'Games'
 ---
 
-Meu pai chegou com a ideia: colocar a nossa Pokédex no site. Todos os Pokémon, os que a gente tem e os que faltam.
+Semana que vem eu completo dez anos de Pokémon GO. Comecei em 15 de agosto de 2016, nove dias depois do meu pai — ele já completou os dele faz uns dias.
+
+E foi bem nessa semana que ele chegou com a ideia: colocar a nossa Pokédex no site. Todos os Pokémon, os que a gente tem e os que faltam.
 
 Eu falei "boa, vai ser legal".
 

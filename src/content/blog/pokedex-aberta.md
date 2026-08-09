@@ -6,9 +6,11 @@ author: 'Fernando Fasolo'
 category: 'Games'
 ---
 
-Tem uma pergunta que a gente evitava fazer: quanto falta mesmo para completar a Pokédex?
+Faz três dias que eu completei dez anos de Pokémon GO. Comecei em 6 de agosto de 2016, poucos dias depois de o jogo chegar ao Brasil. O Fasolinho entrou nove dias depois de mim — ele fecha a década na semana que vem.
 
-Dez anos jogando Pokémon GO com o Fasolinho, e a resposta sempre foi um chute. "Ah, deve faltar bastante." O jogo mostra o seu progresso, mas mostra do jeito dele — a Pokédex do GO só conta o que já existe no GO, e some com o resto. É um número confortável. Também é um número que esconde o tamanho real do caminho.
+Uma data redonda dessas puxa uma pergunta que a gente vinha evitando: quanto falta mesmo para completar a Pokédex?
+
+Dez anos jogando com ele, e a resposta sempre foi um chute. "Ah, deve faltar bastante." O jogo mostra o seu progresso, mas mostra do jeito dele — a Pokédex do GO só conta o que já existe no GO, e some com o resto. É um número confortável. Também é um número que esconde o tamanho real do caminho.
 
 Então resolvemos abrir tudo.
 
