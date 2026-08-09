@@ -1,6 +1,6 @@
 ---
 title: 'Minha Pokédex tá aberta (e falta MUITO)'
-description: 'Meu pai teve a ideia de colocar a nossa Pokédex no site, com todos os 1025 Pokémon e os que faltam desbotados. Achei que ia ser legal. Foi — e também foi um susto.'
+description: 'Meu pai colocou a nossa Pokédex no site: os 1025 Pokémon numa tela só, com tudo que ainda me falta apagado. Achei que ia ser legal, e foi. Também foi um susto.'
 pubDate: '2026-08-09'
 author: 'Fernando Fasolo Jr.'
 category: 'Games'
@@ -12,7 +12,7 @@ E foi bem nessa semana que ele chegou com a ideia: colocar a nossa Pokédex no s
 
 Eu falei "boa, vai ser legal".
 
-Aí a gente preencheu as duas listas e eu vi a página pronta, com todos os que faltam desbotados de uma vez. Foi tipo um soco. É muita coisa.
+Aí a gente preencheu as duas listas e eu vi a página pronta: tudo que ainda me falta, apagado, de uma vez só. Foi tipo um soco. É muita coisa.
 
 ## 1025
 
