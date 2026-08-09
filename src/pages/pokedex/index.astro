@@ -1,0 +1,176 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { TREINADORES } from '../../data/pokedex/treinadores';
+import { TOTAL_NACIONAL } from '../../data/pokedex/pokedex';
+import { SITE_TITLE } from '../../consts';
+
+const pct = (n: number) => n.toFixed(1).replace('.', ',');
+
+/* Anel de progresso: r = 46. */
+const RAIO = 46;
+const VOLTA = 2 * Math.PI * RAIO;
+
+/* Quem tem mais Pokemon que o outro nao tem — a graca da comparacao. */
+const [a, b] = TREINADORES;
+const soDoA = [...b.faltantes].filter((id) => !a.faltantes.has(id)).length;
+const soDoB = [...a.faltantes].filter((id) => !b.faltantes.has(id)).length;
+const faltamAosDois = [...a.faltantes].filter((id) => b.faltantes.has(id)).length;
+const juntos = TOTAL_NACIONAL - faltamAosDois;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <BaseHead
+      title={`Pokédex — ${SITE_TITLE}`}
+      description="As Pokédex do Fernando e do Fasolinho lado a lado: o que cada um já capturou e o que ainda falta para completar as 1025 fichas da Pokédex Nacional."
+    />
+    <style>
+      .cartao {
+        background: rgba(15,15,25,.7);
+        border: 1px solid rgba(255,255,255,.07);
+        backdrop-filter: blur(12px);
+        transition: border-color .3s, transform .3s;
+      }
+      .cartao:hover { transform: translateY(-4px); }
+      .anel { transform: rotate(-90deg); }
+      .anel-trilha { fill: none; stroke: rgba(255,255,255,.08); stroke-width: 8; }
+      .anel-barra { fill: none; stroke-width: 8; stroke-linecap: round; }
+    </style>
+  </head>
+  <body>
+    <Header />
+
+    <main class="pt-28 pb-20">
+      <div class="max-w-5xl mx-auto px-6">
+
+        <div class="text-center mb-14">
+          <h1 class="text-4xl md:text-5xl font-black text-white mb-4" style="font-family:'Sora',sans-serif;">
+            Nossas Pokédex
+          </h1>
+          <p class="text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            Dez anos de Pokémon GO, dois treinadores, uma Pokédex Nacional de
+            <strong class="text-slate-300">{TOTAL_NACIONAL.toLocaleString('pt-BR')}</strong> fichas.
+            Aqui está tudo aberto — o que já capturamos e, principalmente, o que ainda falta.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 mb-12">
+          {TREINADORES.map((t) => (
+            <a
+              href={`/pokedex/${t.slug}/`}
+              class="cartao rounded-2xl p-7 block group"
+              style={`--c:${t.cor}; border-color:rgb(${t.corRgb} / .18);`}
+            >
+              <div class="flex items-center gap-4 mb-6">
+                <div
+                  class="w-14 h-14 rounded-full flex items-center justify-center text-lg font-black flex-shrink-0"
+                  style={`font-family:'Sora',sans-serif; color:${t.cor}; background:rgb(${t.corRgb} / .13); border:2px solid rgb(${t.corRgb} / .4);`}
+                >
+                  {t.iniciais}
+                </div>
+                <div>
+                  <h2 class="text-white font-bold text-xl leading-tight" style="font-family:'Sora',sans-serif;">
+                    {t.apelido === 'o pai' ? 'Fernando Fasolo' : 'Fasolinho'}
+                  </h2>
+                  <p class="text-slate-500 text-xs mt-1">jogando desde {t.desde}</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-6">
+                <div class="relative w-28 h-28 flex-shrink-0">
+                  <svg viewBox="0 0 110 110" class="anel w-full h-full">
+                    <circle cx="55" cy="55" r={RAIO} class="anel-trilha" />
+                    <circle
+                      cx="55" cy="55" r={RAIO}
+                      class="anel-barra"
+                      style={`stroke:${t.cor}`}
+                      stroke-dasharray={`${(t.progresso.percentual / 100) * VOLTA} ${VOLTA}`}
+                    />
+                  </svg>
+                  <div class="absolute inset-0 flex flex-col items-center justify-center leading-none">
+                    <strong class="text-white text-xl font-extrabold" style="font-family:'Sora',sans-serif;">
+                      {pct(t.progresso.percentual)}<span class="text-xs" style={`color:${t.cor}`}>%</span>
+                    </strong>
+                  </div>
+                </div>
+
+                <div class="space-y-3">
+                  <div>
+                    <div class="text-2xl font-extrabold leading-none" style={`font-family:'Sora',sans-serif; color:${t.cor}`}>
+                      {t.progresso.capturados.toLocaleString('pt-BR')}
+                    </div>
+                    <div class="text-[.65rem] uppercase tracking-widest text-slate-500 mt-1">capturados</div>
+                  </div>
+                  <div>
+                    <div class="text-2xl font-extrabold text-slate-200 leading-none" style="font-family:'Sora',sans-serif;">
+                      {t.progresso.faltam.toLocaleString('pt-BR')}
+                    </div>
+                    <div class="text-[.65rem] uppercase tracking-widest text-slate-500 mt-1">faltando</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-6 flex gap-1">
+                {t.progresso.geracoes.map((g) => (
+                  <div class="flex-1" title={`Gen ${g.num} · ${g.regiao}: ${g.capturados}/${g.total}`}>
+                    <div class="h-1.5 rounded-full bg-white/8 overflow-hidden">
+                      <div class="h-full rounded-full" style={`width:${g.percentual}%; background:${t.cor}`}></div>
+                    </div>
+                    <div class="text-[.6rem] text-slate-600 text-center mt-1">{g.num}</div>
+                  </div>
+                ))}
+              </div>
+
+              <p class="mt-6 text-sm font-semibold transition-colors" style={`color:${t.cor}`}>
+                Abrir a Pokédex completa →
+              </p>
+            </a>
+          ))}
+        </div>
+
+        <!-- comparativo entre os dois -->
+        <div class="cartao rounded-2xl p-7">
+          <h2 class="text-white font-bold text-lg mb-5" style="font-family:'Sora',sans-serif;">
+            Somando as duas
+          </h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div>
+              <div class="text-2xl font-extrabold text-white leading-none" style="font-family:'Sora',sans-serif;">
+                {juntos.toLocaleString('pt-BR')}
+              </div>
+              <div class="text-[.65rem] uppercase tracking-widest text-slate-500 mt-1.5">registrados por nós dois</div>
+            </div>
+            <div>
+              <div class="text-2xl font-extrabold text-slate-300 leading-none" style="font-family:'Sora',sans-serif;">
+                {faltamAosDois.toLocaleString('pt-BR')}
+              </div>
+              <div class="text-[.65rem] uppercase tracking-widest text-slate-500 mt-1.5">faltam para os dois</div>
+            </div>
+            <div>
+              <div class="text-2xl font-extrabold leading-none" style={`font-family:'Sora',sans-serif; color:${a.cor}`}>
+                {soDoA.toLocaleString('pt-BR')}
+              </div>
+              <div class="text-[.65rem] uppercase tracking-widest text-slate-500 mt-1.5">só o pai tem</div>
+            </div>
+            <div>
+              <div class="text-2xl font-extrabold leading-none" style={`font-family:'Sora',sans-serif; color:${b.cor}`}>
+                {soDoB.toLocaleString('pt-BR')}
+              </div>
+              <div class="text-[.65rem] uppercase tracking-widest text-slate-500 mt-1.5">só o Fasolinho tem</div>
+            </div>
+          </div>
+          <p class="text-slate-500 text-sm mt-6 leading-relaxed">
+            Os números saem direto dos arquivos de controle de cada um: registramos apenas
+            o que <em>falta</em>, e o site calcula o resto sozinho.
+          </p>
+        </div>
+
+      </div>
+    </main>
+
+    <Footer />
+  </body>
+</html>
