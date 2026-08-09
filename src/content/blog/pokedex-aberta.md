@@ -52,4 +52,4 @@ O que essa página faz não é nos apressar. É dar contorno a uma coisa que est
 
 E, sinceramente, ver a lista de caça encolher um número por vez tem um charme que eu não esperava.
 
-*A propósito: a minha lista já está preenchida, e o número que aparece na página é o real — inclusive as duas primeiras gerações fechadas, que foi a única boa notícia do dia. A do Fasolinho ainda está em branco, então a Pokédex dele aparece completa por enquanto. Não está. Ele senta para preencher nos próximos dias.*
+*A propósito: as duas listas já estão preenchidas, e os números nas páginas são reais. O dado que mais me pegou foi este — de tudo que ainda me falta, existe exatamente **um** Pokémon que o Fasolinho tem e eu não. Um, em 1025. Dez anos jogando lado a lado dão nisso.*
