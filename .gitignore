@@ -12,3 +12,6 @@ public/copa2026/
 
 # Pesquisa Telecom (local only)
 pesquisa-telecom/
+
+# Capturas das auditorias de responsividade (geradas localmente)
+.responsivo-preview/

@@ -162,10 +162,15 @@ const tiposPresentes = TIPOS_ORDENADOS.filter((t) => POKEMON.some((p) => p.types
           É exatamente esta lista que vive no arquivo <code>faltantes-{treinador.slug}.ts</code>:
           capturou um, apaga o número de lá e a barra sobe sozinha.
         </p>
+        {/* O {' '} depois do separador nao e decorativo: sem espaco entre as
+            tags inline o navegador nao acha onde quebrar a linha, e as centenas
+            de numeros viram uma linha unica que rola a pagina de lado (o mesmo
+            engano do commit b2e8a23). O espaco vai so DEPOIS do "·" — assim ele
+            fica colado no numero anterior e nunca sobra sozinho abrindo linha. */}
         <p class="pendentes-lista">
           {progresso.faltantesOrdenados.map((id, i) => (
             <>
-              {i > 0 && <span class="sep">·</span>}
+              {i > 0 && <><span class="sep">·</span>{' '}</>}
               <a href={`#pkmn-${id}`} class="pend" data-ir={id}>{numeroDex(id)}</a>
             </>
           ))}
@@ -328,7 +333,9 @@ const tiposPresentes = TIPOS_ORDENADOS.filter((t) => POKEMON.some((p) => p.types
   }
   .pendentes-intro { font-size: .85rem; color: #94a3b8; margin: 0 0 1rem; line-height: 1.7; }
   .pendentes-intro code { background: rgb(var(--acc-rgb) / .14); color: var(--acc); padding: 1px 6px; border-radius: 4px; font-size: .9em; }
-  .pendentes-lista { margin: 0 0 1rem; line-height: 2.1; }
+  /* overflow-wrap segura o caso de o espaco entre os numeros sumir de novo:
+     mesmo sem ponto de quebra natural a linha passa a poder quebrar. */
+  .pendentes-lista { margin: 0 0 1rem; line-height: 2.1; overflow-wrap: anywhere; }
   .pend {
     font-variant-numeric: tabular-nums; font-size: .8rem; color: #94a3b8;
     text-decoration: none; padding: 2px 5px; border-radius: 4px; transition: background .15s, color .15s;

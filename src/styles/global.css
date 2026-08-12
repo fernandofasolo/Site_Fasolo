@@ -118,3 +118,26 @@ body {
   border-top: 1px solid rgba(251,122,69,.2);
   margin: 2rem 0;
 }
+/* Tabelas de Markdown nao recebem wrapper proprio como as paginas .astro
+   fazem com .scroll-x, entao a rolagem vai na propria tabela: display:block
+   transforma ela na area de scroll. Tabelas estreitas continuam cabendo sem
+   rolar; so as largas (ex.: a de jogos em copa2026-guia-completo, 4 colunas
+   com nomes de estadio) passam a deslizar em vez de estourar a pagina. */
+.prose table {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+  margin-bottom: 1.5rem;
+  border-collapse: collapse;
+  font-size: .95rem;
+}
+.prose th, .prose td {
+  padding: .5rem .75rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(251,122,69,.15);
+}
+.prose th {
+  color: #f1f5f9;
+  font-weight: 700;
+}

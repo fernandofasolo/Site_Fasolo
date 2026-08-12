@@ -60,13 +60,17 @@ import { SITE_TITLE } from '../consts';
       <div class="max-w-4xl mx-auto px-6">
 
         <!-- cabeçalho -->
+        {/* "Tecnologia" e uma palavra so: em text-4xl ela pede 208px e ao lado
+            do avatar de 80px sobra menos que isso numa tela de 320px. Os
+            max-[359px] encolhem avatar e titulo so nesse extremo — de 360px
+            para cima nada muda. */}
         <div class="flex items-center gap-5 mb-12">
-          <div class="w-20 h-20 rounded-full bg-amber-900/60 border-2 border-amber-500 flex items-center justify-center text-4xl shrink-0">
+          <div class="w-20 h-20 max-[359px]:w-16 max-[359px]:h-16 rounded-full bg-amber-900/60 border-2 border-amber-500 flex items-center justify-center text-4xl max-[359px]:text-3xl shrink-0">
             💻
           </div>
           <div>
             <p class="text-amber-400 text-xs font-bold uppercase tracking-widest mb-1">Fernando Fasolo</p>
-            <h1 class="text-4xl md:text-5xl font-black text-white glow-amber" style="font-family:'Sora', sans-serif;">
+            <h1 class="text-4xl max-[359px]:text-3xl md:text-5xl font-black text-white glow-amber" style="font-family:'Sora', sans-serif;">
               Tecnologia
             </h1>
             <p class="text-slate-400 text-sm mt-1">Stack, homelab e projetos em andamento</p>
