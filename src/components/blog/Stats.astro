@@ -1,0 +1,22 @@
+---
+// Painel de números grandes com rótulo curto.
+interface Props {
+  itens: { valor: string; rotulo: string; cor?: 'amber' | 'green' }[];
+}
+
+const { itens } = Astro.props;
+---
+
+<div class="not-prose my-10 grid grid-cols-2 gap-3 md:grid-cols-4">
+  {itens.map(({ valor, rotulo, cor = 'amber' }) => (
+    <div class="rounded-2xl border border-white/10 bg-white/[.03] p-5 text-center">
+      <div
+        class={`text-3xl font-black ${cor === 'green' ? 'text-green-400' : 'text-amber-400'}`}
+        style="font-family:'Sora', sans-serif;"
+      >
+        {valor}
+      </div>
+      <div class="mt-1 text-xs leading-snug text-slate-400">{rotulo}</div>
+    </div>
+  ))}
+</div>

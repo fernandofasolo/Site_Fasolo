@@ -1,0 +1,25 @@
+---
+// Moldura de TV em volta de um print real da tela (usado nos posts do TV Livre).
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  legenda?: string;
+  compacto?: boolean;
+}
+
+const { src, alt, legenda, compacto = false } = Astro.props;
+---
+
+<figure class="not-prose my-10">
+  <div class={`mx-auto ${compacto ? 'max-w-md' : 'max-w-3xl'}`}>
+    <div class="rounded-xl bg-[#16161a] p-[6px] ring-1 ring-white/10 shadow-[0_30px_80px_-20px_rgba(0,0,0,.8)]">
+      <Image src={src} alt={alt} width={1200} class="block w-full rounded-md" />
+    </div>
+    <div class="mx-auto h-5 w-12 bg-[#28282e]"></div>
+    <div class="mx-auto h-2 w-56 rounded-md bg-[#303038]"></div>
+  </div>
+  {legenda && <figcaption class="mt-4 text-center text-sm text-slate-500">{legenda}</figcaption>}
+</figure>

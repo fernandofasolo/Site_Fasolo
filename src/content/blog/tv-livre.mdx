@@ -1,0 +1,140 @@
+---
+title: 'TV Livre: tirei os anúncios da minha TV LG e abri o código'
+description: 'Uma tela inicial sem propaganda, em português, que mostra em qual streaming cada filme está no Brasil. Sem root, num sábado à tarde, com IA como parceira de bancada. O projeto está aberto no GitHub.'
+pubDate: '2026-10-24T12:00:00-03:00'
+author: 'Fernando Fasolo'
+category: 'Tech'
+heroImage: '../../assets/tv-livre/tv-livre-capa.jpg'
+---
+
+import TvFrame from '../../components/blog/TvFrame.astro';
+import Stats from '../../components/blog/Stats.astro';
+import LinhaDoTempo from '../../components/blog/LinhaDoTempo.astro';
+import Perrengue from '../../components/blog/Perrengue.astro';
+import Callout from '../../components/blog/Callout.astro';
+import RepoCard from '../../components/blog/RepoCard.astro';
+import telaInicial from '../../assets/tv-livre/tv-livre-home.jpg';
+import protetor from '../../assets/tv-livre/tv-livre-protetor.jpg';
+
+Tenho uma LG de 55 polegadas de 2022. A TV é boa e a imagem é ótima. Já a tela inicial é uma vitrine: banner de filme que eu não pedi, "em alta" que não tem nada a ver comigo, promoção de app, e um segundo de espera a cada clique no botão Home. Isso acontece num aparelho que eu paguei inteiro.
+
+Hoje cedo esbarrei num projeto no GitHub que prometia resolver isso: o **Free My TV**, uma tela inicial alternativa para TVs LG, leve e sem anúncios, que roda sem root. Tinha cinco dias de vida e já passava de 200 estrelas.
+
+Eu poderia ter instalado e pronto. Em vez disso, passei o sábado transformando aquilo num projeto meu e aberto, e aprendi mais sobre o sistema da minha TV do que em anos usando ela.
+
+## Primeiro, desconfiar
+
+Um projeto de cinco dias, feito em boa parte com IA (o próprio README diz "vibe code it"), pede acesso à minha TV. Antes de instalar qualquer coisa, sentei com o Claude para auditar o código, do jeito que eu faria com um fornecedor:
+
+- **Para onde o app manda dados?** Só para serviços públicos de clima e de filmes. Nenhum servidor do autor, nenhuma telemetria.
+- **Tem código escondido ou ofuscado?** Não. É HTML e JavaScript puros, fáceis de ler.
+- **Que permissões ele pede?** Só as mínimas para abrir apps.
+- **O instalador manda algo para fora de casa?** Não. Ele baixa uma chave da própria TV e instala pela rede local.
+
+Encontrei dois detalhes. Se você não informasse a cidade, o app mandava o seu IP para um serviço de geolocalização. E o arquivo de instalação pronto que vinha no repositório **não batia byte a byte com o código-fonte**. A diferença parecia inofensiva, mas parecer inofensivo não é critério.
+
+<Callout tipo="licao">
+Se o pacote pronto não bate com o código, compile você mesmo a partir do código que você leu. É de graça e acaba com a dúvida.
+</Callout>
+
+## Root? A porta já estava fechada
+
+A comunidade de TVs LG tem ferramentas de root que liberam tudo: trocar a tela inicial de verdade, bloquear domínios dentro da própria TV, remapear o botão Home. Fui conferir se a minha TV ainda estava vulnerável.
+
+Não estava. O firmware dela é de julho de 2026, e a LG já tinha fechado as duas falhas conhecidas. Para quem pensa em fazer root, fica o aviso que os próprios desenvolvedores dessas ferramentas repetem:
+
+<Callout tipo="aviso" titulo="Se você quer root, não atualize">
+A LG corrige essas falhas nas atualizações. Desligue a atualização automática **antes** de decidir, porque depois não tem volta. No meu caso já era tarde, e aí vale o contrário: atualizações trazem correções de segurança, então deixei ligada.
+</Callout>
+
+O caminho sem root é o **Modo Desenvolvedor**, oficial da LG, gratuito e reversível. Ele tem uma pegadinha: a sessão expira a cada 1000 horas (uns 41 dias), e quando expira **a TV apaga os apps que você instalou**. Resolvemos com uma tarefa agendada no meu computador que renova a sessão toda segunda de manhã.
+
+## De fork a projeto: nasce o TV Livre
+
+Com o código auditado, fiz o que a licença MIT permite e o bom senso pede: um fork com os créditos do autor original, mas com cara de Brasil.
+
+<TvFrame src={telaInicial} alt="Tela inicial do TV Livre na TV LG: prateleira com Disney+, HDMI, navegador, Globoplay e YouTube; abaixo, filmes em alta com o streaming de cada um" legenda="Print tirado da TV, não de um simulador. Borrei a minha cidade no canto do clima." />
+
+O que mudou em relação ao original:
+
+- **Tudo em português**, com data e hora do jeito que a gente lê.
+- **Catálogo brasileiro**: Netflix, Prime Video, Disney+, YouTube e Globoplay de fábrica. Saíram os apps que só fazem sentido lá fora.
+- **Só mostra o que você tem.** O seletor de apps lista o que está instalado na sua TV, e não um catálogo genérico.
+- **Identidade própria**, com ícone, cores e tela de abertura do TV Livre.
+- **Sem o envio do IP.** A cidade do clima você informa uma vez, e pronto.
+
+<Stats itens={[
+  { valor: '0', rotulo: 'anúncios na tela inicial' },
+  { valor: '42 KB', rotulo: 'o app inteiro', cor: 'green' },
+  { valor: '0', rotulo: 'root necessário' },
+  { valor: '3', rotulo: 'versões publicadas no mesmo dia', cor: 'green' },
+]} />
+
+## "Onde assistir", do jeito brasileiro
+
+É a parte de que eu mais gosto. A fileira de baixo mostra os filmes e séries mais populares da semana e **em qual streaming cada um está no Brasil**, priorizando os serviços que eu assino. Aperto OK no controle e ele abre o app certo.
+
+Os dados vêm do TMDB, uma base aberta de filmes que informa os provedores por país. Na tela da foto, Moana aparece no Disney+, Tenzing no Apple TV e Masterplan no Prime Video. O novo Homem-Aranha avisa que está num serviço que eu não tenho instalado. É honesto: em vez de me empurrar o que alguém pagou para destacar, mostra o que existe e onde.
+
+## Os perrengues (a parte divertida)
+
+Nada disso saiu de primeira. A TV real é bem diferente da documentação, e foi aí que a IA mais ajudou: não por saber a resposta de cara, mas por investigar comigo, testando hipótese por hipótese na própria TV.
+
+<Perrengue
+  titulo="O instalador ficava mudo"
+  problema="O comando que instala apps na TV só devolve a resposta quando é encerrado. E, se você encerra do jeito normal, ele às vezes continua vivo, preso, esperando para sempre."
+  solucao="Deixar ele trabalhar alguns segundos, mandar o sinal que o faz entregar tudo o que guardou e, logo depois, encerrar de vez. Simples quando se descobre. Até descobrir, foram algumas tentativas."
+/>
+
+<Perrengue
+  titulo="A TV não deixa o app saber o que está instalado"
+  problema="No webOS 22, a lista de apps instalados é reservada para os apps da própria LG. Tentamos quatro caminhos diferentes e a TV negou os quatro."
+  solucao="Usar a mesma porta que os apps de controle remoto do celular usam. Na primeira vez a TV mostra um aviso pedindo permissão, eu aceito no controle, e a partir daí o TV Livre enxerga os meus apps sem pedir de novo."
+/>
+
+<Perrengue
+  titulo="Digitar uma chave de 32 caracteres no controle remoto"
+  problema="O 'onde assistir' precisa de uma chave gratuita do TMDB. Digitar 32 letras e números com as setinhas do controle é um castigo."
+  solucao="O Modo Desenvolvedor permite inspecionar o app pela rede, como se faz com um site no navegador. Gravamos a chave direto na memória do app pelo computador. Ela fica só na TV, longe do GitHub."
+/>
+
+<TvFrame compacto src={protetor} alt="Protetor de tela do TV Livre: relógio grande em fundo preto" legenda="Fui tirar o primeiro print e o protetor de tela me pegou no flagra: depois de alguns minutos parado, o TV Livre apaga a tela e deixa só o relógio." />
+
+## Como foi o sábado
+
+<LinhaDoTempo etapas={[
+  { titulo: 'Auditoria', texto: 'Leitura do código, dos destinos de rede e do instalador. Veredito: usável, compilando a partir do código.' },
+  { titulo: 'Plano', texto: 'Um documento de produto com cinco fases: ajustes de privacidade, bloqueio por DNS, Modo Desenvolvedor, root e extras.' },
+  { titulo: 'Projeto próprio', texto: 'Repositório público com guia em português, listas de bloqueio, uma ferramenta de linha de comando e o launcher.' },
+  { titulo: 'Na TV de verdade', texto: 'Pareamento, instalação, renovação automática e descoberta de que o root não era opção.' },
+  { titulo: 'Versão "Brasil"', texto: 'Português, catálogo nacional, onde assistir e identidade visual.' },
+  { titulo: 'Os apps instalados', texto: 'A TV negou o caminho oficial; contornamos pela porta do controle remoto.' },
+  { titulo: 'Este post', texto: 'Com prints tirados da própria TV, pela rede, sem celular apontado para a tela.' },
+]} />
+
+## O que ficou para depois
+
+- **Bloquear anúncios e rastreamento na rede**, pelo roteador de casa, para que a TV inteira (e não só a minha tela inicial) pare de falar com os servidores de propaganda. As listas de bloqueio já estão no repositório.
+- **Abrir o TV Livre quando a TV liga.** Sem root não existe "tela inicial padrão", mas há caminhos: o comportamento de "voltar ao último app" da própria TV ou uma automação na rede.
+- **YouTube sem anúncios?** Existe uma versão da comunidade, mas eu assino o Premium. Fiquei com o oficial.
+
+## O código está aberto
+
+<RepoCard
+  repo="fernandofasolo/tv-livre"
+  descricao="Kit aberto para deixar Smart TVs LG mais rápidas, sem anúncios e com mais privacidade: guia em português, listas de bloqueio DNS, ferramenta de linha de comando e o launcher TV Livre."
+  tags={['LG webOS', 'sem root', 'PT-BR', 'MIT']}
+  versao="v0.2.2"
+/>
+
+O repositório tem um guia passo a passo, do ajuste de privacidade nos menus até a instalação. Por enquanto foi validado só na minha TV. Se você testar na sua, abra uma issue contando o modelo e o que funcionou, porque é assim que a tabela de TVs testadas cresce.
+
+<Callout tipo="aviso" titulo="Por sua conta e risco">
+O TV Livre não tem nenhuma relação com a LG. Usa só recursos oficiais (Modo Desenvolvedor) e não mexe no sistema da TV, mas é software experimental. O crédito do launcher original é do [Free My TV](https://github.com/danielthejoker18/FreeMyTvWebOS); a comunidade [webOS Homebrew](https://www.webosbrew.org/) é quem abriu esse caminho.
+</Callout>
+
+## O que fica
+
+No [post sobre vibe coding](/blog/vibe-coding/) eu escrevi que, com IA, eu era mais um gerente de produto exigente do que um programador. Hoje isso ficou ainda mais claro, com um acréscimo: o trabalho mais valioso do dia não foi escrever código. Foi **desconfiar antes de instalar**, decidir o que entrava e o que ficava de fora, e insistir quando a TV dizia "não".
+
+A minha TV continua sendo uma LG. Mas, quando eu abro o TV Livre, a primeira tela que aparece é minha.

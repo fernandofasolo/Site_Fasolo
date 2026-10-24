@@ -1,0 +1,26 @@
+---
+// Problema -> solução, lado a lado. O título é o sintoma que apareceu.
+interface Props {
+  titulo: string;
+  problema: string;
+  solucao: string;
+}
+
+const { titulo, problema, solucao } = Astro.props;
+---
+
+<div class="not-prose my-6 overflow-hidden rounded-2xl border border-white/10 bg-white/[.02]">
+  <div class="border-b border-white/10 px-5 py-3 font-bold text-white" style="font-family:'Sora', sans-serif;">
+    {titulo}
+  </div>
+  <div class="grid md:grid-cols-2">
+    <div class="border-b border-white/10 p-5 md:border-b-0 md:border-r">
+      <div class="mb-2 text-[.7rem] font-bold uppercase tracking-wider text-amber-400">O problema</div>
+      <p class="text-[.95rem] leading-relaxed text-slate-300">{problema}</p>
+    </div>
+    <div class="p-5">
+      <div class="mb-2 text-[.7rem] font-bold uppercase tracking-wider text-green-400">A saída</div>
+      <p class="text-[.95rem] leading-relaxed text-slate-300">{solucao}</p>
+    </div>
+  </div>
+</div>

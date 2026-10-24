@@ -1,0 +1,22 @@
+---
+// Caixa de destaque dentro do texto. O conteúdo vem do slot (aceita markdown no MDX).
+interface Props {
+  tipo?: 'dica' | 'aviso' | 'licao';
+  titulo?: string;
+}
+
+const { tipo = 'dica', titulo } = Astro.props;
+
+const estilos = {
+  dica:  { icone: '💡', borda: 'border-green-400/40', fundo: 'bg-green-950/30', cor: 'text-green-300', padrao: 'Dica' },
+  aviso: { icone: '⚠️', borda: 'border-amber-400/40', fundo: 'bg-amber-950/30', cor: 'text-amber-300', padrao: 'Atenção' },
+  licao: { icone: '🧭', borda: 'border-white/15',     fundo: 'bg-white/[.03]',   cor: 'text-slate-200', padrao: 'O que eu aprendi' },
+}[tipo];
+---
+
+<aside class={`my-8 rounded-2xl border ${estilos.borda} ${estilos.fundo} px-5 py-4`}>
+  <div class={`mb-1 text-sm font-bold ${estilos.cor}`}>{estilos.icone} {titulo ?? estilos.padrao}</div>
+  <div class="callout-body text-[.95rem] leading-relaxed text-slate-300">
+    <slot />
+  </div>
+</aside>

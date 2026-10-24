@@ -141,3 +141,23 @@ body {
   color: #f1f5f9;
   font-weight: 700;
 }
+/* Componentes de post (src/components/blog) marcam a raiz com .not-prose:
+   ali dentro quem manda sao as utilities do Tailwind, nao o .prose acima.
+   Este CSS esta fora de @layer e por isso venceria as utilities (que ficam
+   em @layer utilities); revert-layer devolve cada propriedade para elas. */
+.prose .not-prose a,
+.prose .not-prose a:hover,
+.prose .not-prose p,
+.prose .not-prose h4,
+.prose .not-prose ol,
+.prose .not-prose li,
+.prose .not-prose img {
+  color: revert-layer;
+  text-decoration: revert-layer;
+  margin: revert-layer;
+  font-family: revert-layer;
+  border-radius: revert-layer;
+  display: revert-layer;
+}
+.prose .callout-body p { margin-bottom: .75rem; }
+.prose .callout-body p:last-child { margin-bottom: 0; }

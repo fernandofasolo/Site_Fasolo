@@ -1,0 +1,20 @@
+---
+// Linha do tempo vertical: cada etapa com um marcador, título e texto curto.
+interface Props {
+  etapas: { titulo: string; texto: string; marca?: string }[];
+}
+
+const { etapas } = Astro.props;
+---
+
+<ol class="not-prose my-10 border-l border-amber-400/30 pl-6">
+  {etapas.map(({ titulo, texto, marca }, i) => (
+    <li class="relative mb-7 last:mb-0">
+      <span class="absolute -left-[2.15rem] top-0 flex h-7 w-7 items-center justify-center rounded-full border border-amber-400/50 bg-[#100c0d] text-[.7rem] font-bold text-amber-300">
+        {marca ?? i + 1}
+      </span>
+      <h4 class="font-bold text-white" style="font-family:'Sora', sans-serif;">{titulo}</h4>
+      <p class="mt-1 text-[.95rem] leading-relaxed text-slate-400">{texto}</p>
+    </li>
+  ))}
+</ol>
