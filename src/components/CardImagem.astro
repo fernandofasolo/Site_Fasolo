@@ -1,0 +1,39 @@
+---
+// Imagem de topo dos cards da landing: ocupa o card de ponta a ponta (sangra
+// sobre o padding com margens negativas) e funde com o vidro escuro do card
+// por um degradê. O pai precisa de `overflow-hidden` e de `group` para o zoom.
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: ImageMetadata;
+  alt?: string;
+  /** Margens negativas iguais ao padding do card (ex.: '-mx-8 -mt-8'). */
+  sangria: string;
+  /** Proporção da imagem, como classe Tailwind. */
+  proporcao?: string;
+  /** Emoji ou ícone sobreposto no canto inferior esquerdo (opcional). */
+  selo?: string;
+}
+
+const { src, alt = '', sangria, proporcao = 'aspect-[16/9]', selo } = Astro.props;
+---
+
+<div class={`relative ${sangria} mb-5 ${proporcao} overflow-hidden`}>
+  <Image
+    src={src}
+    alt={alt}
+    widths={[400, 640, 960]}
+    sizes="(min-width: 1024px) 24rem, (min-width: 768px) 45vw, 100vw"
+    format="webp"
+    quality={74}
+    loading="lazy"
+    class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+  />
+  <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0f0f19] via-[#0f0f19]/35 to-transparent"></div>
+  {selo && (
+    <span class="absolute bottom-3 left-4 flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-black/50 text-2xl backdrop-blur-sm" aria-hidden="true">
+      {selo}
+    </span>
+  )}
+</div>

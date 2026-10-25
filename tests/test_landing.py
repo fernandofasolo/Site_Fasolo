@@ -30,8 +30,10 @@ def caixa(page, seletor):
 def test_carrega_sem_erros_de_javascript(abrir):
     page, erros = abrir("desktop-1440")
     assert "Fasolo" in page.title()
-    # Falhas de rede de terceiros (ícones externos, ipinfo) não contam: só erros do nosso código.
-    nossos = [e for e in erros if "Failed to load resource" not in e]
+    # Falhas de serviços de terceiros (ipinfo com limite/CORS, clima) não contam:
+    # o widget já trata isso mostrando "indisponível". Só erros do nosso código.
+    externos = ("Failed to load resource", "ipinfo.io", "open-meteo.com")
+    nossos = [e for e in erros if not any(x in e for x in externos)]
     assert not nossos, nossos
 
 
@@ -202,6 +204,38 @@ def test_link_com_ancora_de_outra_pagina_continua_funcionando(abrir):
     page, _ = abrir("desktop-1440", "/#contato")
     page.wait_for_timeout(500)
     assert page.evaluate("scrollY") > 300, "/#contato não levou até a seção de contato"
+
+
+@pytest.mark.parametrize("vp", ["celular-390", "desktop-1440"])
+def test_logo_de_vidro_no_cabecalho_e_rodape(abrir, vp):
+    page, _ = abrir(vp)
+    for onde in ("header", "footer"):
+        img = page.locator(f"{onde} a[href='/'] img")
+        assert img.count() == 1, f"logo ausente no {onde}"
+        assert img.get_attribute("alt") == "[FASOLO]"
+    # nenhum [FASOLO] montado em texto sobrou na página
+    texto = page.evaluate("document.body.innerText")
+    assert "[FASOLO]" not in texto, "ainda há [FASOLO] em texto na página"
+
+
+@pytest.mark.parametrize("vp", ["celular-390", "desktop-1440"])
+def test_cards_tem_ilustracao(abrir, vp):
+    """Todos os cards de conteúdo da landing têm imagem de topo carregada."""
+    page, _ = abrir(vp)
+    page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+    page.wait_for_timeout(300)
+    total = page.eval_on_selector_all(
+        "#sobre .card-glass, #games .card-glass, section .grid > .card-glass, section .grid > a.card-glass",
+        "els => els.length")
+    for el in page.query_selector_all("#sobre .card-glass img, #games .card-glass img, section .grid > .card-glass img, section .grid > a.card-glass img"):
+        el.scroll_into_view_if_needed()
+    page.wait_for_timeout(800)
+    sem = page.eval_on_selector_all(
+        "#sobre .card-glass, #games .card-glass, section .grid > .card-glass, section .grid > a.card-glass",
+        "els => els.filter(c => { const i = c.querySelector('img'); return !i || !(i.complete && i.naturalWidth > 0) })"
+        ".map(c => (c.querySelector('h3,h4')?.textContent || '?').trim())")
+    assert total >= 12, f"esperava ao menos 12 cards, achei {total}"
+    assert not sem, f"cards sem ilustração carregada: {sem}"
 
 
 # --- Links, imagens e SEO --------------------------------------------------
