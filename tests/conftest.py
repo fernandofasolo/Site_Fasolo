@@ -76,16 +76,46 @@ def browser():
         b.close()
 
 
+# Respostas falsas dos serviços do widget "Sua visita". Cada carregamento da
+# landing chamava o ipinfo de verdade e a suíte estourava a cota diária dele
+# (429 sem CORS), derrubando o widget também no navegador de quem roda os testes.
+SERVICOS = {
+    "ipinfo.io": {"ip": "203.0.113.7", "city": "Florianópolis", "region": "Santa Catarina",
+                  "country": "BR", "loc": "-27.59,-48.55"},
+    "get.geojs.io": {"ip": "203.0.113.8", "city": "Curitiba", "region": "Paraná",
+                     "country_code": "BR", "latitude": "-25.43", "longitude": "-49.27"},
+    "ipwho.is": {"success": True, "ip": "203.0.113.9", "city": "Recife", "region": "Pernambuco",
+                 "country_code": "BR", "latitude": -8.05, "longitude": -34.9},
+    "api.open-meteo.com": {"current": {"temperature_2m": 24.5, "relative_humidity_2m": 70,
+                                       "weather_code": 1, "wind_speed_10m": 12}},
+}
+
+
+def _simular_servicos(ctx, falhar=()):
+    """Responde os serviços externos com SERVICOS; os de `falhar` dão 429."""
+    def responder(route):
+        host = route.request.url.split("/")[2]
+        if host in falhar:
+            route.fulfill(status=429, json={"status": 429})
+        else:
+            route.fulfill(json=SERVICOS[host], headers={"Access-Control-Allow-Origin": "*"})
+    for host in SERVICOS:
+        ctx.route(f"https://{host}/**", responder)
+
+
 @pytest.fixture
 def abrir(browser, base_url):
-    """abrir(viewport_key, caminho='/') -> (page, erros_de_console)."""
+    """abrir(viewport_key, caminho='/', falhar=()) -> (page, erros_de_console).
+
+    `falhar` lista os hosts de SERVICOS que devem responder 429."""
     contextos = []
 
-    def _abrir(viewport_key: str, caminho: str = "/"):
+    def _abrir(viewport_key: str, caminho: str = "/", falhar=()):
         vp = VIEWPORTS[viewport_key]
         ctx = browser.new_context(viewport=vp, device_scale_factor=2 if vp["width"] < 768 else 1,
                                   is_mobile=vp["width"] < 768, has_touch=vp["width"] < 768)
         contextos.append(ctx)
+        _simular_servicos(ctx, falhar)
         page = ctx.new_page()
         erros = []
         page.on("pageerror", lambda e: erros.append(f"pageerror: {e}"))

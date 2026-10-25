@@ -30,10 +30,9 @@ def caixa(page, seletor):
 def test_carrega_sem_erros_de_javascript(abrir):
     page, erros = abrir("desktop-1440")
     assert "Fasolo" in page.title()
-    # Falhas de serviços de terceiros (ipinfo com limite/CORS, clima) não contam:
-    # o widget já trata isso mostrando "indisponível". Só erros do nosso código.
-    externos = ("Failed to load resource", "ipinfo.io", "open-meteo.com")
-    nossos = [e for e in erros if not any(x in e for x in externos)]
+    # Os serviços do widget são simulados (conftest.SERVICOS); só sobra filtrar
+    # recursos de terceiros que o navegador às vezes não carrega.
+    nossos = [e for e in erros if "Failed to load resource" not in e]
     assert not nossos, nossos
 
 
@@ -185,6 +184,48 @@ def test_widget_recolhe_para_bem_vindo(abrir):
     assert pilula.is_visible() and "Bem-vindo" in pilula.inner_text()
     pilula.click()
     assert card.is_visible(), "tocar na pílula não reabre o card"
+
+
+# --- Widget "Sua visita": provedores de localização ------------------------
+
+def _widget(page):
+    page.wait_for_function("document.getElementById('visitor-loading').classList.contains('hidden')"
+                           " || document.getElementById('visitor-loading').textContent === 'indisponível'")
+    return page.locator("#visitor-info").inner_text(), page.locator("#visitor-fonte").inner_text()
+
+
+def test_widget_mostra_localizacao_e_clima(abrir):
+    page, _ = abrir("desktop-1440")
+    texto, fonte = _widget(page)
+    assert "Florianópolis, BR" in texto and "24.5°C" in texto, texto
+    assert fonte == "ipinfo.io"
+
+
+@pytest.mark.parametrize("falhar, cidade, fonte", [
+    (("ipinfo.io",), "Curitiba", "geojs.io"),
+    (("ipinfo.io", "get.geojs.io"), "Recife", "ipwho.is"),
+])
+def test_widget_usa_provedor_reserva(abrir, falhar, cidade, fonte):
+    """ipinfo com a cota estourada (429) não derruba o widget: entra o reserva,
+    e o crédito do card passa a citar quem respondeu."""
+    page, _ = abrir("desktop-1440", falhar=falhar)
+    texto, credito = _widget(page)
+    assert f"{cidade}, BR" in texto and "Tempo" in texto, texto
+    assert credito == fonte
+
+
+def test_widget_sem_clima_mantem_localizacao(abrir):
+    page, _ = abrir("desktop-1440", falhar=("api.open-meteo.com",))
+    texto, _ = _widget(page)
+    assert "Florianópolis, BR" in texto and "Tempo" not in texto, texto
+
+
+def test_widget_indisponivel_ainda_recolhe(abrir):
+    page, _ = abrir("desktop-1440", falhar=("ipinfo.io", "get.geojs.io", "ipwho.is"))
+    _widget(page)
+    assert page.locator("#visitor-loading").inner_text() == "indisponível"
+    page.wait_for_timeout(3600)
+    assert page.locator("#visitor-pill").is_visible(), "sem dados o card não recolheu"
 
 
 @pytest.mark.parametrize("vp", ["celular-390", "desktop-1440"])

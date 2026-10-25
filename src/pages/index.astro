@@ -433,7 +433,7 @@ const categoryColor: Record<string, string> = {
         <div id="visitor-loading" class="text-xs text-slate-600 text-center py-1">carregando...</div>
         <div id="visitor-info" class="hidden space-y-2 text-xs"></div>
         <p class="text-slate-700 text-xs mt-3 border-t border-slate-800 pt-2">
-          Localização via <a href="https://ipinfo.io" target="_blank" rel="noopener" class="underline hover:text-slate-500">ipinfo.io</a>. Nenhum dado é armazenado.
+          Localização via <a id="visitor-fonte" href="https://ipinfo.io" target="_blank" rel="noopener" class="underline hover:text-slate-500">ipinfo.io</a>. Nenhum dado é armazenado.
         </p>
       </div>
     </div>
@@ -509,17 +509,53 @@ const categoryColor: Record<string, string> = {
           return ['🌡️', '—'];
         }
 
+        // Os valores vêm de serviços de terceiros: escapados antes do innerHTML.
+        const esc = (s: string) => String(s).replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
         function row(label: string, value: string) {
           return `<div class="flex justify-between gap-2">
             <span class="text-slate-500">${label}</span>
-            <span class="text-slate-300 font-medium truncate max-w-28 text-right">${value}</span>
+            <span class="text-slate-300 font-medium truncate max-w-28 text-right">${esc(value)}</span>
           </div>`;
         }
         const divider = `<div class="border-t border-slate-700/50 my-1"></div>`;
 
+        // JSON com limite de tempo: um serviço pendurado não deixa o card
+        // preso em "carregando..." nem segura o recolhimento.
+        async function json(url: string) {
+          const res = await fetch(url, { signal: AbortSignal.timeout(5000) });
+          if (!res.ok) throw new Error(`${url} respondeu ${res.status}`);
+          return res.json();
+        }
+
+        type Local = { ip?: string; city?: string; region?: string; country?: string; lat?: string; lon?: string };
+        // O ipinfo sem token tem cota diária por IP e, ao estourar, responde
+        // 429 sem CORS. Os reservas não pedem chave e liberam CORS.
+        const provedores: [string, string, (d: any) => Local][] = [
+          ['ipinfo.io', 'https://ipinfo.io/json', (d) => {
+            const [lat, lon] = d.loc ? d.loc.split(',') : [];
+            return { ip: d.ip, city: d.city, region: d.region, country: d.country, lat, lon };
+          }],
+          ['geojs.io', 'https://get.geojs.io/v1/ip/geo.json', (d) => ({
+            ip: d.ip, city: d.city, region: d.region, country: d.country_code, lat: d.latitude, lon: d.longitude,
+          })],
+          ['ipwho.is', 'https://ipwho.is/', (d) => {
+            if (d.success === false) throw new Error('ipwho.is recusou');
+            return { ip: d.ip, city: d.city, region: d.region, country: d.country_code, lat: d.latitude, lon: d.longitude };
+          }],
+        ];
+
+        async function localizar(): Promise<[string, Local]> {
+          for (const [nome, url, ler] of provedores) {
+            try { return [nome, ler(await json(url))]; } catch {}
+          }
+          throw new Error('nenhum provedor de localização respondeu');
+        }
+
         try {
-          const ipRes  = await fetch('https://ipinfo.io/json');
-          const ip     = await ipRes.json();
+          const [fonte, ip] = await localizar();
+          const credito = document.getElementById('visitor-fonte') as HTMLAnchorElement;
+          credito.textContent = fonte;
+          credito.href = `https://${fonte}`;
 
           let html = [
             row('🌐 IP',      ip.ip              ?? '—'),
@@ -529,22 +565,23 @@ const categoryColor: Record<string, string> = {
             row('💻 Sistema', os),
           ].join('');
 
-          if (ip.loc) {
-            const [lat, lon] = ip.loc.split(',');
-            const wRes  = await fetch(
-              `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
-              `&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&timezone=auto`
-            );
-            const wData = await wRes.json();
-            const cur   = wData.current;
-            const [icon, label] = weatherLabel(cur.weather_code);
+          // Sem clima o card continua útil: a falha aqui não apaga a localização.
+          if (ip.lat && ip.lon) {
+            try {
+              const wData = await json(
+                `https://api.open-meteo.com/v1/forecast?latitude=${ip.lat}&longitude=${ip.lon}` +
+                `&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m&timezone=auto`
+              );
+              const cur   = wData.current;
+              const [icon, label] = weatherLabel(cur.weather_code);
 
-            html += divider + [
-              row(`${icon} Tempo`,   label),
-              row('🌡️ Temp',        `${cur.temperature_2m}°C`),
-              row('💧 Umidade',     `${cur.relative_humidity_2m}%`),
-              row('💨 Vento',       `${cur.wind_speed_10m} km/h`),
-            ].join('');
+              html += divider + [
+                row(`${icon} Tempo`,   label),
+                row('🌡️ Temp',        `${cur.temperature_2m}°C`),
+                row('💧 Umidade',     `${cur.relative_humidity_2m}%`),
+                row('💨 Vento',       `${cur.wind_speed_10m} km/h`),
+              ].join('');
+            } catch {}
           }
 
           loading.classList.add('hidden');
