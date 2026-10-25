@@ -73,7 +73,7 @@ def test_botoes_da_capa_proporcionais_no_celular(abrir, vp):
     for b in botoes:
         assert b["w"] <= 0.8 * largura, f"botão com {b['w']:.0f}px numa tela de {largura}px (vira faixa)"
         assert 44 <= b["h"] <= 56, f"altura do botão {b['h']:.0f}px fora de 44–56px"
-        assert 15 <= b["fonte"] <= 17, f"texto do botão com {b['fonte']}px"
+        assert 14 <= b["fonte"] <= 17, f"texto do botão com {b['fonte']}px"
     assert abs(botoes[0]["w"] - botoes[1]["w"]) <= 2, "os dois botões têm larguras diferentes"
 
 
@@ -92,6 +92,21 @@ def test_nomes_dos_autores_nao_quebram_no_meio(abrir, vp):
     for nome in ("Fernando Fasolo Filho", "Fernando Fasolo"):
         el = page.locator("section.hero-bg p span", has_text=nome).first
         assert el.evaluate("e => e.getClientRects().length") == 1, f'"{nome}" quebrou em duas linhas'
+
+
+@pytest.mark.parametrize("vp", CELULARES)
+def test_textos_do_topo_compactos_no_celular(abrir, vp):
+    """No celular o início fica enxuto: título, frase e autores em tamanho menor
+    e o selo de categorias numa linha só dentro do chip."""
+    page, _ = abrir(vp)
+    assert caixa(page, "section.hero-bg h1")["fonte"] <= 40
+    frase = page.locator("section.hero-bg h1 + p")
+    assert frase.inner_text().strip() == "Cotidiano, área tech, negócios e jogatinas"
+    assert caixa(page, "section.hero-bg h1 + p")["fonte"] <= 16
+    assert caixa(page, "section.hero-bg h1 + p + p")["fonte"] <= 14
+    linhas = page.locator("section.hero-bg .tag").evaluate(
+        "e => { const r = document.createRange(); r.selectNodeContents(e); return r.getClientRects().length }")
+    assert linhas == 1, f"o selo quebrou em {linhas} linhas"
 
 
 @pytest.mark.parametrize("vp", CELULARES)
@@ -140,6 +155,38 @@ def test_texto_dentro_dos_chips(abrir, vp, fonte):
     assert not fora, f"texto saindo do chip com fonte {fonte}%: {fora}"
     larg = page.evaluate("[document.documentElement.scrollWidth, document.documentElement.clientWidth]")
     assert larg[0] <= larg[1], f"com fonte {fonte}% a página fica com {larg[0]}px numa tela de {larg[1]}px"
+
+
+def test_widget_recolhe_para_bem_vindo(abrir):
+    """O card "Sua visita" aparece, some depois de 3 s e deixa a pílula
+    "Bem-vindo!"; tocar nela reabre o card."""
+    page, _ = abrir("desktop-1440")
+    card, pilula = page.locator("#visitor-card"), page.locator("#visitor-pill")
+    assert card.is_visible(), "o card não aparece ao abrir a página"
+    page.wait_for_timeout(3600)
+    assert not card.is_visible(), "o card não recolheu depois de 3 s"
+    assert pilula.is_visible() and "Bem-vindo" in pilula.inner_text()
+    pilula.click()
+    assert card.is_visible(), "tocar na pílula não reabre o card"
+
+
+@pytest.mark.parametrize("vp", ["celular-390", "desktop-1440"])
+def test_recarregar_volta_ao_topo(abrir, vp):
+    page, _ = abrir(vp)
+    page.locator('section.hero-bg a[href="#filho"]').click()  # deixa #filho no endereço
+    page.mouse.wheel(0, 2500)
+    page.wait_for_timeout(500)
+    assert page.evaluate("scrollY") > 0
+    page.reload(wait_until="networkidle")
+    page.wait_for_timeout(500)
+    assert page.evaluate("scrollY") == 0, "depois de recarregar a página não voltou ao topo"
+    assert page.evaluate("location.hash") == "", "a âncora continuou no endereço"
+
+
+def test_link_com_ancora_de_outra_pagina_continua_funcionando(abrir):
+    page, _ = abrir("desktop-1440", "/#contato")
+    page.wait_for_timeout(500)
+    assert page.evaluate("scrollY") > 300, "/#contato não levou até a seção de contato"
 
 
 # --- Links, imagens e SEO --------------------------------------------------

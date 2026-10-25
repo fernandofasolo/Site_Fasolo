@@ -38,6 +38,26 @@ const categoryColor: Record<string, string> = {
 <html lang="pt-BR">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <script is:inline>
+      // Recarregar (F5 / puxar para baixo) volta ao topo. Sem isto o navegador
+      // restaura a rolagem anterior ou pula para a âncora que ficou no endereço
+      // (ex.: #pai depois de tocar num botão). Links vindos de outras páginas
+      // (/#contato no menu do blog) continuam indo para a seção certa.
+      (function () {
+        // 'manual' já no primeiro carregamento: se só fosse ligado no reload, o
+        // navegador às vezes restaurava a rolagem antiga depois do nosso scrollTo.
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+        if (!nav || nav.type !== 'reload') return;
+        if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+        // 'instant': o global.css liga scroll-behavior: smooth, e uma rolagem
+        // suave aqui seria interrompida enquanto a página termina de carregar.
+        var topo = function () { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); };
+        topo();
+        addEventListener('DOMContentLoaded', topo);
+        addEventListener('load', function () { topo(); requestAnimationFrame(topo); });
+      })();
+    </script>
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@graph": [
@@ -92,6 +112,8 @@ const categoryColor: Record<string, string> = {
          linhas, cantos de pílula (9999px) cortariam o texto; aqui o raio é
          moderado e há folga lateral. */
       .tag-selo { border-radius: 12px; padding: 4px 14px; line-height: 1.5; max-width: 100%; text-wrap: balance; }
+      /* No celular o selo encolhe para caber numa linha só dentro do chip. */
+      @media (max-width: 639px) { .tag-selo { font-size: .6rem; letter-spacing: .04em; padding: 3px 10px; } }
       /* Palavra longa em título (ex.: "Publicações") com fonte do sistema grande
          num celular estreito: quebra com hífen em vez de estourar a tela. */
       section h2, section h3, section h4 { overflow-wrap: break-word; hyphens: auto; }
@@ -128,24 +150,24 @@ const categoryColor: Record<string, string> = {
       <!-- escurece o centro para o título e funde a borda de baixo com a próxima seção -->
       <div class="hero-veu absolute inset-0 -z-10" aria-hidden="true"></div>
       <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-24 text-center">
-        <div class="inline-block mb-6">
+        <div class="inline-block mb-4 sm:mb-6">
           <span class="tag tag-selo bg-amber-900/60 text-amber-300 border border-amber-700/50">Tech · Negócios · Games · Esportes</span>
         </div>
-        <h1 class="text-[length:min(3rem,14vw)] md:text-7xl font-black mb-6 leading-tight" style="font-family:'Sora', sans-serif;">
+        <h1 class="text-[length:min(2.5rem,12vw)] sm:text-6xl md:text-7xl font-black mb-4 sm:mb-6 leading-tight" style="font-family:'Sora', sans-serif;">
           <span class="text-amber-400 glow-amber">[</span><span class="text-white glow-amber">FA</span><span class="text-amber-400">SOLO</span><span class="text-white">]</span>
         </h1>
-        <p class="text-slate-300 text-lg md:text-2xl mb-4 max-w-2xl mx-auto">
-          Conhecimento e cotidiano, área tech, negócios e as melhores jogatinas
+        <p class="text-slate-300 text-base sm:text-lg md:text-2xl mb-3 sm:mb-4 max-w-2xl mx-auto">
+          Cotidiano, área tech, negócios e jogatinas
         </p>
-        <p class="text-slate-500 text-base mb-10">
+        <p class="text-slate-500 text-sm sm:text-base mb-8 sm:mb-10">
           por <span class="text-amber-400 font-semibold whitespace-nowrap">Fernando Fasolo</span> &amp;{' '}
           <span class="text-green-400 font-semibold whitespace-nowrap">Fernando Fasolo Filho</span>
         </p>
         <div class="flex flex-col sm:flex-row gap-4 items-center justify-center">
-          <a href="#pai" class="w-full max-w-64 sm:w-auto sm:max-w-none text-center px-6 sm:px-8 py-3 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-semibold transition-colors">
+          <a href="#pai" class="w-full max-w-64 sm:w-auto sm:max-w-none text-center text-sm sm:text-base px-6 sm:px-8 py-3 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-semibold transition-colors">
             Tech & Negócios
           </a>
-          <a href="#filho" class="w-full max-w-64 sm:w-auto sm:max-w-none text-center px-6 sm:px-8 py-3 rounded-lg bg-green-700 hover:bg-green-600 text-white font-semibold transition-colors">
+          <a href="#filho" class="w-full max-w-64 sm:w-auto sm:max-w-none text-center text-sm sm:text-base px-6 sm:px-8 py-3 rounded-lg bg-green-700 hover:bg-green-600 text-white font-semibold transition-colors">
             Games & Esportes
           </a>
         </div>
@@ -359,10 +381,14 @@ const categoryColor: Record<string, string> = {
 
     <!-- VISITOR WIDGET -->
     <div id="visitor-widget" class="hidden fixed bottom-4 right-4 z-50">
-      <div class="card-glass rounded-xl p-4 w-56 shadow-xl shadow-black/40">
+      <!-- Depois de 3 s o card recolhe para esta pílula; tocar nela reabre o card. -->
+      <button id="visitor-pill" type="button" class="hidden card-glass rounded-full px-4 py-2 text-sm font-semibold text-amber-300 shadow-xl shadow-black/40 hover:text-amber-200" aria-expanded="false" aria-controls="visitor-card">
+        👋 Bem-vindo!
+      </button>
+      <div id="visitor-card" class="card-glass rounded-xl p-4 w-56 shadow-xl shadow-black/40">
         <div class="flex items-center justify-between mb-3">
           <span class="text-amber-400 font-semibold text-xs uppercase tracking-widest">👁 Sua visita</span>
-          <button id="visitor-close" class="text-slate-600 hover:text-slate-300 text-lg leading-none transition-colors">×</button>
+          <button id="visitor-close" type="button" aria-label="Recolher" class="text-slate-600 hover:text-slate-300 text-lg leading-none transition-colors">×</button>
         </div>
         <div id="visitor-loading" class="text-xs text-slate-600 text-center py-1">carregando...</div>
         <div id="visitor-info" class="hidden space-y-2 text-xs"></div>
@@ -378,6 +404,8 @@ const categoryColor: Record<string, string> = {
         const loading  = document.getElementById('visitor-loading')!;
         const info     = document.getElementById('visitor-info')!;
         const closeBtn = document.getElementById('visitor-close')!;
+        const card     = document.getElementById('visitor-card')!;
+        const pill     = document.getElementById('visitor-pill')!;
 
         const ua = navigator.userAgent;
         let browser = 'Desconhecido', os = 'Desconhecido';
@@ -394,16 +422,39 @@ const categoryColor: Record<string, string> = {
         else if (ua.includes('Mac OS X'))                          os = 'macOS';
         else if (ua.includes('Linux'))                             os = 'Linux';
 
-        closeBtn.addEventListener('click', () => widget.remove());
+        // O card aparece por 3 s e recolhe para a pílula "Bem-vindo!".
+        function recolher() {
+          card.classList.add('hidden');
+          pill.classList.remove('hidden');
+          pill.setAttribute('aria-expanded', 'false');
+        }
+        function expandir() {
+          pill.classList.add('hidden');
+          card.classList.remove('hidden');
+          pill.setAttribute('aria-expanded', 'true');
+        }
+        // Os 3 s contam a partir de quando o card está na tela E com os dados
+        // (ou com o aviso de indisponível), para dar tempo de ler.
+        let naTela = false, pronto = false;
+        function agendarRecolher() {
+          if (naTela && pronto) setTimeout(recolher, 3000);
+        }
+        function mostrar() {
+          widget.classList.remove('hidden');
+          naTela = true;
+          agendarRecolher();
+        }
+        closeBtn.addEventListener('click', recolher);
+        pill.addEventListener('click', expandir);
         // No celular o card ficaria por cima dos botões da capa: só aparece
         // depois que a pessoa rola para além dela.
         if (matchMedia('(max-width: 767px)').matches) {
           const hero = document.querySelector('section.hero-bg')!;
           new IntersectionObserver(([e], obs) => {
-            if (!e.isIntersecting) { widget.classList.remove('hidden'); obs.disconnect(); }
+            if (!e.isIntersecting) { mostrar(); obs.disconnect(); }
           }).observe(hero);
         } else {
-          widget.classList.remove('hidden');
+          mostrar();
         }
 
         function weatherLabel(code: number): [string, string] {
@@ -462,6 +513,8 @@ const categoryColor: Record<string, string> = {
         } catch {
           loading.textContent = 'indisponível';
         }
+        pronto = true;
+        agendarRecolher();
       })();
     </script>
   </body>
