@@ -4,6 +4,8 @@ import BaseHead from '../../../components/BaseHead.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import { SITE_TITLE } from '../../../consts';
+import CardImagem from '../../../components/CardImagem.astro';
+import { imagemDoPost } from '../../../lib/imagemDoPost';
 
 const posts = (await getCollection('blog'))
   .filter(p => p.data.author === 'Fernando Fasolo')
@@ -61,9 +63,10 @@ const categoryColor: Record<string, string> = {
         {posts.length === 0 ? (
           <p class="text-center text-slate-500">Nenhum post ainda. Em breve!</p>
         ) : (
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map(post => (
-              <a href={`/blog/${post.id}/`} class="card-glass rounded-2xl p-6 block group">
+              <a href={`/blog/${post.id}/`} class="card-glass rounded-2xl p-6 block group overflow-hidden">
+                <CardImagem src={imagemDoPost(post.data)} sangria="-mx-6 -mt-6" />
                 <div class="flex items-center gap-2 mb-3">
                   <span class={`tag ${categoryColor[post.data.category] ?? 'bg-slate-800 text-slate-300'}`}>
                     {post.data.category}

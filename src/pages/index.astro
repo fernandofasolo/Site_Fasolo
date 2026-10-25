@@ -18,7 +18,7 @@ import imgGameplay from '../assets/cards/card-gameplay.jpg';
 import imgCotidiano from '../assets/cards/card-cotidiano.jpg';
 import imgTecnologia from '../assets/cards/card-tecnologia.jpg';
 import imgNegocios from '../assets/cards/card-negocios.jpg';
-import imgTechPosts from '../assets/cards/card-tech-posts.jpg';
+import { imagemDoPost } from '../lib/imagemDoPost';
 
 // Capa do hero (gerada com Nano Banana Pro): versão horizontal no desktop e
 // vertical no celular, em WebP com srcset por largura. AVIF ficou de fora de
@@ -36,20 +36,6 @@ const capaFallback = await getImage({ src: capaDesktop, width: 1920, format: 'jp
 const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
-
-// Ilustrações dos cards (Nano Banana Pro, mesmo estilo da capa). Post sem
-// heroImage usa a ilustração da sua categoria.
-const imagemDaCategoria: Record<string, ImageMetadata> = {
-  Tech: imgTechPosts, Negócios: imgNegocios, Games: imgGameplay, Esportes: imgEstadio, Cotidiano: imgCotidiano,
-};
-// Ordem: imagem própria do card > heroImage > ilustração da categoria (Games do
-// Fasolinho usa o cantinho gamer dele, para os posts em dupla não repetirem).
-function imagemDoPost(d: { cardImage?: ImageMetadata; heroImage?: ImageMetadata; category: string; author: string }) {
-  if (d.cardImage) return d.cardImage;
-  if (d.heroImage) return d.heroImage;
-  if (d.category === 'Games' && d.author === 'Fernando Fasolo Jr.') return imgFilho;
-  return imagemDaCategoria[d.category] ?? imgTechPosts;
-}
 
 const categoryColor: Record<string, string> = {
   Tech:      'bg-amber-900/40 text-amber-300',

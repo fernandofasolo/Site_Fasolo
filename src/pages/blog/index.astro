@@ -4,6 +4,9 @@ import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import CardImagem from '../../components/CardImagem.astro';
+import imgPai from '../../assets/cards/card-pai.jpg';
+import imgFilho from '../../assets/cards/card-filho.jpg';
 
 const posts = await getCollection('blog');
 const countFernando = posts.filter(p => p.data.author === 'Fernando Fasolo').length;
@@ -45,10 +48,11 @@ const latestFasolinho = posts
           <p class="text-slate-400 max-w-xl mx-auto">Dois autores, duas perspectivas. Escolha quem você quer ler.</p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
           <!-- Card Fernando Fasolo Pai -->
-          <a href="/blog/fernando-fasolo/" class="author-card author-card-pai rounded-2xl p-8 block group">
+          <a href="/blog/fernando-fasolo/" class="author-card author-card-pai rounded-2xl p-8 block group overflow-hidden">
+            <CardImagem src={imgPai} sangria="-mx-8 -mt-8" />
             <div class="mb-6">
               <div class="w-16 h-16 rounded-full bg-amber-900/40 border-2 border-amber-500/40 flex items-center justify-center mb-4 text-2xl font-black text-amber-400" style="font-family:'Sora', sans-serif;">FF</div>
               <h2 class="text-2xl font-black text-white group-hover:text-amber-400 transition-colors" style="font-family:'Sora', sans-serif;">
@@ -71,7 +75,8 @@ const latestFasolinho = posts
           </a>
 
           <!-- Card Fasolinho -->
-          <a href="/blog/fasolinho/" class="author-card author-card-filho rounded-2xl p-8 block group">
+          <a href="/blog/fasolinho/" class="author-card author-card-filho rounded-2xl p-8 block group overflow-hidden">
+            <CardImagem src={imgFilho} sangria="-mx-8 -mt-8" />
             <div class="mb-6">
               <div class="w-16 h-16 rounded-full bg-green-900/40 border-2 border-green-500/40 flex items-center justify-center mb-4 text-2xl font-black text-green-400" style="font-family:'Sora', sans-serif;">FFF</div>
               <h2 class="text-2xl font-black text-white group-hover:text-green-400 transition-colors" style="font-family:'Sora', sans-serif;">
