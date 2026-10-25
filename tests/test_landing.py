@@ -62,6 +62,21 @@ def test_titulo_inteiro_na_tela(abrir, vp):
     assert h1["x"] >= 0 and h1["x"] + h1["w"] <= largura, f"[FASOLO] sai da tela: {h1}"
 
 
+@pytest.mark.parametrize("vp", TODOS)
+def test_logo_de_vidro_no_titulo(abrir, vp):
+    """O h1 é o logo [FASOLO] em vidro: carregado, com alt para buscadores e
+    leitores de tela, inteiro na tela e com tamanho de destaque."""
+    page, _ = abrir(vp)
+    img = page.locator("section.hero-bg h1 img")
+    info = img.evaluate("i => ({ok: i.complete && i.naturalWidth > 0, alt: i.alt, src: i.currentSrc,"
+                        " w: i.getBoundingClientRect().width, x: i.getBoundingClientRect().left})")
+    assert info["ok"], f"logo não carregou: {info['src']}"
+    assert info["alt"] == "[FASOLO]"
+    largura = VIEWPORTS[vp]["width"]
+    assert info["x"] >= 0 and info["x"] + info["w"] <= largura, "o logo sai da tela"
+    assert info["w"] >= min(0.6 * largura, 240), f"logo pequeno demais: {info['w']:.0f}px"
+
+
 @pytest.mark.parametrize("vp", CELULARES)
 def test_botoes_da_capa_proporcionais_no_celular(abrir, vp):
     """Os dois botões (laranja e verde) devem ter cara de botão, não de faixa:

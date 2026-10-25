@@ -4,9 +4,10 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import { getImage } from 'astro:assets';
+import { getImage, Image } from 'astro:assets';
 import capaDesktop from '../assets/capa/capa-desktop.jpg';
 import capaMobile from '../assets/capa/capa-mobile.jpg';
+import logoVidro from '../assets/logo/fasolo-glass.png';
 
 // Capa do hero (gerada com Nano Banana Pro): versão horizontal no desktop e
 // vertical no celular, em WebP com srcset por largura. AVIF ficou de fora de
@@ -151,10 +152,23 @@ const categoryColor: Record<string, string> = {
       <div class="hero-veu absolute inset-0 -z-10" aria-hidden="true"></div>
       <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-24 text-center">
         <div class="inline-block mb-4 sm:mb-6">
-          <span class="tag tag-selo bg-amber-900/60 text-amber-300 border border-amber-700/50">Tech · Negócios · Games · Esportes</span>
+          <span class="tag tag-selo bg-amber-900/60 text-amber-300 border border-amber-700/50">Tech · Negócios · Games</span>
         </div>
-        <h1 class="text-[length:min(2.5rem,12vw)] sm:text-6xl md:text-7xl font-black mb-4 sm:mb-6 leading-tight" style="font-family:'Sora', sans-serif;">
-          <span class="text-amber-400 glow-amber">[</span><span class="text-white glow-amber">FA</span><span class="text-amber-400">SOLO</span><span class="text-white">]</span>
+        <!-- Logo em vidro (estilo Liquid Glass do iOS, Nano Banana Pro). O fundo
+             preto da arte virou transparência, então o vidro deixa ver a capa.
+             O alt mantém "[FASOLO]" como texto do h1 para buscadores e leitores de tela. -->
+        <h1 class="mb-3 sm:mb-5 leading-none">
+          <Image
+            src={logoVidro}
+            alt="[FASOLO]"
+            widths={[480, 800, 1200, 1600]}
+            sizes="(min-width: 768px) 34rem, (min-width: 640px) 26rem, 72vw"
+            format="webp"
+            quality={82}
+            loading="eager"
+            fetchpriority="high"
+            class="mx-auto block h-auto w-[72vw] max-w-[17rem] sm:w-[26rem] sm:max-w-none md:w-[34rem]"
+          />
         </h1>
         <p class="text-slate-300 text-base sm:text-lg md:text-2xl mb-3 sm:mb-4 max-w-2xl mx-auto">
           Cotidiano, área tech, negócios e jogatinas
