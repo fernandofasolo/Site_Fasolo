@@ -15,3 +15,8 @@ pesquisa-telecom/
 
 # Capturas das auditorias de responsividade (geradas localmente)
 .responsivo-preview/
+
+# Ambiente local dos testes da landing (pytest + playwright)
+.venv-tests/
+.pytest_cache/
+__pycache__/

@@ -88,6 +88,13 @@ const categoryColor: Record<string, string> = {
                     radial-gradient(ellipse at 80% 20%, rgba(31,199,182,.10) 0%,transparent 50%),
                     #100c0d;
       }
+      /* Selo do hero: se a fonte do sistema for grande e ele quebrar em duas
+         linhas, cantos de pílula (9999px) cortariam o texto; aqui o raio é
+         moderado e há folga lateral. */
+      .tag-selo { border-radius: 12px; padding: 4px 14px; line-height: 1.5; max-width: 100%; text-wrap: balance; }
+      /* Palavra longa em título (ex.: "Publicações") com fonte do sistema grande
+         num celular estreito: quebra com hífen em vez de estourar a tela. */
+      section h2, section h3, section h4 { overflow-wrap: break-word; hyphens: auto; }
       .hero-veu {
         background:
           radial-gradient(ellipse 60% 55% at 50% 50%, rgba(16,12,13,.72) 0%, rgba(16,12,13,.35) 60%, transparent 100%),
@@ -120,37 +127,37 @@ const categoryColor: Record<string, string> = {
       </picture>
       <!-- escurece o centro para o título e funde a borda de baixo com a próxima seção -->
       <div class="hero-veu absolute inset-0 -z-10" aria-hidden="true"></div>
-      <div class="relative max-w-6xl mx-auto px-6 py-24 text-center">
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-24 text-center">
         <div class="inline-block mb-6">
-          <span class="tag bg-amber-900/60 text-amber-300 border border-amber-700/50">Tech · Negócios · Games · Esportes</span>
+          <span class="tag tag-selo bg-amber-900/60 text-amber-300 border border-amber-700/50">Tech · Negócios · Games · Esportes</span>
         </div>
-        <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight" style="font-family:'Sora', sans-serif;">
+        <h1 class="text-[length:min(3rem,14vw)] md:text-7xl font-black mb-6 leading-tight" style="font-family:'Sora', sans-serif;">
           <span class="text-amber-400 glow-amber">[</span><span class="text-white glow-amber">FA</span><span class="text-amber-400">SOLO</span><span class="text-white">]</span>
         </h1>
         <p class="text-slate-300 text-lg md:text-2xl mb-4 max-w-2xl mx-auto">
           Conhecimento e cotidiano, área tech, negócios e as melhores jogatinas
         </p>
         <p class="text-slate-500 text-base mb-10">
-          por <span class="text-amber-400 font-semibold">Fernando Fasolo</span> &amp;{' '}
-          <span class="text-green-400 font-semibold">Fernando Fasolo Filho</span>
+          por <span class="text-amber-400 font-semibold whitespace-nowrap">Fernando Fasolo</span> &amp;{' '}
+          <span class="text-green-400 font-semibold whitespace-nowrap">Fernando Fasolo Filho</span>
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#pai" class="px-8 py-3 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-semibold transition-colors">
+        <div class="flex flex-col sm:flex-row gap-4 items-center justify-center">
+          <a href="#pai" class="w-full max-w-64 sm:w-auto sm:max-w-none text-center px-6 sm:px-8 py-3 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-semibold transition-colors">
             Tech & Negócios
           </a>
-          <a href="#filho" class="px-8 py-3 rounded-lg bg-green-700 hover:bg-green-600 text-white font-semibold transition-colors">
+          <a href="#filho" class="w-full max-w-64 sm:w-auto sm:max-w-none text-center px-6 sm:px-8 py-3 rounded-lg bg-green-700 hover:bg-green-600 text-white font-semibold transition-colors">
             Games & Esportes
           </a>
         </div>
         <div class="mt-20 flex flex-wrap justify-center gap-4 text-xs text-slate-500">
-          <span class="float card-glass px-4 py-2 rounded-full flex items-center gap-1.5" style="animation-delay:0s"><img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/minecraft_logo_icon_168974.png" class="w-4 h-4" alt="Minecraft" /> Minecraft</span>
-          <span class="float card-glass px-4 py-2 rounded-full flex items-center gap-1.5" style="animation-delay:.5s"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Roblox_%282025%29_%28App_Icon%29.svg" class="w-4 h-4 rounded-sm" alt="Roblox" /> Roblox</span>
-          <span class="float card-glass px-4 py-2 rounded-full" style="animation-delay:1s">💻 Tech</span>
-          <span class="float card-glass px-4 py-2 rounded-full" style="animation-delay:1.5s">📈 Negócios</span>
-          <a href="/copa2026" class="float card-glass px-4 py-2 rounded-full" style="animation-delay:2s">⚽ Copa 2026</a>
+          <span class="float card-glass whitespace-nowrap px-4 py-2 rounded-full" style="animation-delay:0s">⛏️ Minecraft</span>
+          <span class="float card-glass whitespace-nowrap px-4 py-2 rounded-full flex items-center gap-1.5" style="animation-delay:.5s"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Roblox_%282025%29_%28App_Icon%29.svg" class="w-4 h-4 rounded-sm" alt="Roblox" /> Roblox</span>
+          <span class="float card-glass whitespace-nowrap px-4 py-2 rounded-full" style="animation-delay:1s">💻 Tech</span>
+          <span class="float card-glass whitespace-nowrap px-4 py-2 rounded-full" style="animation-delay:1.5s">📈 Negócios</span>
+          <a href="/copa2026/" class="float card-glass whitespace-nowrap px-4 py-2 rounded-full" style="animation-delay:2s">⚽ Copa 2026</a>
           {/* Guia interno (eSIM BRsip). Pede PIN na propria pagina; fora do menu,
               do sitemap e dos buscadores. */}
-          <a href="/esim-discord/" class="float card-glass px-4 py-2 rounded-full flex items-center gap-1.5" style="animation-delay:2.5s" rel="nofollow">🔒 Discord</a>
+          <a href="/esim-discord/" class="float card-glass whitespace-nowrap px-4 py-2 rounded-full flex items-center gap-1.5" style="animation-delay:2.5s" rel="nofollow">🔒 Discord</a>
         </div>
       </div>
     </section>
@@ -162,7 +169,7 @@ const categoryColor: Record<string, string> = {
           <h2 class="text-3xl md:text-4xl font-bold text-white mb-3" style="font-family:'Sora', sans-serif;">Quem Somos</h2>
           <p class="text-slate-400 max-w-xl mx-auto">Pai e filho compartilhando o que amam — cada um do seu jeito.</p>
         </div>
-        <div class="grid md:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div id="pai" class="card-glass rounded-2xl p-8 pulse-border">
             <div class="flex items-center gap-4 mb-6">
               <div class="w-16 h-16 rounded-full bg-amber-900/60 border-2 border-amber-500 flex items-center justify-center text-2xl">
@@ -194,14 +201,14 @@ const categoryColor: Record<string, string> = {
               </div>
             </div>
             <p class="text-slate-400 leading-relaxed mb-6">
-              Gamer nato, especialista em Roblox e Minecraft. Adora descobrir novos jogos na plataforma. Fora das telas, é torcedor do <span class="text-green-400 font-semibold">Figueirense</span> e acompanha tudo da <a href="/copa2026" class="text-green-400 hover:underline">Copa do Mundo 2026</a>.
+              Gamer nato, especialista em Roblox e Minecraft. Adora descobrir novos jogos na plataforma. Fora das telas, é torcedor do <span class="text-green-400 font-semibold">Figueirense</span> e acompanha tudo da <a href="/copa2026/" class="text-green-400 hover:underline">Copa do Mundo 2026</a>.
             </p>
             <div class="flex flex-wrap gap-2">
               <span class="tag bg-green-900/40 text-green-300">Roblox</span>
               <span class="tag bg-green-900/40 text-green-300">Minecraft</span>
               <span class="tag bg-green-900/40 text-green-300">Gameplay</span>
-              <a href="/copa2026" class="tag bg-green-800/60 text-green-300 border border-green-600/50">⚽ Copa 2026</a>
-              <a href="/fasolinho" class="tag bg-green-900/40 text-green-300 hover:bg-green-800/60 transition-colors">Futebol</a>
+              <a href="/copa2026/" class="tag bg-green-800/60 text-green-300 border border-green-600/50">⚽ Copa 2026</a>
+              <a href="/fasolinho/" class="tag bg-green-900/40 text-green-300 hover:bg-green-800/60 transition-colors">Futebol</a>
             </div>
           </div>
         </div>
@@ -216,7 +223,7 @@ const categoryColor: Record<string, string> = {
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-3" style="font-family:'Sora', sans-serif;">Últimas Publicações</h2>
             <p class="text-slate-400">O que saiu recentemente no blog</p>
           </div>
-          <div class="grid md:grid-cols-3 gap-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             {posts.map(post => (
               <a href={`/blog/${post.id}/`} class="card-glass rounded-2xl p-6 block group">
                 <div class="flex items-center gap-2 mb-3">
@@ -236,7 +243,7 @@ const categoryColor: Record<string, string> = {
             ))}
           </div>
           <div class="text-center mt-10">
-            <a href="/blog" class="px-8 py-3 rounded-lg border border-amber-700/50 text-amber-400 hover:bg-amber-900/30 transition-colors font-semibold">
+            <a href="/blog/" class="px-8 py-3 rounded-lg border border-amber-700/50 text-amber-400 hover:bg-amber-900/30 transition-colors font-semibold">
               Ver todos os posts →
             </a>
           </div>
@@ -252,9 +259,9 @@ const categoryColor: Record<string, string> = {
           <h2 class="text-3xl md:text-4xl font-bold text-white mb-3 glow-green" style="font-family:'Sora', sans-serif;">Games em Destaque</h2>
           <p class="text-slate-400">O que o Fasolinho tá jogando agora</p>
         </div>
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div class="card-glass card-game rounded-2xl p-6 text-center">
-            <div class="mb-4 flex justify-center"><img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/minecraft_logo_icon_168974.png" class="w-16 h-16" alt="Minecraft" /></div>
+            <div class="mb-4 flex justify-center text-6xl leading-none" role="img" aria-label="Minecraft">⛏️</div>
             <h4 class="text-lg font-bold text-white mb-2" style="font-family:'Sora', sans-serif;">Minecraft</h4>
             <p class="text-slate-400 text-sm mb-4">Construção, survival e criatividade sem limites. Um clássico que nunca sai de moda.</p>
             <span class="tag bg-green-900/40 text-green-300">Ativo</span>
@@ -265,7 +272,7 @@ const categoryColor: Record<string, string> = {
             <p class="text-slate-400 text-sm mb-4">Plataforma com centenas de jogos. Cada semana tem um novo hit pra descobrir e dominar.</p>
             <span class="tag bg-red-900/40 text-red-300">Plataforma Principal</span>
           </div>
-          <a href="/copa2026" class="card-glass card-game rounded-2xl p-6 text-center block hover:border-green-500/50 transition-colors">
+          <a href="/copa2026/" class="card-glass card-game rounded-2xl p-6 text-center block hover:border-green-500/50 transition-colors">
             <div class="text-5xl mb-4">⚽</div>
             <h4 class="text-lg font-bold text-white mb-2" style="font-family:'Sora', sans-serif;">Copa 2026</h4>
             <p class="text-slate-400 text-sm mb-4">Tabela, grupos, escalação do Brasil e bolão. Tudo sobre a Copa do Mundo FIFA 2026.</p>
@@ -282,9 +289,9 @@ const categoryColor: Record<string, string> = {
           <h2 class="text-3xl md:text-4xl font-bold text-white mb-3" style="font-family:'Sora', sans-serif;">O Que Você Vai Encontrar</h2>
           <p class="text-slate-400">Conteúdo dos dois mundos</p>
         </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { icon:'💻', title:'Tecnologia', desc:'Homelab, infraestrutura e IA aplicada — do Proxmox ao Claude, passando por Docker, VoIP e VPN.', color:'amber', href:'/tecnologia', tags:[
+            { icon:'💻', title:'Tecnologia', desc:'Homelab, infraestrutura e IA aplicada — do Proxmox ao Claude, passando por Docker, VoIP e VPN.', color:'amber', href:'/tecnologia/', tags:[
               {label:'🤖 IA',             cls:'bg-amber-900/40 text-amber-300'},
               {label:'🐳 Docker',         cls:'bg-blue-900/40 text-blue-300'},
               {label:'🐧 Linux',          cls:'bg-yellow-900/40 text-yellow-300'},
@@ -387,8 +394,17 @@ const categoryColor: Record<string, string> = {
         else if (ua.includes('Mac OS X'))                          os = 'macOS';
         else if (ua.includes('Linux'))                             os = 'Linux';
 
-        widget.classList.remove('hidden');
         closeBtn.addEventListener('click', () => widget.remove());
+        // No celular o card ficaria por cima dos botões da capa: só aparece
+        // depois que a pessoa rola para além dela.
+        if (matchMedia('(max-width: 767px)').matches) {
+          const hero = document.querySelector('section.hero-bg')!;
+          new IntersectionObserver(([e], obs) => {
+            if (!e.isIntersecting) { widget.classList.remove('hidden'); obs.disconnect(); }
+          }).observe(hero);
+        } else {
+          widget.classList.remove('hidden');
+        }
 
         function weatherLabel(code: number): [string, string] {
           if (code === 0)  return ['☀️', 'Céu limpo'];
