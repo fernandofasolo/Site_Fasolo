@@ -9,7 +9,7 @@ heroImage: '../../assets/marketing/capa-marketing.jpg'
 
 Lançar um produto é uma coisa. Fazer alguém confiar numa marca que nunca ouviu falar, para comprar algo que nem dá para pegar na mão, é outra bem diferente.
 
-Nos últimos meses passei por isso com o **eSIM da BRsip**: um chip virtual de dados para quem viaja para fora do Brasil. Você compra, recebe um QR code, instala no celular antes de embarcar e chega ao destino já conectado. Simples de explicar, difícil de vender. Este post é sobre o caminho: as plataformas, a estratégia e, principalmente, os tropeços.
+Nos últimos meses passei por isso com um **eSIM brasileiro para viagem**: um chip virtual de dados para quem viaja para fora do Brasil. Você compra, recebe um QR code, instala no celular antes de embarcar e chega ao destino já conectado. Simples de explicar, difícil de vender. Este post é sobre o caminho: as plataformas, a estratégia e, principalmente, os tropeços.
 
 ## O produto e o posicionamento
 
